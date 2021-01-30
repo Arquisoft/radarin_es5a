@@ -1,0 +1,78 @@
+name: CI for radarin
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-test-webapp:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: webapp
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 12.14.1
+    - run: npm ci
+    - run: npm run build
+    - run: npm test
+  build-test-restapi:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: restapi
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 12.14.1
+    - run: npm ci
+    - run: npm test
+  e2e-tests:
+    needs: [build-test-webapp, build-test-restapi]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 12.14.1
+    - run: npm --prefix webapp install
+    - run: npm --prefix restapi install
+    - run: npm --prefix webapp run test:e2e
+  deploy-webapp:
+    needs: [e2e-tests]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.8.9 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "radarin0webapp" #Must be unique in Heroku
+          heroku_email: "pglez82@gmail.com"
+          usedocker: true
+          appdir: "webapp"
+          docker_build_args: |
+            API_URI
+        env:
+          API_URI: "https://radarin0restapi.herokuapp.com/api"
+  deploy-restapi:
+    needs: [e2e-tests]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.8.9 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "radarin0restapi" #Must be unique in Heroku
+          heroku_email: "pglez82@gmail.com"
+          usedocker: true
+          appdir: "restapi"
+          docker_build_args: |
+            MONGO_URI
+        env:
+          MONGO_URI: ${{secrets.MONGO_URI}}
+
