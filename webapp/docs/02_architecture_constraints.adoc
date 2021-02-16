@@ -1,19 +1,35 @@
 [[section-architecture-constraints]]
 == Architecture Constraints
 
-
 [role="arc42help"]
 ****
-.Contents
-Any requirement that constrains software architects in their freedom of design and implementation decisions or decision about the development process. These constraints sometimes go beyond individual systems and are valid for whole organizations and companies.
+.Technical Constraints
 
-.Motivation
-Architects should know exactly where they are free in their design decisions and where they must adhere to constraints.
-Constraints must always be dealt with; they may be negotiable, though.
+This are the tables that contains the project constraints and their explanations.
+|===
+|Constraint|Explanation
+| _SOLID and the PODs_ | _The PODs system gives us a descentralized architecture for the app, and we want to include that in our proyect_
+| _Node.js and Express_ | _For the front-end and back-end of our application_
+| _GitHub + GitKraken_ | _For Source Control we use GitHub and the app GitKraken wich is a GUI to help us to resolve conflicts and manage changes in the project_
+| _Docker_ | _Radarin has to use Docker_
+|=== 
 
-.Form
-Simple tables of constraints with explanations.
-If needed you can subdivide them into
-technical constraints, organizational and political constraints and
-conventions (e.g. programming or versioning guidelines, documentation or naming conventions)
+.Organizational Constraints
+This are the constraints that affect the develop and organization of the app. The project’s environment. 
+|===
+|Constraint|Explanation
+| _Team members_ | _Our team is formed by 6 software engineering students, all of us have other subjects, work or both, so we cant work on full time to this project, we need to organize ourselves to make this work_
+| _Time limit_ | _Our time limit is the end of the course, when the 'Architecture of Software' subject ends, we need to have the app ready, that´s more or less 2 months and a half_
+| _Course deadlines_ | _We have 4 deadlines in the course, and we have to achieve the established objectives_
+|=== 
+
+
+
+.Documentation Constraints
+Decisions about what we did to document our project.
+|===
+|Constraint|Explanation
+| _Arc42_ | _We were told to use Arc42 to document out project because its used professionally and its simple and clear_
+| _AsciiDoc_ | _We use AsciiDoc because its a very simple tool to visualize the documentation while we are writting it_
+|=== 
 ****
