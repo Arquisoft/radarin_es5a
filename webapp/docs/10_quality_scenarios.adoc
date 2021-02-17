@@ -38,6 +38,15 @@ In any case the tree should include links to the scenarios of the following sect
 
 === Quality Scenarios
 
+<<<<<<< Updated upstream
+=======
+    * Usabilidad: intentamos hacer que la aplicacion sea lo mas facil de usar para el usuario. Para ello hacemos una navegacion por la aplicacion sencilla, sin necesidad de moverse por muchas partes de la misma. Se usan imagenes claras, mostradas en un orden lógico y siguiendo los convenios establecidos.
+
+    * Compatibilidad: La aplicacion ha de ser usable en un ordenador y en versión móvil, teniedno cada una versiones que sean usables
+
+    * Privacidad: como la aplicacion va a tratar con datos personales del usuario, es vital la privacidad de los mismos. Por ello, toda informacion recogida se limitara exclusivamente a la finalidad perseguida, y limitacion del acceso a dicha informacion al principio "need to know", entre otras medidas.
+     
+>>>>>>> Stashed changes
 [role="arc42help"]
 ****
 .Contents
