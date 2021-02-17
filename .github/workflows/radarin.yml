@@ -3,9 +3,7 @@ name: CI for radarin
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
+  
 jobs:
   build-test-webapp:
     runs-on: ubuntu-latest
