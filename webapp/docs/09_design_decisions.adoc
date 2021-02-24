@@ -1,26 +1,29 @@
 [[section-design-decisions]]
 == Design Decisions
 
-En este punto hablaremos sombre los aspectos relacionados con el diseño, así como las decisiones tomadas:
+At this point we will talk about the aspects related to the design, as well as the decisions made:
 
 [role="arc42help"]
 ****
-.Decisiones:
-* Hemos decidido no usar react porque creemos que vamos a tener dificultades para usarlo.
-* Uso de SOLID.
-* Uso de GitKraken para ayudarnos a hacer un control de versiones.
-* Uso de Git para control de versiones y facilitar el trabajo en equipo.
-* Uso de Visual Estudio Code para trabajar sobre nuestro proyecto.
-* Uso de pruebas unitarias para comprobar el funcionamiento de la aplicación.
-* Asccidoctor para ir desarrollando la documentación.
-* Uso de Microsoft Teamns para hacer las reuniones de equipo.
+.Decisions:
+* We have decided not to use react because we think we are going to have a dificult a time using it. As a substitute we have decided to use Node.js and Express.
+* Use of SOLID.
+* Using GitKraken to help us do version control.
+* Use of Git for version control and facilitate teamwork.
+* Use of Visual Studio Code to work on our project.
+* Use of unit tests to verify the operation of the application.
+* Asccidoctor to develop the documentation.
+* Using Microsoft Teamns to do team meetings.
+* We have decided to make the documentation in English.
 
+.Discarded alternatives:
+* We decided not to make the documentation in Spanish, since English is a more internationalized language.
+* We also discarded the use of React.
 
-.Problemas
-* Decidir que tecnología usar sin saber como funciona cada una. 
+.Problemns:
+* Decide which technology to use without knowing how each one works.
+* We independently study these technologies, looking for information from different sources.
 
-* Estudio por nuestra parte de forma autónoma de dichas tecnologías, buscando información de distintas fuentes.
-* Decidir que lenguaje de programación usar.
 
 
 
