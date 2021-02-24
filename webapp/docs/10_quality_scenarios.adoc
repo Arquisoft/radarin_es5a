@@ -19,6 +19,8 @@ concrete and measurable.
 
 === Quality Tree
 
+image:quality_tree.png
+
 [role="arc42help"]
 ****
 .Content
