@@ -1,26 +1,26 @@
 [[section-design-decisions]]
 == Design Decisions
 
+En este punto hablaremos sombre los aspectos relacionados con el diseño, así como las decisiones tomadas:
 
 [role="arc42help"]
 ****
-.Contents
-Important, expensive, large scale or risky architecture decisions including rationals.
-With "decisions" we mean selecting one alternative based on given criteria.
+.Decisiones:
+* Hemos decidido no usar react porque creemos que vamos a tener dificultades para usarlo.
+* Uso de SOLID.
+* Uso de GitKraken para ayudarnos a hacer un control de versiones.
+* Uso de Git para control de versiones y facilitar el trabajo en equipo.
+* Uso de Visual Estudio Code para trabajar sobre nuestro proyecto.
+* Uso de pruebas unitarias para comprobar el funcionamiento de la aplicación.
+* Asccidoctor para ir desarrollando la documentación.
+* Uso de Microsoft Teamns para hacer las reuniones de equipo.
 
-Please use your judgement to decide whether an architectural decision should be documented
-here in this central section or whether you better document it locally
-(e.g. within the white box template of one building block).
 
-Avoid redundancy. Refer to section 4, where you already captured the most important decisions of your architecture.
+.Problemas
+* Decidir que tecnología usar sin saber como funciona cada una. 
 
-.Motivation
-Stakeholders of your system should be able to comprehend and retrace your decisions.
+* Estudio por nuestra parte de forma autónoma de dichas tecnologías, buscando información de distintas fuentes.
+* Decidir que lenguaje de programación usar.
 
-.Form
-Various options:
 
-* List or table, ordered by importance and consequences or:
-* more detailed in form of separate sections per decision
-* ADR (architecture decision record) for every important decision
-****
+
