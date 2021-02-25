@@ -17,35 +17,36 @@ SOLID proposes to have a clear separation between user data, which is stored in 
 === Business Context
 
 [role="arc42help"]
-****
-image:bussines_context.jpg ["Business context"]
+
+The communication partnes in this sistem would be the users and the users's friends. In addition,we would have others services involved, so far we have the POD which managed the data of the users. (This could increased as the apps develops) 
+
+image:docs/images/bussines_context.jpg ["Business context"]
+
+|===
+|Communication Partnet  | Input | Output
+| User | Login Text | Locations , Notifications, Info 
+|POD | Data Own By the user |  Response Data In a Selected Formate
+|=== 
 
 
 
-****
-
-**<Diagram or Table>**
-
-**<optionally: Explanation of external domain interfaces>**
 
 === Technical Context
 
 [role="arc42help"]
-****
-.Contents
-Technical interfaces (channels and transmission media) linking your system to its environment. In addition a mapping of domain specific input/output to the channels, i.e. an explanation with I/O uses which channel.
 
-.Motivation
-Many stakeholders make architectural decision based on the technical interfaces between the system and its context. Especially infrastructure or hardware designers decide these technical interfaces.
+The implementation of the system should be done using one of the Node frameworks to facilitate the desing of the web page.
 
-.Form
-E.g. UML deployment diagram describing channels to neighboring systems,
-together with a mapping table showing the relationships between channels and input/output.
+The procesing of the file should be done using probably RDF, a system tha SOLID is compatible with. 
 
-****
+SOLID's POD server will allow us to store and access the information of the users.
 
-**<Diagram or Table>**
+Other representations of the information would be discuss and updated futher in the implementation of the system.
 
-**<optionally: Explanation of technical interfaces>**
 
-**<Mapping Input/Output to Channels>**
+|===
+|Technical Interfaces  | Description
+| Radarin |  Web application
+| POD Server  |  Store and access information of the users
+
+|===
