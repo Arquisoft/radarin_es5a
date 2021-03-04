@@ -19,6 +19,8 @@ concrete and measurable.
 
 === Quality Tree
 
+image:quality_tree.png
+
 [role="arc42help"]
 ****
 .Content
@@ -37,6 +39,12 @@ In any case the tree should include links to the scenarios of the following sect
 ****
 
 === Quality Scenarios
+
+    * Usability: our goal es for the application to be as easy to use as possible. To achieve that, we make the navegation through the app easy to use, without the need to traverse through a lot of pages. We will use clear pictures, shown in a logical order and following established agreements.
+
+    * Compatibility: The application must be usable in a computer and in a mobile version.
+
+    * Privacy: As the application will use the user's personal data, it's vital its privacy. To accomplish this, any information collected shall be limited excusively for the purpose which it was collected, and access will be limited under a "need to know" basis, among other measures.
 
 [role="arc42help"]
 ****
