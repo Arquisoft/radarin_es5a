@@ -1,0 +1,29 @@
+[[section-design-decisions]]
+== Design Decisions
+
+At this point we will talk about the aspects related to the design, as well as the decisions made:
+
+[role="arc42help"]
+****
+.Decisions:
+* We have decided not to use react because we think we are going to have a dificult a time using it. As a substitute we have decided to use Node.js and Express.
+* Use of SOLID.
+* Using GitKraken to help us do version control.
+* Use of Git for version control and facilitate teamwork.
+* Use of Visual Studio Code to work on our project.
+* Use of unit tests to verify the operation of the application.
+* Asccidoctor to develop the documentation.
+* Using Microsoft Teamns to do team meetings.
+* We have decided to make the documentation in English.
+
+.Discarded alternatives:
+* We decided not to make the documentation in Spanish, since English is a more internationalized language.
+* We also discarded the use of React.
+
+.Problemns:
+* Decide which technology to use without knowing how each one works.
+* We independently study these technologies, looking for information from different sources.
+
+
+
+
