@@ -7,6 +7,7 @@ var app = express();
 
 var indexRouter = require('./routes/index');
 var friendsRouter = require('./routes/friends');
+var loginRouter = require('./routes/login');
 
 
 // view engine setup
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/friends', friendsRouter);
+app.use('/login', loginRouter);
   
 
 // catch 404 and forward to error handler
