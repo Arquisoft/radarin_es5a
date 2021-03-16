@@ -2,9 +2,6 @@
 
 # dependencies
 app/node_modules
-
-# dependencies
-webapp/node_modules
 /.pnp
 .pnp.js
 
@@ -22,3 +19,4 @@ restapi/node_modules
 restapi/data
 
 .eslintcache
+webapp/node_modules
