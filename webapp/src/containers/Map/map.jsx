@@ -73,7 +73,7 @@ function Map( props ) {
   }, [userFriendsList] );
 
   return (
-    <div style={{ height: '80vh', width: '100%' }}>
+    <div style={{ height: '85vh', width: '100%' }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyCoW1RuwmBwVJTgNm9u3ruBf_oMJGnLckY" }}
         center={ { lat: latitude, lng: longitude } }

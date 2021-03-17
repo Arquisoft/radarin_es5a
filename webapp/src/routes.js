@@ -9,6 +9,11 @@ const privateRoutes = [
     id: 'welcome',
     path: '/welcome',
     component: Welcome
+  },
+  {
+    id: 'map',
+    path: '/map',
+    component: Map
   }
 ];
 
@@ -20,7 +25,6 @@ const Routes = () => (
         <NotLoggedInLayout component={Register} path="/register" exact />
         <NotLoggedInLayout path="/register/success" component={RegistrationSuccess} exact />
         <PublicLayout path="/404" component={PageNotFound} exact />
-        <NotLoggedInLayout component={Map} path="/map" exact />
         <Redirect from="/" to="/welcome" exact />
         <PrivateLayout path="/" routes={privateRoutes} />
         <Redirect to="/404" />
