@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { PrivateLayout, PublicLayout, NotLoggedInLayout } from '@layouts';
 import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 
-import { Login, Register, PageNotFound, Welcome, RegistrationSuccess } from './containers';
+import { Login, Register, PageNotFound, Welcome, RegistrationSuccess, Map } from './containers';
 
 const privateRoutes = [
   {
@@ -20,6 +20,7 @@ const Routes = () => (
         <NotLoggedInLayout component={Register} path="/register" exact />
         <NotLoggedInLayout path="/register/success" component={RegistrationSuccess} exact />
         <PublicLayout path="/404" component={PageNotFound} exact />
+        <NotLoggedInLayout component={Map} path="/map" exact />
         <Redirect from="/" to="/welcome" exact />
         <PrivateLayout path="/" routes={privateRoutes} />
         <Redirect to="/404" />
