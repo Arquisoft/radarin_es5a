@@ -7,6 +7,12 @@ export const NavigationItems = [
     icon: '/img/icon/apps.svg',
     label: 'navBar.welcome',
     to: '/welcome'
+  },
+  {
+    id: 'map',
+    icon: '/img/icon/apps.svg',
+    label: 'map',
+    to: '/map'
   }
 ];
 
