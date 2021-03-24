@@ -49,6 +49,7 @@ const PublicLayout = props => {
               ]}
             />
           )}
+          <Button onClick={() => { alert('pulsado') }}>Hazme click</Button>
           <ComponentWrapper {...{ history, location, match }} />
           <FooterContainer>
             <Footer />
