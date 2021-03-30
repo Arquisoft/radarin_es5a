@@ -8,11 +8,6 @@ import { useWebId, List } from  '@solid/react';
 import { useLDflexValue, useLDflexList } from '@solid/react';
 import axios from 'axios'; 
 
-import { FirebaseDatabaseProvider } from "@react-firebase/database";
-import { firebaseConfig } from "../../firebaseConfig";
-import * as firebase from 'firebase/app';
-
-
 
 //import './Map.css'
 
@@ -80,35 +75,23 @@ function Map( props ) {
   }, [userFriendsList] );
 
   return (
-    <FirebaseDatabaseProvider firebase={firebase} {...firebaseConfig}>
-          <div>
-            <FirebaseDatabaseNode
-              path="user_bookmarks/"
-              limitToFirst={this.state.limit}
-              // orderByKey
-              orderByValue={"created_on"}
-            >
-              {d => {
-                return (
-                  <React.Fragment>
-                    <pre>Path {d.path}</pre>
-                    <pre style={{ height: 300, overflow: "auto" }}>
-                      Value {s(d.value)}
-                    </pre>
-                    <button
-                      onClick={() => {
-                        this.setState(state => ({ limit: state.limit + 2 }));
-                      }}
-                    >
-                      Load more
-                    </button>
-                  </React.Fragment>
-                );
-              }}
-            </FirebaseDatabaseNode>
-          </div>
-        </FirebaseDatabaseProvider>
+    <div style={{ height: '80vh', width: '100%' }}>
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: "AIzaSyCoW1RuwmBwVJTgNm9u3ruBf_oMJGnLckY" }}
+        center={ { lat: latitude, lng: longitude } }
+        defaultZoom={ 15 }>
+
+          { /* Recorrer lista de amigos */ }
+          <Marker lat={ latitude } lng={ longitude } color="red" text="Tú"/>
+
+          <Marker lat={ 43.2632562745774 } lng={ -5.568455427747742 } color="blue" text="1" />
+          <Marker lat={ 43.2457244275775 } lng={ -5.559724774574224 } color="blue" text="2" />
+          <Marker lat={ 43.2575454547557 } lng={ -5.569989587494988 } color="blue" text="3" />
+
+      </GoogleMapReact>
+    </div>
   );
 }
+
 
 export default Map;

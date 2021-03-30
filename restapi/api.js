@@ -1,11 +1,14 @@
 const express = require("express")
-const User = require("./models/users")
 const router = express.Router()
 
-// Get all users
-router.get("/users/list", async (req, res) => {
-    const users = await User.find({}).sort('-_id') //Inverse order
-	res.send(users)
+
+
+// Refresh ubication
+router.post("/users/update", async (req, res) => {
+    firebase.database().ref('users/' + req.body.name).set({
+        ubicacion: req.body.ubicacion
+      });
+    res.send("hola")
 })
 
 //register a new user
