@@ -3,5 +3,7 @@ import Register, { RegistrationSuccess } from './Register';
 import PageNotFound from './PageNotFound';
 import Welcome from './Welcome';
 import Map from './Map';
+import Chat from './Chat';
+import Options from './Options';
 
-export { Login, Register, RegistrationSuccess, PageNotFound, Welcome , Map};
+export { Login, Register, RegistrationSuccess, PageNotFound, Welcome, Map, Chat, Options};
