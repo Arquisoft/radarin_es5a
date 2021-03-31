@@ -46,7 +46,7 @@
     "next": "Siguiente"
   },
   "navBar": {
-    "welcome": "Bienvenida",
+    "home": "Inicio",
     "formModel": "Form Model",
     "logOut": "Cerrar Sesión",
     "profile": "Perfil",
@@ -54,6 +54,9 @@
     "formModelConvert": "Form Model Convert",
     "text-editor": "Editor de Textos",
     "changeLanguage": "Cambiar Lenguaje",
+    "map":"Mapa",
+    "chat":"Chat",
+    "options":"Opciones",
     "languages": {
       "en": "English (Inglés)",
       "es": "Español (Español)"
