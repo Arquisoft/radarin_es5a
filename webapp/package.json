@@ -11,6 +11,7 @@
     "@shexjs/core": "^1.0.0-alpha.9",
     "@solid/query-ldflex": "2.6.0",
     "@svgr/webpack": "2.4.1",
+    "axios": "^0.21.1",
     "bfj": "6.1.1",
     "case-sensitive-paths-webpack-plugin": "2.1.2",
     "chalk": "2.4.1",
@@ -19,6 +20,8 @@
     "flag-icon-css": "^3.3.0",
     "fork-ts-checker-webpack-plugin-alt": "0.4.14",
     "fs-extra": "7.0.0",
+    "google-map-react": "^2.1.9",
+    "google-maps-react": "^2.0.6",
     "i18next": "^15.0.4",
     "i18next-browser-languagedetector": "^3.0.1",
     "i18next-xhr-backend": "^2.0.1",
@@ -32,6 +35,7 @@
     "react-click-outside": "^3.0.1",
     "react-dev-utils": "^7.0.1",
     "react-dom": "16.8.4",
+    "react-google-maps": "^9.4.5",
     "react-i18next": "^10.1.2",
     "react-modal": "^3.8.2",
     "react-router-dom": "^5.1.2",
@@ -40,7 +44,8 @@
     "react-transition-group": "^4.1.1",
     "shacl-js": "0.0.1",
     "solid-auth-client": "^2.3.0",
-    "styled-components": "^4.1.3"
+    "styled-components": "^4.1.3",
+    "use-position": "0.0.8"
   },
   "scripts": {
     "start": "node scripts/start.js",
