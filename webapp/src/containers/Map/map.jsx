@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import GoogleMapReact from 'google-map-react';
-import { usePosition } from 'use-position';
 
 import solid from '@solid/query-ldflex';
 
 import { useWebId, List } from  '@solid/react';
 import { useLDflexValue, useLDflexList } from '@solid/react';
 import axios from 'axios'; 
+import { addUbicacion } from './../../api/api'
 
 
 //import './Map.css'
@@ -39,6 +39,8 @@ async function getFriends( friends ) {
   return friendsValue;
 }
 
+
+
 // Use React.Memo
 function Map( props ) {
   const [userFriendsList, setUserFriendsList] = useState( [] );
@@ -47,8 +49,16 @@ function Map( props ) {
 
   const tempFriendsList = [];
   const webID = useWebId();
+  
 
-  const { latitude, longitude } = usePosition( false );
+  
+
+  const actualizar = () => {
+    console.log(latitude);
+    console.log(longitude);
+    console.log(webID);
+    console.log("webID");
+  };
 
   getFriends(useLDflexList( "[" + webID + "].friends" ))
       .then( (friendsList) => { setUserFriendsList( friendsList ) });
@@ -76,6 +86,7 @@ function Map( props ) {
 
   return (
     <div style={{ height: '80vh', width: '100%' }}>
+      <button name="button" onClick={actualizar}>Click me</button>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyCoW1RuwmBwVJTgNm9u3ruBf_oMJGnLckY" }}
         center={ { lat: latitude, lng: longitude } }
