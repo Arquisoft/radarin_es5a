@@ -21,6 +21,12 @@ export const NavigationItems = [
     to: '/chat'
   },
   {
+    id: 'friends',
+    icon: '/img/icon/apps.svg',
+    label: 'navBar.friends',
+    to: '/friends'
+  },
+  {
     id: 'options',
     icon: '/img/icon/apps.svg',
     label: 'navBar.options',
