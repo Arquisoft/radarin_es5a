@@ -30,28 +30,31 @@ There are many notations for describing scenarios, e.g.
 
 ****
 
-=== <Runtime Scenario 1>
+=== Log in
 
+* Pequeña descripcion
+* Diagrama de secuencia
 
-* _<insert runtime diagram or textual description of the scenario>_
-* _<insert description of the notable aspects of the interactions between the
-building block instances depicted in this diagram.>_
+=== See Friends map
 
-It is possible to use a sequence diagram:
+* Pequeña descripcion
+* Diagrama de secuencia
+* Capturas de muestra
 
-[plantuml,"Sequence diagram",png]
-----
-actor Alice
-actor Bob
-database Pod as "Bob's Pod"
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
-Alice  --> Pod: Store route
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
-----
-=== <Runtime Scenario 2>
+=== Add Friend
 
-=== ...
+* Pequeña descripcion
+* Diagrama de secuencia
+* Capturas de muestra
 
-=== <Runtime Scenario n>
+=== Read a message
+
+* Pequeña descripcion
+* Diagrama de secuencia
+* Capturas de muestra
+
+=== Send a message
+
+* Pequeña descripcion
+* Diagrama de secuencia
+* Capturas de muestra
