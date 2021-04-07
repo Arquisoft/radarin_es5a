@@ -23,7 +23,13 @@ This allows you to communicate with your stakeholder on an abstract level withou
 The building block view is a hierarchical collection of black boxes and white boxes
 (see figure below) and their descriptions.
 
-image:05_building_blocks-EN.png["Hierarchy of building blocks"]
+image: 05_building_blocks-EN.png["Hierarchy of building blocks"]
+
+This shows the static decomposition of the system into building blocks and dependencies. Since we use the SOLID architecture, we make use of SOLID PODS.
+
+* User: the user that uses the app
+* PODS: storage for the user's information
+* App: whick will be the communicator between the PODS and the user
 
 *Level 1* is the white box description of the overall system together with black
 box descriptions of all contained building blocks.
