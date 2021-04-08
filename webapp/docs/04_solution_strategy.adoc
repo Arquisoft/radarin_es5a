@@ -2,15 +2,31 @@
 == Solution Strategy
 
 
+=== Technology decisions
+
 [role="arc42help"]
 ****
-.Contents
-We used for this application several technologies, mainly JavaScript, React and BootStrap.
+.Libraries:
 
-.Technology Decisions
-* SOLID
-* Node.js
-* GitHub
-* React
-* Bootstap
+Solid:: For decentraliced data usage and by subject requirements.
+Node.js:: For Javascript web creation and modification.
+Express:: Web infraestructure for Node.js
+Docker:: By subject requirements.
 
+.Development tools:
+GitHub:: Repository of the project.
+GitKraken:: Visual Interface for git.
+Visual Studio Code:: Text editor with others plugins.
+AsciiDoc:: A plugin for VisualStudio for the creation of documentation.
+****
+
+=== Organizational decisions
+****
+For the time being, we will use a traditional asigment of work on every meeting, using the github project, issues system. We also use Teams for the online meetings.
+****
+=== Solution-approaches and Goals
+****
+* Make a Clean Arquitecture: By using a pre-defined methodology the project is opened to the posibility of ampliation and a good code maintenance.
+* Have a good user interface.
+* Have clean code: Everithing commented and perfectly extendeable.
+****
