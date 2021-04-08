@@ -1,31 +1,18 @@
 const request = require('supertest');
-const server = require('./server-for-tests')
-
-/**
- * Connect to a new in-memory database before running any tests.
- */
-beforeAll(async () => {
-    await server.startdb()
-    app = await server.startserver()
-});
-
-/**
- * Clear all test data after every test.
- */
-afterEach(async () => await server.clearDatabase());
+const app = require('./server-for-tests')
+const api = require('./../api') 
 
 /**
  * Remove and close the db and server.
  */
 afterAll(async () => {
-    await server.closeServer() //finish the server
-    await server.closeDB()
+    await database.off() //finish the DB
 })
 
 /**
  * Product test suite.
  */
-describe('user ', () => {
+describe('anadirUsuario ', () => {
     /**
      * Test that we can list users without any error.
      */
