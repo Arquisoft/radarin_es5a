@@ -36,3 +36,5 @@ require("./routes/ubicaciones.js")(app, firebase);
 app.listen(process.env.PORT || 5000, () => {
     console.log("Server has started")
 })
+
+
