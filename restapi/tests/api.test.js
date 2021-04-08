@@ -25,9 +25,9 @@ describe('Anadir Nuevo Usuario ', () => {
      * Tests that a user can be created through the productService without throwing any errors.
      */
     it('enviar datos a Api', async () => {
-        nombre = 'Pablo'
+        nombre = 'German'
         ubicacion = 'Oviedo'
-        const response = await request(app).post('/users/update').send({name: nombre,ubicacion: ubicacion}).set('Accept', 'application/json')
+        const response = await request(app).post('/test/update').send({name: nombre,ubicacion: ubicacion}).set('Accept', 'application/json')
         expect(response.statusCode).toBe(200);
     });
 });

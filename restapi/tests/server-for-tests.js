@@ -5,7 +5,6 @@ This will be handy for testing
 
 const express = require("express")
 const cors = require('cors');
-const api = require("../api")
 var firebase = require("firebase");
 
 
@@ -21,7 +20,7 @@ module.exports.startdb = async () => {
     };
 
     firebase.initializeApp(firebaseConfig);
-    console.log(firebase.database());
+    console.log("Base de datos lanzada con exito");
 }
 
 module.exports.startserver = async () => {
@@ -34,7 +33,7 @@ module.exports.startserver = async () => {
 
     require("./../routes/ubicaciones.js")(app, firebase);
 
-    server = await app.listen(5000)
+    server = await app.listen(5001)
     console.log("Server has started!")
     return app
 }
@@ -44,6 +43,6 @@ module.exports.closeServer = async () => {
 }
 
 module.exports.closeDB = async () => {
-    await firebase.database().off();
+    //await firebase.database().off();
 }
 
