@@ -1,24 +1,29 @@
 {
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.12",
-    "@fortawesome/free-brands-svg-icons": "^5.8.0",
-    "@fortawesome/free-solid-svg-icons": "^5.6.3",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "@inrupt/solid-react-components": "0.5.3",
     "@inrupt/solid-sdk-forms": "0.1.1",
     "@inrupt/solid-style-guide": "^0.1.34",
     "@rdfjs/data-model": "^1.1.1",
+    "@react-firebase/database": "^0.3.11",
     "@shexjs/core": "^1.0.0-alpha.9",
     "@solid/query-ldflex": "2.6.0",
     "@svgr/webpack": "2.4.1",
+    "axios": "^0.21.1",
     "bfj": "6.1.1",
     "case-sensitive-paths-webpack-plugin": "2.1.2",
     "chalk": "2.4.1",
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
+    "firebase": "^8.3.1",
     "flag-icon-css": "^3.3.0",
     "fork-ts-checker-webpack-plugin-alt": "0.4.14",
     "fs-extra": "7.0.0",
+    "google-map-react": "^2.1.9",
+    "google-maps-react": "^2.0.6",
     "i18next": "^15.0.4",
     "i18next-browser-languagedetector": "^3.0.1",
     "i18next-xhr-backend": "^2.0.1",
@@ -32,6 +37,7 @@
     "react-click-outside": "^3.0.1",
     "react-dev-utils": "^7.0.1",
     "react-dom": "16.8.4",
+    "react-google-maps": "^9.4.5",
     "react-i18next": "^10.1.2",
     "react-modal": "^3.8.2",
     "react-router-dom": "^5.1.2",
@@ -40,7 +46,8 @@
     "react-transition-group": "^4.1.1",
     "shacl-js": "0.0.1",
     "solid-auth-client": "^2.3.0",
-    "styled-components": "^4.1.3"
+    "styled-components": "^4.1.3",
+    "use-position": "0.0.8"
   },
   "scripts": {
     "start": "node scripts/start.js",
@@ -61,47 +68,6 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts,tsx}",
-      "!src/**/*.d.ts"
-    ],
-    "resolver": "jest-pnp-resolver",
-    "setupFiles": [
-      "react-app-polyfill/jsdom"
-    ],
-    "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
-      "<rootDir>/src/**/*(*.)@(spec|test).{js,jsx,ts,tsx}"
-    ],
-    "testEnvironment": "jsdom",
-    "testURL": "http://localhost",
-    "transform": {
-      "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
-      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-      "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
-    },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
-      "^.+\\.module\\.(css|sass|scss)$"
-    ],
-    "moduleNameMapper": {
-      "^react-native$": "react-native-web",
-      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
-    },
-    "moduleFileExtensions": [
-      "web.js",
-      "js",
-      "web.ts",
-      "ts",
-      "web.tsx",
-      "tsx",
-      "json",
-      "web.jsx",
-      "jsx",
-      "node"
-    ]
-  },
   "babel": {
     "presets": [
       "react-app"
@@ -130,12 +96,16 @@
       ]
     ]
   },
-  "name": "solid-app",
+  "name": "radarin_es5a",
   "version": "0.1.0",
   "private": false,
   "devDependencies": {
     "@babel/core": "7.1.6",
-    "@babel/runtime": "^7.4.0",
+    "@babel/runtime": "^7.13.10",
+    "@testing-library/dom": "^7.2.1",
+    "@testing-library/jest-dom": "4.2.4",
+    "@testing-library/react": "9.4.0",
+    "@testing-library/user-event": "7.2.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
     "babel-jest": "^25.3.0",
@@ -175,7 +145,7 @@
     "style-loader": "0.23.0",
     "terser-webpack-plugin": "^2.3.5",
     "url-loader": "1.1.1",
-    "webpack": "^4.41.2",
+    "webpack": "^4.46.0",
     "webpack-dev-server": "3.1.14",
     "webpack-manifest-plugin": "2.0.4",
     "workbox-webpack-plugin": "3.6.3"

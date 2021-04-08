@@ -1,30 +1,38 @@
 const express = require("express")
 const promBundle = require("express-prom-bundle");
 const cors = require('cors');
-const mongoose = require("mongoose")
-const api = require("./api") 
 
-function connect(){
-    //The MONGO_URI variable is the connection string to MongoDB Atlas (for production). This env variable is created in heroku.
-    mongo_uri = process.env.MONGO_URI || "mongodb://localhost:27017"
-    mongoose.connect(mongo_uri, { useNewUrlParser: true,useUnifiedTopology: true }).then(() => {
-        const app = express()
+const app = express()
 
-        //Monitoring middleware
-        const metricsMiddleware = promBundle({includeMethod: true});
-        app.use(metricsMiddleware);
+//Firebase
+var firebase = require("firebase");
 
-        app.use(cors());
-        app.options('*', cors());
-        app.use(express.json())
-        app.use("/api", api)
+var firebaseConfig = {
+    apiKey: "AIzaSyAq2HShQb--f_SyBYJ6k8RzbKEaJtCvRqM",
+    authDomain: "radarines5a-3b110.firebaseapp.com",
+    databaseURL: "https://radarines5a-3b110-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "radarines5a-3b110",
+    storageBucket: "radarines5a-3b110.appspot.com",
+    messagingSenderId: "176384766915",
+    appId: "1:176384766915:web:0fe6ccda05cb18c9384376"
+  };
+  
+firebase.initializeApp(firebaseConfig);
+console.log(firebase.database());
+var database = firebase.database();
 
 
-        app.listen(process.env.PORT || 5000, () => {
-            console.log("Server has started! Using db in "+mongo_uri)
-        })
-    })
-}
+//Monitoring middleware
+const metricsMiddleware = promBundle({includeMethod: true});
+app.use(metricsMiddleware);
 
-// Connect to MongoDB database, the wait is for giving time to mongodb to finish loading
-setTimeout(connect,5000)
+app.use(cors());
+app.options('*', cors());
+app.use(express.json())
+
+require("./routes/ubicaciones.js")(app, firebase);
+
+
+app.listen(process.env.PORT || 5000, () => {
+    console.log("Server has started")
+})

@@ -46,7 +46,10 @@
     "next": "Next"
   },
   "navBar": {
-    "welcome": "Welcome",
+    "home": "Home",
+    "map":"Map",
+    "chat":"Chat",
+    "options":"Options",
     "formModel": "Form Model",
     "logOut": "Log out",
     "profile": "Profile",

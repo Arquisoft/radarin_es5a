@@ -1,13 +1,13 @@
 
 //REACT_APP_API_URI is an enviroment variable defined in the file .env.development or .env.production
-export async function addUser(username,email){
+export function addUbicacion(username,ubicacion){
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-    let response = await fetch(apiEndPoint+'/users/add', {
+    let response = fetch(apiEndPoint+'/users/update', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({'name':username, 'email':email})
+        body: JSON.stringify({'name':username, 'ubicacion':ubicacion})
       })
-    return await response.json()
+    return response.json()
 }
 
 export async function getUsers(){
