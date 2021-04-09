@@ -1,0 +1,14 @@
+com/reactpruebaprueba/MainActivity.java
+ com.reactpruebaprueba.MainActivity
+com/reactpruebaprueba/BuildConfig.java
+ com.reactpruebaprueba.BuildConfig
+com/reactpruebaprueba/MainApplication.java
+ com.reactpruebaprueba.MainApplication
+ com.reactpruebaprueba.MainApplication$1
+com/reactpruebaprueba/ReactNativeFlipper.java
+ com.reactpruebaprueba.ReactNativeFlipper
+ com.reactpruebaprueba.ReactNativeFlipper$1
+ com.reactpruebaprueba.ReactNativeFlipper$2
+ com.reactpruebaprueba.ReactNativeFlipper$2$1
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList
