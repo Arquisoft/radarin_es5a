@@ -13,6 +13,7 @@
     "@svgr/webpack": "2.4.1",
     "axios": "^0.21.1",
     "bfj": "6.1.1",
+    "bootstrap": "^5.0.0-beta3",
     "case-sensitive-paths-webpack-plugin": "2.1.2",
     "chalk": "2.4.1",
     "dotenv": "6.0.0",
