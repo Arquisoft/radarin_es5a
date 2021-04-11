@@ -12,9 +12,9 @@ module.exports = function (app, firebase){
     const SolidNodeClient = require('solid-node-client').SolidNodeClient;
     const client = new SolidNodeClient();
 
-    app.post("/users/login", function (req, res)  {
+    app.post("/users/login", async function (req, res)  {
       try {
-          let session = client.login({
+          let session = await client.login({
               idp: req.body.idp,
               username: req.body.username,
               password: req.body.password
