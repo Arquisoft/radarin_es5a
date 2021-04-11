@@ -19,6 +19,7 @@ yarn-error.log*
 
 restapi/node_modules
 restapi/data
+restapi/package-lock.json
 
 .eslintcache
 webapp/node_modules
