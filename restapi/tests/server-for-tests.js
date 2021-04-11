@@ -43,6 +43,6 @@ module.exports.closeServer = async () => {
 }
 
 module.exports.closeDB = async () => {
-    firebase.database().goOffline();
+    //await firebase.database().off();
 }
 

@@ -15,7 +15,6 @@ beforeAll(async () => {
 afterAll(async () => {
     await server.closeServer() //finish the server
     await server.closeDB()
-
 })
 
 /**
