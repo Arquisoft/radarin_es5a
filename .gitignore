@@ -12,6 +12,7 @@ app/node_modules
 webapp/build
 
 webapp/node_modules
+webapp/package-lock.json
 
 npm-debug.log*
 yarn-debug.log*
@@ -19,6 +20,7 @@ yarn-error.log*
 
 restapi/node_modules
 restapi/data
+restapi/package-lock.json
 
 .eslintcache
 webapp/node_modules
