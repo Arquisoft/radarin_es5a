@@ -8,4 +8,26 @@ module.exports = function (app, firebase){
       });
     res.send("hola")
     })
+
+    const SolidNodeClient = require('solid-node-client').SolidNodeClient;
+    const client = new SolidNodeClient();
+
+    app.post("/users/login", function (req, res)  {
+      try {
+          let session = client.login({
+              idp: req.body.idp,
+              username: req.body.username,
+              password: req.body.password
+          });
+          res.status(200);
+          res.send(session.webId);
+          console.log(session.webId);
+      } catch (err) {
+          res.status(403);
+          res.send(err);
+      }
+  });
+  
 }
+
+
