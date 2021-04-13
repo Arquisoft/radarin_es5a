@@ -4,6 +4,8 @@ export const FriendsObjet = styled.div`
 
 `;
 
-export const Button = styled.button`
+export const Friendss = styled.div`
 	
 `;
+
+

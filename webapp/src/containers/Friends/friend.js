@@ -5,8 +5,9 @@ const Friend = (props)=>{
 
     return (
         <div id = "info">
-            <p>{name} - {webId}</p>
+            <p>{name}</p>
             </div>
     );
+
 }
 export default Friend;
