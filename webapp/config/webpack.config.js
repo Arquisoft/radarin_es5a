@@ -218,6 +218,10 @@ module.exports = function(webpackEnv) {
         // This is only used in production mode
         new OptimizeCSSAssetsPlugin({
           cssProcessorOptions: {
+            safe: true,
+            discardComments:{
+              removeAll: true,
+            },
             parser: safePostCssParser,
             map: shouldUseSourceMap
               ? {
