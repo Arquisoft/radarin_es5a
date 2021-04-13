@@ -295,6 +295,25 @@ module.exports = function(webpackEnv) {
         // First, run the linter.
         // It's important to do this before Babel processes the JS.
         {
+          test: /\.s?css$/,
+          exclude: [resolvePath('../src/styles')],
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                localsConvention: 'camelCase',
+                modules: true
+              }
+            },
+            'sass-loader',
+            'import-glob-loader'
+          ]
+        },
+        { 
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader', 'postcss-loader'] 
+        },
+        {
           test: /\.(js|mjs|jsx)$/,
           enforce: 'pre',
           use: [
