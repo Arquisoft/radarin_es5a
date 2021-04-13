@@ -26,6 +26,8 @@ const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
 
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 // Some apps do not need the benefits of saving a web request, so not inlining the chunk
@@ -234,7 +236,17 @@ module.exports = function(webpackEnv) {
                 }
               : false
           }
-        })
+        }),
+        new CssMinimizerPlugin({
+          minimizerOptions: {
+            preset: [
+              'default',
+              {
+                discardComments: { removeAll: true },
+              },
+            ],
+          },
+        }),
       ],
       // Automatically split vendor and commons
       // https://twitter.com/wSokra/status/969633336732905474
@@ -300,7 +312,7 @@ module.exports = function(webpackEnv) {
         // It's important to do this before Babel processes the JS.
         {
           test: /\.s?css$/,
-          use: [
+          use: [MiniCssExtractPlugin.loader, 
             {
               loader: 'css-loader',
               options: {
@@ -309,15 +321,12 @@ module.exports = function(webpackEnv) {
               }
             },
             'sass-loader',
-            'import-glob-loader',
-            {
-              loader: 'postcss-loader'
-            }
+            'import-glob-loader'
           ]
         },
         { 
           test: /\.css$/,
-          use: ['style-loader', 'css-loader', 'postcss-loader'] 
+          use: [MiniCssExtractPlugin.loader, 'style-loader', 'css-loader'] 
         },
         {
           test: /\.(js|mjs|jsx)$/,
