@@ -324,10 +324,6 @@ module.exports = function(webpackEnv) {
             'import-glob-loader'
           ]
         },
-        { 
-          test: /\.css$/,
-          use: [MiniCssExtractPlugin.loader, 'style-loader', 'css-loader'] 
-        },
         {
           test: /\.(js|mjs|jsx)$/,
           enforce: 'pre',
