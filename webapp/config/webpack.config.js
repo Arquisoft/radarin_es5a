@@ -296,7 +296,6 @@ module.exports = function(webpackEnv) {
         // It's important to do this before Babel processes the JS.
         {
           test: /\.s?css$/,
-          exclude: [resolvePath('../src/styles')],
           use: [
             {
               loader: 'css-loader',
