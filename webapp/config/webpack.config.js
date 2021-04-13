@@ -324,6 +324,9 @@ module.exports = function(webpackEnv) {
             'import-glob-loader'
           ]
         },
+        { 
+          test: /\.css$/, loader: 'css-loader'
+        },
         {
           test: /\.(js|mjs|jsx)$/,
           enforce: 'pre',
