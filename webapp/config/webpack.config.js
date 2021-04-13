@@ -75,7 +75,7 @@ module.exports = function(webpackEnv) {
   // common function to get style loaders
   const getStyleLoaders = (cssOptions, preProcessor) => {
     const loaders = [
-      isEnvDevelopment && require.resolve('style-loader'),
+      isEnvDevelopment && require.resolve('style-loader!css-loader'),
       isEnvProduction && {
         loader: MiniCssExtractPlugin.loader,
         options: Object.assign(
@@ -260,6 +260,10 @@ module.exports = function(webpackEnv) {
       runtimeChunk: true
     },
     resolve: {
+      extensions: ['', '.js', '.jsx', '.css'],
+        modulesDirectories: [
+          'node_modules'
+        ] ,
       // This allows you to set a fallback for where Webpack should look for modules.
       // We placed these paths second because we want `node_modules` to "win"
       // if there are any conflicts. This matches Node resolution mechanism.
@@ -325,7 +329,8 @@ module.exports = function(webpackEnv) {
           ]
         },
         { 
-          test: /\.css$/, loader: 'css-loader'
+          test: /\.css$/,
+          use: [MiniCssExtractPlugin.loader, 'style-loader', 'css-loader'] 
         },
         {
           test: /\.(js|mjs|jsx)$/,
