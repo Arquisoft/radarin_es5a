@@ -7,6 +7,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import Routes from './routes';
 import theme from './utils/theme';
+import { shallow } from 'enzyme';
 import 'react-toastify/dist/ReactToastify.css';
 import 'flag-icon-css/css/flag-icon.min.css';
 import 'normalize.css';
