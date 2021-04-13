@@ -75,7 +75,7 @@ module.exports = function(webpackEnv) {
   // common function to get style loaders
   const getStyleLoaders = (cssOptions, preProcessor) => {
     const loaders = [
-      isEnvDevelopment && require.resolve('style-loader!css-loader'),
+      isEnvDevelopment && require.resolve('style-loader'),
       isEnvProduction && {
         loader: MiniCssExtractPlugin.loader,
         options: Object.assign(
@@ -260,10 +260,6 @@ module.exports = function(webpackEnv) {
       runtimeChunk: true
     },
     resolve: {
-      extensions: ['', '.js', '.jsx', '.css'],
-        modulesDirectories: [
-          'node_modules'
-        ] ,
       // This allows you to set a fallback for where Webpack should look for modules.
       // We placed these paths second because we want `node_modules` to "win"
       // if there are any conflicts. This matches Node resolution mechanism.
@@ -305,6 +301,33 @@ module.exports = function(webpackEnv) {
         // from the current package.
         PnpWebpackPlugin.moduleLoader(module)
       ]
+    },
+    module: {
+      rules: [
+        {
+          test: /\.(png|jpg|gif)$/i,
+          use: [
+            {
+              loader: 'url-loader',
+              options: {
+                limit: 8192,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    module: {
+      rules: [
+        {
+          test: /\.(png|jpe?g|gif)$/i,
+          use: [
+            {
+              loader: 'file-loader',
+            },
+          ],
+        },
+      ],
     },
     module: {
       strictExportPresence: true,
