@@ -309,7 +309,10 @@ module.exports = function(webpackEnv) {
               }
             },
             'sass-loader',
-            'import-glob-loader'
+            'import-glob-loader',
+            {
+              loader: 'postcss-loader'
+            }
           ]
         },
         { 

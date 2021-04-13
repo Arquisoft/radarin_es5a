@@ -35,6 +35,7 @@
     "normalize.css": "^8.0.1",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pnp-webpack-plugin": "1.1.0",
+    "postcss-discard-comments": "^5.0.0",
     "react": "16.8.4",
     "react-app-polyfill": "^0.2.2",
     "react-click-outside": "^3.0.1",
