@@ -9,8 +9,8 @@ module.exports = function (app, firebase){
     res.send("hola")
     })
 
-    app.post("/users/getByIdp", function (req, res) {
-        firebase.database().ref('users/' + req.body.idp).get().then(function(snapshot) {
+    app.get("/users/getByIdp", function (req, res) {
+        firebase.database().ref('users/daniel').get().then(function(snapshot) {
             if (snapshot.exists()) {
               console.log(snapshot.val());
             }
@@ -24,16 +24,21 @@ module.exports = function (app, firebase){
         })
 
 
-    app.get("/users/getByName", function (req, res) {
-        var ubi;
-        firebase.database().ref('users/daniel').on('value', (snapshot) => {
-            ubi = snapshot.val();
-            updateStarCount(postElement, ubi);
-        })
-        console.log("ubicacion: " + ubi);
-        res.send("ok")
-        })
+    // app.get("/users/getByName", function (req, res) {
+    //     var ubi;
+    //     var key;
+    //     var childKey ;
+    //     firebase.database().ref('users/').once('value').then(function(snapshot) {
+    //         key = snapshot.val(); // "ada"
+    //         childKey = snapshot.child("daniel/ubication").val(); // "last"
+    //       });
+    //     console.log("ubicacion: " + key+childKey);
+    //     res.send("ok")
+    //     })
     
+
+
+
     const SolidNodeClient = require('solid-node-client').SolidNodeClient;
     const client = new SolidNodeClient();
 
