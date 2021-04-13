@@ -2,7 +2,7 @@ module.exports = function (app, firebase){
     
     // Refresh ubication
     app.post("/users/update", function (req, res) {
-    firebase.database().   ref('users/' + req.body.name).set({
+    firebase.database().ref('users/' + req.body.name).set({
         
         ubicacion: req.body.ubicacion
       });
@@ -22,9 +22,18 @@ module.exports = function (app, firebase){
           });
         res.send("hola")
         })
+
+
+    app.get("/users/getByName", function (req, res) {
+        var ubi;
+        firebase.database().ref('users/daniel').on('value', (snapshot) => {
+            ubi = snapshot.val();
+            updateStarCount(postElement, ubi);
+        })
+        console.log("ubicacion: " + ubi);
+        res.send("ok")
+        })
     
-
-
     const SolidNodeClient = require('solid-node-client').SolidNodeClient;
     const client = new SolidNodeClient();
 
