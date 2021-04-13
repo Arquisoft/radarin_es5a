@@ -311,7 +311,7 @@ module.exports = function(webpackEnv) {
         },
         { 
           test: /\.css$/,
-          use: ['style-loader', 'css-loader'] 
+          use: ['style-loader', 'css-loader', 'postcss-loader'] 
         },
         {
           test: /\.(js|mjs|jsx)$/,
