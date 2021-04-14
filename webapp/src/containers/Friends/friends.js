@@ -2,7 +2,7 @@ import React from "react";
 import Friend from "./friend";
 //import FriendsObjet from "./friends.styled.js";
 import ldflex from "@solid/query-ldflex";
-import data from "@solid/query-ldflex";
+//import data from "@solid/query-ldflex";
 
 import { List } from "@solid/react";
 type Props = {webId: String};
@@ -71,15 +71,15 @@ class Friends extends React.Component{
 
     async handleClick(e){
       e.preventDefault();
-      const usuario = data[this.webId];
+      //const usuario = ldflex[this.webId];
       if(this.state.webIdFriend!=="") {
-        await usuario.knows.add(ldflex[this.state.webIdFriend]);
+        await ldflex[this.webId].knows.add(ldflex[this.state.webIdFriend]);
       }
       {this.reload()}
     }
 
 
-    render() {
+    render(){
         return (
           <form onSubmit={this.handleSubmit}>
             <h1>Amigos:</h1>
