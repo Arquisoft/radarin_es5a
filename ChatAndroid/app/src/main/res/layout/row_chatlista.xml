@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:visibility="gone"
+        android:id="@+id/cardview"
+        app:cardCornerRadius="10dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:elevation="10dp"
+        android:layout_margin="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_margin="5dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/img_user"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/colorWhite"/>
+
+            <TextView
+                android:shadowColor="#000000"
+                android:shadowRadius="2"
+                android:shadowDx="1"
+                android:shadowDy="2"
+                android:textColor="@color/colorWhite"
+                android:text="Nombre Usuario"
+                android:id="@+id/tv_user"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+
+           <ImageView
+               android:visibility="gone"
+               android:id="@+id/icon_desconectado"
+               android:src="@drawable/ic_desconectado"
+               android:layout_marginLeft="10dp"
+               android:layout_gravity="center_vertical"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content">
+           </ImageView>
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/tv_desconectado"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/colorWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/icon_conectado"
+                android:src="@drawable/ic_conectado"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </ImageView>
+
+            <TextView
+                android:text="En línea"
+                android:visibility="gone"
+                android:id="@+id/tv_conectado"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/colorWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
