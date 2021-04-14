@@ -17,19 +17,11 @@ module.exports = function (app, firebase){
         });
       res.send("hola test")
       })
-
+}
     app.get("/users/getByIdp", function (req, res) {
-      var lat;
-      var lng;
-      var webId;
-        firebase.database().ref('users/uo258472-solid').get().then(function(snapshot) {
+        firebase.database().ref('users/daniel').get().then(function(snapshot) {
             if (snapshot.exists()) {
-              lat = snapshot.val().lat;
-              lng = snapshot.val().lng;
-              webId = snapshot.val().webId;
-              console.log(lat);
-              console.log(lng);
-              console.log(webId);
+              console.log(snapshot.val());
             }
             else {
               console.log("No data available");
