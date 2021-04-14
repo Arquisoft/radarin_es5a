@@ -301,6 +301,11 @@ module.exports = function(webpackEnv) {
         // from the current package.
         PnpWebpackPlugin.moduleLoader(module)
       ]
+    }
+    ,
+    devServer: {
+        inline: false,
+        contentBase: "./dist",
     },
     module: {
       rules: [
