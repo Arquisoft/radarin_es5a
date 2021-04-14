@@ -1,9 +1,10 @@
 import React from "react";
 import Friend from "./friend";
-import FriendsObjet from "./friends.styled.js";
+//import FriendsObjet from "./friends.styled.js";
 import ldflex from "@solid/query-ldflex";
 import data from "@solid/query-ldflex";
 
+import { List } from "@solid/react";
 type Props = {webId: String};
 class Friends extends React.Component{
   
@@ -26,29 +27,37 @@ class Friends extends React.Component{
      
         return (
        //recorremos lodos los amidos
-          <ul src={"user.friends"}>
-            <p>{this.webId}</p>
-            
+          <List src={"user.friends"}> 
+      
 					{(i) => (
            <li>
-						<Friend
-							  name={this.webId}
-              /></li>
+						<a href = {getWebId(`${i}`)}>
+              <Friend
+							  webId = {getWebId(`${i}`)}
+              />
+              </a>
+              </li>
 					)}
-				</ul>
+				</List>
           
           );
     };
 
     addFriend(){
+      
      return (  
      <div>
-        <input type="text" name="task" value={this.state.value} onChange={this.handleChange} />
-        <button id= "botonAñadir" type = "button" onClick={(c) => this.handleClick(c)}> Añade amigo</button>
+        <input type="text" name="inputt" value={this.state.value} onChange={this.handleChange}  aria-label = "webId-input"/>
+        <button id= "button" name = "button"type = "button" onClick={(c) => this.handleClick(c) }> Añade amigo</button>
+     
      </div>
 
      );
     };
+
+    reload = () => {
+      window.location.reload(true);
+  }
 
     handleChange(event) {
       this.setState({webIdFriend: event.target.value});
@@ -59,15 +68,16 @@ class Friends extends React.Component{
       event.preventDefault();
     }
     
+
     async handleClick(e){
       e.preventDefault();
       const usuario = data[this.webId];
       if(this.state.webIdFriend!=="") {
         await usuario.knows.add(ldflex[this.state.webIdFriend]);
       }
+      {this.reload()}
     }
 
-   
 
     render() {
         return (
@@ -82,6 +92,11 @@ class Friends extends React.Component{
      }
 }
 
+//para obtener el webId del amigo
+export const getWebId = (webId)=>{
+	return webId;
+}
+/* 
 async function showPerson(person) {
   console.log(`This person is ${await person.name}`);
 
@@ -93,5 +108,5 @@ async function showPerson(person) {
   for await (const name of person.friends.givenName)
     console.log(`- ${name}`);
 }
-
+*/
 export default Friends;
