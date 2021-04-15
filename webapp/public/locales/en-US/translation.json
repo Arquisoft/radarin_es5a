@@ -50,6 +50,7 @@
     "map":"Map",
     "chat":"Chat",
     "options":"Options",
+    "friends":"friends",
     "formModel": "Form Model",
     "logOut": "Log out",
     "profile": "Profile",
