@@ -26,8 +26,6 @@ const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
 
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 // Some apps do not need the benefits of saving a web request, so not inlining the chunk
@@ -220,10 +218,6 @@ module.exports = function(webpackEnv) {
         // This is only used in production mode
         new OptimizeCSSAssetsPlugin({
           cssProcessorOptions: {
-            safe: true,
-            discardComments:{
-              removeAll: true,
-            },
             parser: safePostCssParser,
             map: shouldUseSourceMap
               ? {
@@ -236,17 +230,7 @@ module.exports = function(webpackEnv) {
                 }
               : false
           }
-        }),
-        new CssMinimizerPlugin({
-          minimizerOptions: {
-            preset: [
-              'default',
-              {
-                discardComments: { removeAll: true },
-              },
-            ],
-          },
-        }),
+        })
       ],
       // Automatically split vendor and commons
       // https://twitter.com/wSokra/status/969633336732905474
@@ -301,38 +285,6 @@ module.exports = function(webpackEnv) {
         // from the current package.
         PnpWebpackPlugin.moduleLoader(module)
       ]
-    }
-    ,
-    devServer: {
-        inline: false,
-        contentBase: "./dist",
-    },
-    module: {
-      rules: [
-        {
-          test: /\.(png|jpg|gif)$/i,
-          use: [
-            {
-              loader: 'url-loader',
-              options: {
-                limit: 8192,
-              },
-            },
-          ],
-        },
-      ],
-    },
-    module: {
-      rules: [
-        {
-          test: /\.(png|jpe?g|gif)$/i,
-          use: [
-            {
-              loader: 'file-loader',
-            },
-          ],
-        },
-      ],
     },
     module: {
       strictExportPresence: true,
@@ -342,24 +294,6 @@ module.exports = function(webpackEnv) {
 
         // First, run the linter.
         // It's important to do this before Babel processes the JS.
-        {
-          test: /\.s?css$/,
-          use: [MiniCssExtractPlugin.loader, 
-            {
-              loader: 'css-loader',
-              options: {
-                localsConvention: 'camelCase',
-                modules: true
-              }
-            },
-            'sass-loader',
-            'import-glob-loader'
-          ]
-        },
-        { 
-          test: /\.css$/,
-          use: [MiniCssExtractPlugin.loader, 'style-loader', 'css-loader'] 
-        },
         {
           test: /\.(js|mjs|jsx)$/,
           enforce: 'pre',
