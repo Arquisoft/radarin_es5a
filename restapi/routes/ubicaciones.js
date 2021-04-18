@@ -17,7 +17,7 @@ module.exports = function (app, firebase){
         });
       res.send("hola test")
       })
-}
+
     app.get("/users/getByIdp", function (req, res) {
         firebase.database().ref('users/daniel').get().then(function(snapshot) {
             if (snapshot.exists()) {
