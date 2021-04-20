@@ -53,7 +53,7 @@ module.exports = function (app, firebase){
    if(amigo.webId == null){
     res.status(500);
     res.json({
-        error : "El webId introducido es nulo"
+        error : "El webId que tienes que introducir no debe de ser nulo"
    })
   }
     try {
