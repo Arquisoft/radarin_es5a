@@ -1,5 +1,6 @@
+
 module.exports = function (app, firebase){
-    
+  import ldflex from "@solid/query-ldflex";
   // Refresh ubication
   app.post("/users/update", function (req, res) {
   firebase.database().ref('users/' + req.body.name).set({
@@ -47,8 +48,6 @@ module.exports = function (app, firebase){
   app.post("/users/login", async function (req, res)  {
    let amigo = {
      webId: req.body.webId,
-     username: req.body.username,
-     password: req.body.password,
    }
    if(amigo.webId == null){
     res.status(500);
@@ -57,16 +56,41 @@ module.exports = function (app, firebase){
    })
   }
     try {
-        let session = await client.login(amigo);
-        res.status(200);
-        res.send(session.webId);
-        console.log(session.webId);
+      buscarUsuario(amigo.webId, function(usuarios){
+        if (usuarios == null) {
+          res.status(500);
+          res.json({
+              error: "se ha producido un error"
+          })
+      } else {
+          res.status(200);
+          res.send(JSON.stringify(usuarios));
+      }
+      });
     } catch (err) {
         res.status(403);
         res.send(err);
     }
 });
 }
+export const buscarUsuario = (usuario, funcionCallback) =>{
+  this.firebase.database().ref('users').get().then(function(snapshot) {
+      if (err) {
+          funcionCallback(null);
+      } else {
+          let collection = db.collection('users');
+          collection.findOne(usuario, function(err, result) {
+              if (err) {
+                  funcionCallback(null);
+              } else {
+                  funcionCallback(result.ops[0]._id);
+              }
+              db.close();
+          });
+      }
+  });
+}
+
 export const insertarUsuario = (usuario, funcionCallback) =>{
   this.firebase.database().ref('users').get().then(function(snapshot) {
       if (err) {

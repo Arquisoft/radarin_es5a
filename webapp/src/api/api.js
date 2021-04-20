@@ -17,4 +17,13 @@ export async function getUsers(){
     return await response.json()
 }
 
+export function loginUser(webId){
+    const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+    let response = fetch(apiEndPoint+'/users/login', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({'webId':webId})
+      })
+    return response.json()
+}
 
