@@ -16,3 +16,5 @@ export async function getUsers(){
     let response = await fetch(apiEndPoint+'/users/list')
     return await response.json()
 }
+
+
