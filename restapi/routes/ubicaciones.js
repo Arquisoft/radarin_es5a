@@ -4,16 +4,45 @@ module.exports = function (app, firebase){
   app.post("/users/update", function (req, res) {
   firebase.database().ref('users/' + req.body.name).set({
       
-      ubicacion: req.body.ubicacion
+    lat: req.body.lat,
+    lng: req.body.lng
     });
-  res.send("hola")
+  res.send("ok")
   })
+  //Change webId
+  app.post("/users/updateWebId", function (req, res) {
+    firebase.database().ref('users/' + req.body.name).set({
+        
+      webId: req.body.webId
+      });
+    res.send("ok")
+    })
+
+  //Añade a la base de datos 
+  app.post("/users/add", function (req, res) {
+    firebase.database().ref('users/' + req.body.name).get().then(function(snapshot) {
+      if (snapshot.exists()) {
+        console.log("Already Exisits");
+      }
+      else {
+        firebase.database().ref('users/' + req.body.name).set({
+      
+          lat: req.body.lat,
+          lng: req.body.lng,
+          webId: req.body.webId
+          });
+      }
+    });
+    res.send("ok")
+    })
+  
 
   // Anadir usuarios test
   app.post("/test/update", function (req, res) {
     firebase.database().ref('test/' + req.body.name).set({
         
         ubicacion: req.body.ubicacion
+        
       });
     res.send("hola test")
     })
@@ -44,6 +73,9 @@ module.exports = function (app, firebase){
   const SolidNodeClient = require('solid-node-client').SolidNodeClient;
   const client = new SolidNodeClient();
 
+  //Con eso parece que funciona
+  //https://inrupt.net/
+  //{"idp":"https://inrupt.net/","username":"Pascual","password":"cont"}
   app.post("/users/login", async function (req, res)  {
     try {
         let session = await client.login({
@@ -54,6 +86,7 @@ module.exports = function (app, firebase){
         res.status(200);
         res.send(session.webId);
         console.log(session.webId);
+        console.log(session);
     } catch (err) {
         res.status(403);
         res.send(err);
