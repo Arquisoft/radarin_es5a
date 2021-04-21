@@ -72,7 +72,7 @@ module.exports = function (app, firebase){
 
   const SolidNodeClient = require('solid-node-client').SolidNodeClient;
   const client = new SolidNodeClient();
-
+  const auth = require('solid-auth-client')
   //Con eso parece que funciona
   //https://inrupt.net/
   //{"idp":"https://inrupt.net/","username":"Pascual","password":"cont"}
@@ -87,6 +87,20 @@ module.exports = function (app, firebase){
         res.send(session.webId);
         console.log(session.webId);
         console.log(session);
+
+        session = await solid.auth.currentSession();
+        if (!session)
+          await solid.auth.login("https://inrupt.net/");
+        else
+          alert(`Logged in as ${session.webId}`);
+
+        auth.trackSession(session => {
+          if (!session)
+            console.log('The user is not logged in')
+          else
+            console.log(`The user is ${session.webId}`)
+        })
+
         if( session.isLoggedIn ) {
         console.log(await client.fetch(   await client.fetch(session.webId)));
         }
@@ -95,5 +109,10 @@ module.exports = function (app, firebase){
         res.send(err);
     }
 });
+
+
+
+
+
 
 }
