@@ -79,14 +79,17 @@ module.exports = function (app, firebase){
   app.post("/users/login", async function (req, res)  {
     try {
         let session = await client.login({
-            idp: req.body.idp,
-            username: req.body.username,
-            password: req.body.password
+            idp: "https://inrupt.net/",
+            username: "Pascual",
+            password: "cont"
         });
         res.status(200);
         res.send(session.webId);
         console.log(session.webId);
         console.log(session);
+        if( session.isLoggedIn ) {
+        console.log(await client.fetch(   await client.fetch(session.webId)));
+        }
     } catch (err) {
         res.status(403);
         res.send(err);
