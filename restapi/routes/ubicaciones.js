@@ -1,7 +1,8 @@
 
 module.exports = function (app, firebase){
-  import ldflex from "@solid/query-ldflex";
+ // import ldflex from "@solid/query-ldflex";
   // Refresh ubication
+ 
   app.post("/users/update", function (req, res) {
   firebase.database().ref('users/' + req.body.name).set({
       
@@ -46,9 +47,12 @@ module.exports = function (app, firebase){
   const client = new SolidNodeClient();
 
   app.post("/users/login", async function (req, res)  {
-   let amigo = {
+   let amigo = await client.login({
      webId: req.body.webId,
-   }
+     username: req.body.username,
+     password: req.body.password
+   });
+   console.log("q tal");
    if(amigo.webId == null){
     res.status(500);
     res.json({
@@ -56,7 +60,21 @@ module.exports = function (app, firebase){
    })
   }
     try {
-      buscarUsuario(amigo.webId, function(usuarios){
+        this.firebase.database().ref('users').get().then(function(snapshot) {
+          if (err) {
+              funcionCallback(null);
+          } else {
+              let collection = db.collection('users');
+              collection.findOne(amigo.webId, function(err, result) {
+                  if (err) {
+                      funcionCallback(null);
+                  } else {
+                      funcionCallback(result.ops[0]._id);
+                  }
+                  db.close();
+              });
+          }
+      });
         if (usuarios == null) {
           res.status(500);
           res.json({
@@ -66,46 +84,15 @@ module.exports = function (app, firebase){
           res.status(200);
           res.send(JSON.stringify(usuarios));
       }
-      });
+      
     } catch (err) {
         res.status(403);
         res.send(err);
     }
 });
-}
-export const buscarUsuario = (usuario, funcionCallback) =>{
-  this.firebase.database().ref('users').get().then(function(snapshot) {
-      if (err) {
-          funcionCallback(null);
-      } else {
-          let collection = db.collection('users');
-          collection.findOne(usuario, function(err, result) {
-              if (err) {
-                  funcionCallback(null);
-              } else {
-                  funcionCallback(result.ops[0]._id);
-              }
-              db.close();
-          });
-      }
-  });
+
+
+
 }
 
-export const insertarUsuario = (usuario, funcionCallback) =>{
-  this.firebase.database().ref('users').get().then(function(snapshot) {
-      if (err) {
-          funcionCallback(null);
-      } else {
-          let collection = db.collection('users');
-          collection.insertOne(usuario, function(err, result) {
-              if (err) {
-                  funcionCallback(null);
-              } else {
-                  funcionCallback(result.ops[0]._id);
-              }
-              db.close();
-          });
-      }
-  });
-}
 

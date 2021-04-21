@@ -26,7 +26,7 @@ class Friends extends React.Component{
     getFriends(){
      
         return (
-       //recorremos lodos los amidos
+       //recorremos lodos los amigos
           <List src={"user.friends"}> 
       
 					{(i) => (
