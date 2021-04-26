@@ -1,5 +1,5 @@
 import React, { Fragment, Suspense } from 'react';
-import { toast, Slide } from 'react-toastify';
+import {ToastContainer} from 'react-toastify';
 import { Loader } from '@util-components';
 import { ThemeProvider } from 'styled-components';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -21,7 +21,7 @@ const App = () => (
     <ThemeProvider theme={theme}>
       <Fragment>
         <Routes />
-        <Toaster
+        <ToastContainer
           {...{
             autoClose: 3000,
             position: toast.POSITION.TOP_CENTER,
