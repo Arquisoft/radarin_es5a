@@ -1,7 +1,6 @@
 import { ToastContainer } from 'react-toastify';
 import styled from 'styled-components';
 import 'react-toastify/dist/ReactToastify.css';
-import "!style-loader!css-loader!react-toastify/dist/ReactToastify.css"
 
 export const Toaster = styled(ToastContainer)`
   &.solid-toaster-container {
