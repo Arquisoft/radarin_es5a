@@ -75,7 +75,7 @@ class Friends extends React.Component{
       if(this.state.webIdFriend!=="") {
         await ldflex[this.webId].knows.add(ldflex[this.state.webIdFriend]);
       }
-      {this.reload()}
+      this.reload()
     }
 
 

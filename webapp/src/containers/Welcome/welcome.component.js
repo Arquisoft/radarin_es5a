@@ -1,5 +1,4 @@
 import React from 'react';
-import { Uploader } from '@inrupt/solid-react-components';
 import { Trans, useTranslation } from 'react-i18next';
 import {
   WelcomeWrapper,
@@ -7,11 +6,7 @@ import {
   WelcomeLogo,
   WelcomeProfile,
   WelcomeDetail,
-  WelcomeName,
-  ImageWrapper
 } from './welcome.style';
-import { ImageProfile } from '@components';
-import { errorToaster } from '@utils';
 
 /**
  * Welcome Page UI component, containing the styled components for the Welcome Page
@@ -19,9 +14,7 @@ import { errorToaster } from '@utils';
  * @param props
  */
 export const WelcomePageContent = props => {
-  const { webId, image, updatePhoto, name } = props;
   const { t } = useTranslation();
-  const limit = 2100000;
   return (
     <WelcomeWrapper data-testid="welcome-wrapper">
       <WelcomeCard className="card">
