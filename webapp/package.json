@@ -75,6 +75,11 @@
     "not ie <= 11",
     "not op_mini all"
   ],
+  "development": [
+    "last 1 chrome version",
+    "last 1 firefox version",
+    "last 1 safari version"
+  ],
   "babel": {
     "presets": [
       "react-app"
@@ -109,6 +114,10 @@
   "devDependencies": {
     "@babel/core": "7.1.6",
     "@babel/runtime": "^7.13.10",
+    "@testing-library/dom": "^7.2.1",
+    "@testing-library/jest-dom": "4.2.4",
+    "@testing-library/react": "9.4.0",
+    "@testing-library/user-event": "7.2.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
     "babel-jest": "^25.3.0",
@@ -118,7 +127,7 @@
     "babel-plugin-named-asset-import": "^0.3.0",
     "babel-preset-react-app": "^7.0.0",
     "copy-webpack-plugin": "^5.1.1",
-    "css-loader": "^1.0.0",
+    "css-loader": "1.0.0",
     "eslint": "5.6.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.3.0",
@@ -134,6 +143,7 @@
     "html-webpack-include-assets-plugin": "^1.0.6",
     "html-webpack-plugin": "4.0.0-alpha.2",
     "jest": "^25.3.0",
+    "jest-css-modules": "^2.1.0",
     "jest-cucumber": "^3.0.1",
     "jest-dom": "^3.1.2",
     "jest-enzyme": "^7.1.2",
@@ -151,7 +161,7 @@
     "react-testing-library": "^6.0.0",
     "resolve": "1.8.1",
     "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.0",
+    "style-loader": "0.23.0",
     "terser-webpack-plugin": "^2.3.5",
     "url-loader": "1.1.1",
     "webpack": "^4.46.0",
