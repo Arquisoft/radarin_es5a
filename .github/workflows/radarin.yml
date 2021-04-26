@@ -16,6 +16,7 @@ jobs:
       with:
         node-version: 12.14.1
     - run: npm ci
+    - run: npm install
     - run: npm run build
     - run: npm test
     - uses: codecov/codecov-action@v1
