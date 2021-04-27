@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { compose, withProps, withStateHandlers } from "recompose";
 import {
   withScriptjs,
@@ -14,17 +14,18 @@ import { getUsers } from './../../api/api'
 
 function Map(props) {
   const { latitude, longitude } = usePosition(false);
+  const [usersList, setUsersList] = useState([]);
   setInterval(function () {
 
     const promise1 = Promise.resolve(getUsers());
 
-    promise1.then((value) => {
-      console.log(value);
+    promise1.then((usuarios) => {
+      setUsersList(usuarios);
       // expected output: 123
     });
 
 
-  }, 3000);
+  }, 10000);
 
   const users = [
     { "name": "marcos", "ubicacion": { "lat": 43.5306455, "lng": -5.6563222 } },
@@ -55,17 +56,23 @@ function Map(props) {
     <GoogleMap defaultZoom={15} defaultCenter={{ lat: latitude, lng: longitude }}>
       <Circle options={{ fillOpacity: 0.1, fillColor: "blue", strokeOpacity: 0 }} center={{ lat: latitude, lng: longitude }} radius={myAreaRadius} />
 
-      {/* <Marker position={{ lat: latitude, lng: longitude }}/>
+      <Marker position={{ lat: latitude, lng: longitude }} />
 
-        {users.filter(user => getDistance(user.ubicacion, { latitude: latitude, longitude: longitude }) < myAreaRadius)
-        .map(user => (
-        <Marker
-        position={{ lat: user.ubicacion.lat, lng: user.ubicacion.lng }}
-        onClick={props.onToggleOpen}
-      >
-        {props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}><a href="/chat">{user.name}</a></InfoWindow>}
-      </Marker>
-        ))} */}
+      {/* .filter(user => getDistance(user.ubicacion, { latitude: latitude, longitude: longitude }) < myAreaRadius) */
+        
+      }
+
+      {
+        Object.entries(usersList).forEach(([key, value]) => {
+          console.log(value.lng)
+          return(<Marker
+            position={{ lat: value.lat, lng: value.lng }}
+            onClick={props.onToggleOpen}
+          >
+            {props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}><a href="/chat">{key}</a></InfoWindow>}
+          </Marker>)
+        })
+      }
 
     </GoogleMap>
   ));
