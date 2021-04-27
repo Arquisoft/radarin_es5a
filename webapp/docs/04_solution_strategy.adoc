@@ -2,15 +2,39 @@
 == Solution Strategy
 
 
+=== Technology decisions
+
 [role="arc42help"]
 ****
-.Contents
-We used for this application several technologies, mainly JavaScript, React and BootStrap.
+.Libraries:
 
-.Technology Decisions
-* SOLID
-* Node.js
-* GitHub
-* React
-* Bootstap
+SOLID Pods:: For decentraliced data usage and by subject requirements.
+Node.js:: For Javascript web creation and modification.
+React:: Web infraestructure for Node.js
+Google Maps Api:: To display the map in both android and web app
+Firebase:: The database for the proyect
 
+.Development tools:
+GitHub:: Repository of the project.
+GitKraken:: Visual Interface for git.
+Docker:: By subject requirements.
+Heroku:: For the webApp deployment.
+Visual Studio Code:: Text editor with others plugins.
+AsciiDoc:: A plugin for VisualStudio for the creation of documentation.
+Android Studio:: For the develop of the android app.
+
+.Unused Libraries:
+Solid-Node-Client:: Used on the restApi, tried to do the login.
+React-Native:: with other libraries we tried to do the login on android.
+Express:: Tried to build the webApp.
+
+****
+
+=== Organizational decisions
+****
+We use a traditional asigment of work on every meeting, using the github project, issues system. We also use Teams for the online meetings.
+****
+=== Solution-approaches and Goals
+****
+* finish the proyect
+****
