@@ -6,7 +6,7 @@ At this point we will talk about the aspects related to the design, as well as t
 [role="arc42help"]
 ****
 .Decisions:
-* We have decided not to use react because we think we are going to have a dificult a time using it. As a substitute we have decided to use Node.js and Express.
+* We have decided to use react because what is explained in class by being focused on react will help us.
 * Use of SOLID.
 * Using GitKraken to help us do version control.
 * Use of Git for version control and facilitate teamwork.
@@ -18,7 +18,6 @@ At this point we will talk about the aspects related to the design, as well as t
 
 .Discarded alternatives:
 * We decided not to make the documentation in Spanish, since English is a more internationalized language.
-* We also discarded the use of React.
 
 .Problemns:
 * Decide which technology to use without knowing how each one works.
