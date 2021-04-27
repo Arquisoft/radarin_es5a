@@ -41,6 +41,27 @@ module.exports = function (app, firebase){
       })
 
 
+      app.get("/users/getByIdp2", function (req, res) {
+        var user = {
+          lat : 0,
+          lng : 0,
+          webId : "solidCommunity"
+        }
+          firebase.database().ref('users/').get().then(function(snapshot) {
+              if (snapshot.exists()) {
+                user.lat = snapshot.val().lat;
+                user.lng = snapshot.val().lng;
+                user.webId = snapshot.val();
+                res.send(snapshot.val());
+              }
+              else {
+                console.log("No data available");
+              }
+            }).catch(function(error) {
+              console.error(error);
+            });
+          })
+
   const SolidNodeClient = require('solid-node-client').SolidNodeClient;
   const client = new SolidNodeClient();
 

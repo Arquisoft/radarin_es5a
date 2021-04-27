@@ -1,5 +1,5 @@
 import React from "react";
-import { compose, withProps,withStateHandlers } from "recompose";
+import { compose, withProps, withStateHandlers } from "recompose";
 import {
   withScriptjs,
   withGoogleMap,
@@ -10,18 +10,30 @@ import {
 } from "react-google-maps";
 import { usePosition } from 'use-position';
 import { getDistance } from 'geolib';
+import { getUsers } from './../../api/api'
 
-function Map( props ) {
-  const { latitude, longitude } = usePosition( false );
-//  const users = getUsers();
+function Map(props) {
+  const { latitude, longitude } = usePosition(false);
+  setInterval(function () {
+
+    const promise1 = Promise.resolve(getUsers());
+
+    promise1.then((value) => {
+      console.log(value);
+      // expected output: 123
+    });
+
+
+  }, 3000);
+
   const users = [
-    {"name":"marcos", "ubicacion":{"lat": 43.5306455, "lng": -5.6563222 }}, 
-    {"name":"german", "ubicacion":{"lat": 43.5276455, "lng": -5.6543222 }}, 
-    {"name":"laura", "ubicacion":{"lat": 43.5263455, "lng": -5.6583222 }}
-    ];
-//  const radius = getRadius();
+    { "name": "marcos", "ubicacion": { "lat": 43.5306455, "lng": -5.6563222 } },
+    { "name": "german", "ubicacion": { "lat": 43.5276455, "lng": -5.6543222 } },
+    { "name": "laura", "ubicacion": { "lat": 43.5263455, "lng": -5.6583222 } }
+  ];
+  //  const radius = getRadius();
   const myAreaRadius = 500;
-    
+
   const MyMapComponent = compose(
     withStateHandlers(() => ({
       isOpen: false,
@@ -41,9 +53,9 @@ function Map( props ) {
     withGoogleMap
   )(props => (
     <GoogleMap defaultZoom={15} defaultCenter={{ lat: latitude, lng: longitude }}>
-        <Circle options={{fillOpacity:0.1, fillColor:"blue", strokeOpacity:0}} center={{ lat: latitude, lng: longitude }} radius={myAreaRadius}/>
-        
-        <Marker position={{ lat: latitude, lng: longitude }}/>
+      <Circle options={{ fillOpacity: 0.1, fillColor: "blue", strokeOpacity: 0 }} center={{ lat: latitude, lng: longitude }} radius={myAreaRadius} />
+
+      {/* <Marker position={{ lat: latitude, lng: longitude }}/>
 
         {users.filter(user => getDistance(user.ubicacion, { latitude: latitude, longitude: longitude }) < myAreaRadius)
         .map(user => (
@@ -53,16 +65,16 @@ function Map( props ) {
       >
         {props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}><a href="/chat">{user.name}</a></InfoWindow>}
       </Marker>
-        ))}
+        ))} */}
 
     </GoogleMap>
   ));
-  
+
   return (
     <div style={{ height: '85vh', width: '100%' }}>
-      <MyMapComponent/>
+      <MyMapComponent />
     </div>
   );
-      }
+}
 
 export default Map;
