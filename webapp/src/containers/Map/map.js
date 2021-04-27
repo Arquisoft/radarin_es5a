@@ -15,6 +15,7 @@ import { getUsers } from './../../api/api'
 function Map(props) {
   const { latitude, longitude } = usePosition(false);
   const [usersList, setUsersList] = useState([]);
+  const [lista, setLista] = useState([]);
   setInterval(function () {
 
     const promise1 = Promise.resolve(getUsers());
@@ -58,21 +59,39 @@ function Map(props) {
 
       <Marker position={{ lat: latitude, lng: longitude }} />
 
-      {/* .filter(user => getDistance(user.ubicacion, { latitude: latitude, longitude: longitude }) < myAreaRadius) */
-        
+      {/* .filter(user => getDistance(user[1], { latitude: latitude, longitude: longitude }) < myAreaRadius) */
+
       }
 
       {
         Object.entries(usersList).forEach(([key, value]) => {
+          lista.push([key, value]);
+          console.log(lista);
+        })
+
+      }
+
+      {lista
+        .map(user => (
+          <Marker
+            position={{ lat: user[1].lat, lng: user[1].lng }}
+            onClick={props.onToggleOpen}
+          >
+            {props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}><a href="/chat">{user[0]}</a></InfoWindow>}
+          </Marker>
+        ))}
+
+      {/* {
+        Object.entries(usersList).forEach(([key, value]) => {
           console.log(value.lng)
-          return(<Marker
+          return (<Marker
             position={{ lat: value.lat, lng: value.lng }}
             onClick={props.onToggleOpen}
           >
             {props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}><a href="/chat">{key}</a></InfoWindow>}
           </Marker>)
         })
-      }
+      } */}
 
     </GoogleMap>
   ));
