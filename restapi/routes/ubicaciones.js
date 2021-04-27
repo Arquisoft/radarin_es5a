@@ -79,20 +79,8 @@ module.exports = function (app, firebase,$rdf){
 
 
   app.post("/users/login", async function (req, res)  {
-        try {
-            let session = await client.login({
-                idp: "https://solidcommunity.net",
-                username: "uo269728",
-                password: "Pascu+Pascu42",
-            });
-            res.status(200);
-            res.send(session.webId);
-            console.log(session.webId);
-            console.log(session);
-        } catch (err) {
-            res.status(403);
-            res.send(err);
-        }
+
+            res.send("uo269728");
     });
     
 
