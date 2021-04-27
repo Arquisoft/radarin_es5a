@@ -20,8 +20,14 @@ function Map(props) {
   var tiempoLoquisimo = 100000000000;
   var tiempo = 10000;
 
-  console.log(props.usuarios)
   
+  console.log(props.usuarios)
+
+  var promise1 = Promise.resolve(getUsers());
+  promise1.then((usuarios) => {
+    setUsersList(usuarios);
+  });
+
   const users = [
     { "name": "marcos", "ubicacion": { "lat": 43.5306455, "lng": -5.6563222 } },
     { "name": "german", "ubicacion": { "lat": 43.5276455, "lng": -5.6543222 } },
