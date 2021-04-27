@@ -20,8 +20,8 @@
     "firebase": "^8.3.1",
     "mongoose": "^5.11.11",
     "prom-client": "^13.0.0",
-    "solid-auth-client": "^2.5.5",
-    "solid-node-client": "^2.0.3"
+    "rdflib": "^2.2.0",
+    "solid-node-client": "github:solid/solid-node-client"
   },
   "devDependencies": {
     "jest": "^26.6.3",

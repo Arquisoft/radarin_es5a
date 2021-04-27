@@ -1,4 +1,4 @@
-module.exports = function (app, firebase){
+module.exports = function (app, firebase,$rdf){
     
   // Refresh ubication
   app.post("/users/update", function (req, res) {
@@ -70,46 +70,31 @@ module.exports = function (app, firebase){
       })
 
 
-  const SolidNodeClient = require('solid-node-client').SolidNodeClient;
+  // const SolidNodeClient = require('solid-node-client').SolidNodeClient;
+  // const client = new SolidNodeClient();
+
+
+  const { SolidNodeClient } = require( 'solid-node-client');
   const client = new SolidNodeClient();
-  const auth = require('solid-auth-client')
-  //Con eso parece que funciona
-  //https://inrupt.net/
-  //{"idp":"https://inrupt.net/","username":"Pascual","password":"cont"}
+
+
   app.post("/users/login", async function (req, res)  {
-    try {
-        let session = await client.login({
-            idp: "https://inrupt.net/",
-            username: "Pascual",
-            password: "cont"
-        });
-        res.status(200);
-        res.send(session.webId);
-        console.log(session.webId);
-        console.log(session);
-
-        session = await solid.auth.currentSession();
-        if (!session)
-          await solid.auth.login("https://inrupt.net/");
-        else
-          alert(`Logged in as ${session.webId}`);
-
-        auth.trackSession(session => {
-          if (!session)
-            console.log('The user is not logged in')
-          else
-            console.log(`The user is ${session.webId}`)
-        })
-
-        if( session.isLoggedIn ) {
-        console.log(await client.fetch(   await client.fetch(session.webId)));
+        try {
+            let session = await client.login({
+                idp: "https://solidcommunity.net",
+                username: "uo269728",
+                password: "Pascu+Pascu42",
+            });
+            res.status(200);
+            res.send(session.webId);
+            console.log(session.webId);
+            console.log(session);
+        } catch (err) {
+            res.status(403);
+            res.send(err);
         }
-    } catch (err) {
-        res.status(403);
-        res.send(err);
-    }
-});
-
+    });
+    
 
 
 

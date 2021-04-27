@@ -1,6 +1,7 @@
 const express = require("express")
 const promBundle = require("express-prom-bundle");
 const cors = require('cors');
+const $rdf = require('rdflib');  
 
 const app = express()
 
@@ -30,7 +31,7 @@ app.use(cors());
 app.options('*', cors());
 app.use(express.json())
 
-require("./routes/ubicaciones.js")(app, firebase);
+require("./routes/ubicaciones.js")(app, firebase,$rdf);
 
 
 app.listen(process.env.PORT || 5000, () => {
