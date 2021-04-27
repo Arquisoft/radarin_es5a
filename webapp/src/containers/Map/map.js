@@ -12,22 +12,16 @@ import { usePosition } from 'use-position';
 import { getDistance } from 'geolib';
 import { getUsers } from './../../api/api'
 
+
 function Map(props) {
   const { latitude, longitude } = usePosition(false);
   const [usersList, setUsersList] = useState([]);
   const [lista, setLista] = useState([]);
-  setInterval(function () {
+  var tiempoLoquisimo = 100000000000;
+  var tiempo = 10000;
 
-    const promise1 = Promise.resolve(getUsers());
-
-    promise1.then((usuarios) => {
-      setUsersList(usuarios);
-      // expected output: 123
-    });
-
-
-  }, 10000);
-
+  console.log(props.usuarios)
+  
   const users = [
     { "name": "marcos", "ubicacion": { "lat": 43.5306455, "lng": -5.6563222 } },
     { "name": "german", "ubicacion": { "lat": 43.5276455, "lng": -5.6543222 } },
@@ -66,7 +60,6 @@ function Map(props) {
       {
         Object.entries(usersList).forEach(([key, value]) => {
           lista.push([key, value]);
-          console.log(lista);
         })
 
       }
@@ -80,18 +73,6 @@ function Map(props) {
             {props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}><a href="/chat">{user[0]}</a></InfoWindow>}
           </Marker>
         ))}
-
-      {/* {
-        Object.entries(usersList).forEach(([key, value]) => {
-          console.log(value.lng)
-          return (<Marker
-            position={{ lat: value.lat, lng: value.lng }}
-            onClick={props.onToggleOpen}
-          >
-            {props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}><a href="/chat">{key}</a></InfoWindow>}
-          </Marker>)
-        })
-      } */}
 
     </GoogleMap>
   ));

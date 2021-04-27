@@ -2,7 +2,8 @@ import React, { Fragment } from 'react';
 import { PrivateLayout, PublicLayout, NotLoggedInLayout } from '@layouts';
 import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 
-import { Login, Register, PageNotFound, Welcome, RegistrationSuccess, Map, Chat, Options, Friends} from './containers';
+import { Login, Register, PageNotFound, Welcome, RegistrationSuccess, Chat, Options, Friends} from './containers';
+import Pintar from './containers/Map/pintar.js';
 
 const privateRoutes = [
   {
@@ -13,7 +14,7 @@ const privateRoutes = [
   {
     id: 'map',
     path: '/map',
-    component: Map
+    component: Pintar
   },
   {
     id: 'chat',
