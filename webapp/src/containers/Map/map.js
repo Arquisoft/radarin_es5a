@@ -24,10 +24,10 @@ function Map( props ) {
     
   const MyMapComponent = compose(
     withStateHandlers(() => ({
-      isOpen: false,
+      isOpen: -1,
     }), {
-      onToggleOpen: ({ isOpen }) => () => ({
-        isOpen: !isOpen,
+      onToggleOpen: ({  }) => key => ({
+        isOpen: key,
       })
     }),
     withProps({
@@ -46,12 +46,13 @@ function Map( props ) {
         <Marker position={{ lat: latitude, lng: longitude }}/>
 
         {users.filter(user => getDistance(user.ubicacion, { latitude: latitude, longitude: longitude }) < myAreaRadius)
-        .map(user => (
+        .map((user, i) => (
         <Marker
+        key={i}
         position={{ lat: user.ubicacion.lat, lng: user.ubicacion.lng }}
-        onClick={props.onToggleOpen}
+        onClick={() => props.onToggleOpen(i)}
       >
-        {props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}><a href="/chat">{user.name}</a></InfoWindow>}
+        {props.isOpen ===i && <InfoWindow onCloseClick={props.onToggleOpen}><div><h5>{user.name}</h5><a href="/chat">Chat</a></div></InfoWindow>}
       </Marker>
         ))}
 
