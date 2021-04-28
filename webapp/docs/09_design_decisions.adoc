@@ -6,7 +6,7 @@ At this point we will talk about the aspects related to the design, as well as t
 [role="arc42help"]
 ****
 .Decisions:
-* We have decided not to use react because we think we are going to have a dificult a time using it. As a substitute we have decided to use Node.js and Express.
+* At the start we decided not to use react because we think we were going to have a dificult a time using it. As a substitute we have decided to use Node.js and Express. But unfortunately, at the end, we had to use it anyways.
 * Use of SOLID.
 * Using GitKraken to help us do version control.
 * Use of Git for version control and facilitate teamwork.
@@ -18,11 +18,15 @@ At this point we will talk about the aspects related to the design, as well as t
 
 .Discarded alternatives:
 * We decided not to make the documentation in Spanish, since English is a more internationalized language.
-* We also discarded the use of React.
+* At the start we decided to discard React, but we had to reconsider it because we found a lot of problems merging the webapp login with the Pod´s login without it.
 
 .Problemns:
 * Decide which technology to use without knowing how each one works.
 * We independently study these technologies, looking for information from different sources.
+* We encountered a lot of compatibility problems with the Pod´s login.
+* There isnt much documentation about the use of Firebase in web applications despite the Firebase´s page itself.
+* We encountered a lot of problems with React and the authentication permissions of Solid Pod´s.
+* We encountered a lot of problems with the CI, because everything seems to work in local for many of the team memebers, but it doest in github.
 
 
 
