@@ -1,5 +1,5 @@
 import React from "react";
-import { compose, withProps,withStateHandlers } from "recompose";
+import { compose, withProps, withStateHandlers, lifecycle } from "recompose";
 import {
   withScriptjs,
   withGoogleMap,
@@ -12,19 +12,26 @@ import { usePosition } from 'use-position';
 import { getDistance } from 'geolib';
 
 function Map( props ) {
-  const { latitude, longitude } = usePosition( false );
+  var { latitude, longitude } = usePosition( false );
 //  const users = getUsers();
-  const users = [
-    {"name":"marcos", "ubicacion":{"lat": 43.5306455, "lng": -5.6563222 }}, 
-    {"name":"german", "ubicacion":{"lat": 43.5276455, "lng": -5.6543222 }}, 
-    {"name":"laura", "ubicacion":{"lat": 43.5263455, "lng": -5.6583222 }}
+var lat1 = 43.5306455;
+var long1 = -5.6563222;
+  var users = [
+    {"name":"marcos", "ubicacion":{"lat": latitude + 0.004, "lng": longitude}}, 
+    {"name":"german", "ubicacion":{"lat": latitude + 0.001, "lng": longitude + 0.004 }}, 
+    {"name":"laura", "ubicacion":{"lat": latitude - 0.0005, "lng": longitude - 0.002 }}
     ];
 //  const radius = getRadius();
   const myAreaRadius = 500;
+
+function actualizar(){
+  longitude = longitude + 0.0002;
+}
     
   const MyMapComponent = compose(
     withStateHandlers(() => ({
-      isOpen: -1,
+      isOpen: "",
+      refreshingProperty: true,
     }), {
       onToggleOpen: ({  }) => key => ({
         isOpen: key,
@@ -38,7 +45,16 @@ function Map( props ) {
       mapElement: <div style={{ height: `100%` }} />
     }),
     withScriptjs,
-    withGoogleMap
+    withGoogleMap,
+    lifecycle({
+      componentDidMount(){
+        setInterval( () => {
+        actualizar();
+        this.setState({refreshingProperty: false});
+      },500)
+        
+      }
+    })
   )(props => (
     <GoogleMap defaultZoom={15} defaultCenter={{ lat: latitude, lng: longitude }}>
         <Circle options={{fillOpacity:0.1, fillColor:"blue", strokeOpacity:0}} center={{ lat: latitude, lng: longitude }} radius={myAreaRadius}/>
@@ -46,13 +62,13 @@ function Map( props ) {
         <Marker position={{ lat: latitude, lng: longitude }}/>
 
         {users.filter(user => getDistance(user.ubicacion, { latitude: latitude, longitude: longitude }) < myAreaRadius)
-        .map((user, i) => (
+        .map((user) => (
         <Marker
-        key={i}
+        key={user.name}
         position={{ lat: user.ubicacion.lat, lng: user.ubicacion.lng }}
-        onClick={() => props.onToggleOpen(i)}
+        onClick={() => props.onToggleOpen(user.name)}
       >
-        {props.isOpen ===i && <InfoWindow onCloseClick={props.onToggleOpen}><div><h5>{user.name}</h5><a href="/chat">Chat</a></div></InfoWindow>}
+        {props.isOpen ===user.name && <InfoWindow onCloseClick={props.onToggleOpen}><div><h5>{user.name}</h5><a href="/chat">Chat</a></div></InfoWindow>}
       </Marker>
         ))}
 
