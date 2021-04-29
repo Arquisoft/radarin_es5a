@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>serviceWorker.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../doc-style.css" />
+  <script src="../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../";
+    var thisFile = "src\\serviceWorker.js";
+    var defaultSidebar = true;
+  </script>
+  <script src="../doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>serviceWorker.js</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-comment">/* eslint-disable */</span>
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-2" id="section-2"></a>
+</div>
+<p>This optional code is used to register a service worker.
+register() is not called by default.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-3" id="section-3"></a>
+</div>
+<p>This lets the app load faster on subsequent visits in production, and gives
+it offline capabilities. However, it also means that developers (and users)
+will only see deployed updates on subsequent visits to a page, after all the
+existing tabs open on the page have been closed, since previously cached
+resources are updated in the background.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-4" id="section-4"></a>
+</div>
+<p>To learn more about the benefits of this model and instructions on how to
+opt-in, read http://bit.ly/CRA-PWA</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">
+<span class="hljs-keyword">const</span> isLocalhost = <span class="hljs-built_in">Boolean</span>(
+  <span class="hljs-built_in">window</span>.location.hostname === <span class="hljs-string">'localhost'</span> ||
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-5" id="section-5"></a>
+</div>
+<p>[::1] is the IPv6 localhost address.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">    <span class="hljs-built_in">window</span>.location.hostname === <span class="hljs-string">'[::1]'</span> ||
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-6" id="section-6"></a>
+</div>
+<p>127.0.0.1/8 is considered localhost for IPv4.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">    <span class="hljs-built_in">window</span>.location.hostname.match(<span class="hljs-regexp">/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/</span>)
+);
+
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">register</span>(<span class="hljs-params">config</span>) </span>{
+  <span class="hljs-keyword">if</span> (process.env.NODE_ENV === <span class="hljs-string">'production'</span> &amp;&amp; <span class="hljs-string">'serviceWorker'</span> <span class="hljs-keyword">in</span> navigator) {
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-7" id="section-7"></a>
+</div>
+<p>The URL constructor is available in all browsers that support SW.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">    <span class="hljs-keyword">const</span> publicUrl = <span class="hljs-keyword">new</span> URL(process.env.PUBLIC_URL, <span class="hljs-built_in">window</span>.location.href);
+    <span class="hljs-keyword">if</span> (publicUrl.origin !== <span class="hljs-built_in">window</span>.location.origin) {
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-8" id="section-8"></a>
+</div>
+<p>Our service worker won't work if PUBLIC_URL is on a different origin
+from what our page is served on. This might happen if a CDN is used to
+serve assets; see https://github.com/facebook/create-react-app/issues/2374</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">'load'</span>, () =&gt; {
+      <span class="hljs-keyword">const</span> swUrl = <span class="hljs-string">`<span class="hljs-subst">${process.env.PUBLIC_URL}</span>/service-worker.js`</span>;
+
+      <span class="hljs-keyword">if</span> (isLocalhost) {
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-9" id="section-9"></a>
+</div>
+<p>This is running on localhost. Let's check if a service worker still exists or not.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">        checkValidServiceWorker(swUrl, config);
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-10" id="section-10"></a>
+</div>
+<p>Add some additional logging to localhost, pointing developers to the
+service worker/PWA documentation.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">        navigator.serviceWorker.ready.then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log(
+            <span class="hljs-string">'This web app is being served cache-first by a service '</span> +
+              <span class="hljs-string">'worker. To learn more, visit http://bit.ly/CRA-PWA'</span>
+          );
+        });
+      } <span class="hljs-keyword">else</span> {
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-11" id="section-11"></a>
+</div>
+<p>Is not localhost. Just register service worker</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">        registerValidSW(swUrl, config);
+      }
+    });
+  }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">registerValidSW</span>(<span class="hljs-params">swUrl, config</span>) </span>{
+  navigator.serviceWorker
+    .register(swUrl)
+    .then(<span class="hljs-function"><span class="hljs-params">registration</span> =&gt;</span> {
+      registration.onupdatefound = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-keyword">const</span> installingWorker = registration.installing;
+        <span class="hljs-keyword">if</span> (installingWorker == <span class="hljs-literal">null</span>) {
+          <span class="hljs-keyword">return</span>;
+        }
+        installingWorker.onstatechange = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+          <span class="hljs-keyword">if</span> (installingWorker.state === <span class="hljs-string">'installed'</span>) {
+            <span class="hljs-keyword">if</span> (navigator.serviceWorker.controller) {
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-12" id="section-12"></a>
+</div>
+<p>At this point, the updated precached content has been fetched,
+but the previous service worker will still serve the older
+content until all client tabs are closed.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">              <span class="hljs-built_in">console</span>.log(
+                <span class="hljs-string">'New content is available and will be used when all '</span> +
+                  <span class="hljs-string">'tabs for this page are closed. See http://bit.ly/CRA-PWA.'</span>
+              );
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-13" id="section-13"></a>
+</div>
+<p>Execute callback</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">              <span class="hljs-keyword">if</span> (config &amp;&amp; config.onUpdate) {
+                config.onUpdate(registration);
+              }
+            } <span class="hljs-keyword">else</span> {
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-14" id="section-14"></a>
+</div>
+<p>At this point, everything has been precached.
+It's the perfect time to display a
+&quot;Content is cached for offline use.&quot; message.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">              <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Content is cached for offline use.'</span>);
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-15" id="section-15"></a>
+</div>
+<p>Execute callback</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">              <span class="hljs-keyword">if</span> (config &amp;&amp; config.onSuccess) {
+                config.onSuccess(registration);
+              }
+            }
+          }
+        };
+      };
+    })
+    .catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> {
+      <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'Error during service worker registration:'</span>, error);
+    });
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkValidServiceWorker</span>(<span class="hljs-params">swUrl, config</span>) </span>{
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-16" id="section-16"></a>
+</div>
+<p>Check if the service worker can be found. If it can't reload the page.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">  fetch(swUrl)
+    .then(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> {
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-17" id="section-17"></a>
+</div>
+<p>Ensure service worker exists, and that we really are getting a JS file.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      <span class="hljs-keyword">const</span> contentType = response.headers.get(<span class="hljs-string">'content-type'</span>);
+      <span class="hljs-keyword">if</span> (
+        response.status === <span class="hljs-number">404</span> ||
+        (contentType != <span class="hljs-literal">null</span> &amp;&amp; contentType.indexOf(<span class="hljs-string">'javascript'</span>) === <span class="hljs-number">-1</span>)
+      ) {
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-18" id="section-18"></a>
+</div>
+<p>No service worker found. Probably a different app. Reload the page.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">        navigator.serviceWorker.ready.then(<span class="hljs-function"><span class="hljs-params">registration</span> =&gt;</span> {
+          registration.unregister().then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+            <span class="hljs-built_in">window</span>.location.reload();
+          });
+        });
+      } <span class="hljs-keyword">else</span> {
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-19" id="section-19"></a>
+</div>
+<p>Service worker found. Proceed as normal.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">        registerValidSW(swUrl, config);
+      }
+    })
+    .catch(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'No internet connection found. App is running in offline mode.'</span>);
+    });
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unregister</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">if</span> (<span class="hljs-string">'serviceWorker'</span> <span class="hljs-keyword">in</span> navigator) {
+    navigator.serviceWorker.ready.then(<span class="hljs-function"><span class="hljs-params">registration</span> =&gt;</span> {
+      registration.unregister();
+    });
+  }
+}
+
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

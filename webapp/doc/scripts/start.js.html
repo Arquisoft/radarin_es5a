@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>start.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../doc-style.css" />
+  <script src="../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../";
+    var thisFile = "scripts\\start.js";
+    var defaultSidebar = true;
+  </script>
+  <script src="../doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>start.js</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-comment">/* eslint-disable */</span>
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-2" id="section-2"></a>
+</div>
+<p>Do this as the first thing so that any code reading it knows the right env.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">process.env.BABEL_ENV = <span class="hljs-string">"development"</span>;
+process.env.NODE_ENV = <span class="hljs-string">"development"</span>;
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-3" id="section-3"></a>
+</div>
+<p>Makes the script crash on unhandled rejections instead of silently
+ignoring them. In the future, promise rejections that are not handled will
+terminate the Node.js process with a non-zero exit code.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">process.on(<span class="hljs-string">"unhandledRejection"</span>, (err) =&gt; {
+	<span class="hljs-keyword">throw</span> err;
+});
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-4" id="section-4"></a>
+</div>
+<p>Ensure environment variables are read.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">"../config/env"</span>);
+
+<span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">"fs"</span>);
+<span class="hljs-keyword">const</span> chalk = <span class="hljs-built_in">require</span>(<span class="hljs-string">"chalk"</span>);
+<span class="hljs-keyword">const</span> webpack = <span class="hljs-built_in">require</span>(<span class="hljs-string">"webpack"</span>);
+<span class="hljs-keyword">const</span> WebpackDevServer = <span class="hljs-built_in">require</span>(<span class="hljs-string">"webpack-dev-server"</span>);
+<span class="hljs-keyword">const</span> clearConsole = <span class="hljs-built_in">require</span>(<span class="hljs-string">"react-dev-utils/clearConsole"</span>);
+<span class="hljs-keyword">const</span> checkRequiredFiles = <span class="hljs-built_in">require</span>(<span class="hljs-string">"react-dev-utils/checkRequiredFiles"</span>);
+<span class="hljs-keyword">const</span> { choosePort, createCompiler, prepareProxy, prepareUrls } = <span class="hljs-built_in">require</span>(<span class="hljs-string">"react-dev-utils/WebpackDevServerUtils"</span>);
+<span class="hljs-keyword">const</span> openBrowser = <span class="hljs-built_in">require</span>(<span class="hljs-string">"react-dev-utils/openBrowser"</span>);
+<span class="hljs-keyword">const</span> paths = <span class="hljs-built_in">require</span>(<span class="hljs-string">"../config/paths"</span>);
+<span class="hljs-keyword">const</span> configFactory = <span class="hljs-built_in">require</span>(<span class="hljs-string">"../config/webpack.config"</span>);
+<span class="hljs-keyword">const</span> createDevServerConfig = <span class="hljs-built_in">require</span>(<span class="hljs-string">"../config/webpackDevServer.config"</span>);
+
+<span class="hljs-keyword">const</span> useYarn = fs.existsSync(paths.yarnLockFile);
+<span class="hljs-keyword">const</span> isInteractive = process.stdout.isTTY;
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-5" id="section-5"></a>
+</div>
+<p>Warn and crash if required files are missing</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-keyword">if</span> (!checkRequiredFiles([ paths.appHtml, paths.appIndexJs ])) {
+	process.exit(<span class="hljs-number">1</span>);
+}
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-6" id="section-6"></a>
+</div>
+<p>Tools like Cloud9 rely on this.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-keyword">const</span> DEFAULT_PORT = <span class="hljs-built_in">parseInt</span>(process.env.PORT, <span class="hljs-number">10</span>) || <span class="hljs-number">3000</span>;
+<span class="hljs-keyword">const</span> HOST = process.env.HOST || <span class="hljs-string">"0.0.0.0"</span>;
+
+<span class="hljs-keyword">if</span> (process.env.HOST) {
+	<span class="hljs-built_in">console</span>.log(
+		chalk.cyan(<span class="hljs-string">`Attempting to bind to HOST environment variable: <span class="hljs-subst">${chalk.yellow(chalk.bold(process.env.HOST))}</span>`</span>)
+	);
+	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">`If this was unintentional, check that you haven't mistakenly set it in your shell.`</span>);
+	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Learn more here: <span class="hljs-subst">${chalk.yellow(<span class="hljs-string">"http://bit.ly/CRA-advanced-config"</span>)}</span>`</span>);
+	<span class="hljs-built_in">console</span>.log();
+}
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-7" id="section-7"></a>
+</div>
+<p>We require that you explictly set browsers and do not fall back to
+browserslist defaults.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-keyword">const</span> { checkBrowsers } = <span class="hljs-built_in">require</span>(<span class="hljs-string">"react-dev-utils/browsersHelper"</span>);
+checkBrowsers(paths.appPath, isInteractive)
+	.then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-8" id="section-8"></a>
+</div>
+<p>We attempt to use the default port but if it is busy, we offer the user to
+run on a different port. <code>choosePort()</code> Promise resolves to the next free port.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">		<span class="hljs-keyword">return</span> choosePort(HOST, DEFAULT_PORT);
+	})
+	.then(<span class="hljs-function">(<span class="hljs-params">port</span>) =&gt;</span> {
+		<span class="hljs-keyword">if</span> (port == <span class="hljs-literal">null</span>) {
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-9" id="section-9"></a>
+</div>
+<p>We have not found a port.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">			<span class="hljs-keyword">return</span>;
+		}
+		<span class="hljs-keyword">const</span> config = configFactory(<span class="hljs-string">"development"</span>);
+		<span class="hljs-keyword">const</span> protocol = process.env.HTTP === <span class="hljs-string">"true"</span> ? <span class="hljs-string">"https"</span> : <span class="hljs-string">"http"</span>;
+		<span class="hljs-keyword">const</span> appName = <span class="hljs-built_in">require</span>(paths.appPackageJson).name;
+		<span class="hljs-keyword">const</span> urls = prepareUrls(protocol, HOST, port);
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-10" id="section-10"></a>
+</div>
+<p>Create a webpack compiler that is configured with custom messages.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">		<span class="hljs-keyword">const</span> compiler = createCompiler(webpack, config, appName, urls, useYarn);
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-11" id="section-11"></a>
+</div>
+<p>Load proxy config</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">		<span class="hljs-keyword">const</span> proxySetting = <span class="hljs-built_in">require</span>(paths.appPackageJson).proxy;
+		<span class="hljs-keyword">const</span> proxyConfig = prepareProxy(proxySetting, paths.appPublic);
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-12" id="section-12"></a>
+</div>
+<p>Serve webpack assets generated by the compiler over a web server.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">		<span class="hljs-keyword">const</span> serverConfig = createDevServerConfig(proxyConfig, urls.lanUrlForConfig);
+		<span class="hljs-keyword">const</span> devServer = <span class="hljs-keyword">new</span> WebpackDevServer(compiler, serverConfig);
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-13" id="section-13"></a>
+</div>
+<p>Launch WebpackDevServer.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">		devServer.listen(port, HOST, (err) =&gt; {
+			<span class="hljs-keyword">if</span> (err) {
+				<span class="hljs-keyword">return</span> <span class="hljs-built_in">console</span>.log(err);
+			}
+			<span class="hljs-keyword">if</span> (isInteractive) {
+				clearConsole();
+			}
+			<span class="hljs-built_in">console</span>.log(chalk.cyan(<span class="hljs-string">"Starting the development server...\n"</span>));
+			openBrowser(urls.localUrlForBrowser);
+		});
+
+		[ <span class="hljs-string">"SIGINT"</span>, <span class="hljs-string">"SIGTERM"</span> ].forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">sig</span>) </span>{
+			process.on(sig, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+				devServer.close();
+				process.exit();
+			});
+		});
+	})
+	.catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+		<span class="hljs-keyword">if</span> (err &amp;&amp; err.message) {
+			<span class="hljs-built_in">console</span>.log(err.message);
+		}
+		process.exit(<span class="hljs-number">1</span>);
+	});
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

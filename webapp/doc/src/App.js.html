@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>App.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../doc-style.css" />
+  <script src="../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../";
+    var thisFile = "src\\App.js";
+    var defaultSidebar = true;
+  </script>
+  <script src="../doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>App.js</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-keyword">import</span> React, { Fragment, Suspense } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { toast, Slide } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-toastify'</span>;
+<span class="hljs-keyword">import</span> { Loader } <span class="hljs-keyword">from</span> <span class="hljs-string">'@util-components'</span>;
+<span class="hljs-keyword">import</span> { ThemeProvider } <span class="hljs-keyword">from</span> <span class="hljs-string">'styled-components'</span>;
+<span class="hljs-keyword">import</span> { library } <span class="hljs-keyword">from</span> <span class="hljs-string">'@fortawesome/fontawesome-svg-core'</span>;
+<span class="hljs-keyword">import</span> { fas } <span class="hljs-keyword">from</span> <span class="hljs-string">'@fortawesome/free-solid-svg-icons'</span>;
+<span class="hljs-keyword">import</span> { faGithub } <span class="hljs-keyword">from</span> <span class="hljs-string">'@fortawesome/free-brands-svg-icons'</span>;
+<span class="hljs-keyword">import</span> Routes <span class="hljs-keyword">from</span> <span class="hljs-string">'./routes'</span>;
+<span class="hljs-keyword">import</span> theme <span class="hljs-keyword">from</span> <span class="hljs-string">'./utils/theme'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'react-toastify/dist/ReactToastify.css'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'flag-icon-css/css/flag-icon.min.css'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'normalize.css'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'./index.css'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'@inrupt/solid-style-guide'</span>;
+<span class="hljs-keyword">import</span> { Toaster } <span class="hljs-keyword">from</span> <span class="hljs-string">'./App.styled'</span>;
+
+library.add(fas);
+library.add(faGithub);
+<span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Suspense</span> <span class="hljs-attr">fallback</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">Loader</span> /&gt;</span>}&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">ThemeProvider</span> <span class="hljs-attr">theme</span>=<span class="hljs-string">{theme}</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Fragment</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Routes</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Toaster</span>
+          {<span class="hljs-attr">...</span>{
+            <span class="hljs-attr">autoClose:</span> <span class="hljs-attr">3000</span>,
+            <span class="hljs-attr">position:</span> <span class="hljs-attr">toast.POSITION.TOP_CENTER</span>,
+            <span class="hljs-attr">newestOnTop:</span> <span class="hljs-attr">true</span>,
+            <span class="hljs-attr">closeOnClick:</span> <span class="hljs-attr">true</span>,
+            <span class="hljs-attr">pauseOnVisibilityChange:</span> <span class="hljs-attr">true</span>,
+            <span class="hljs-attr">draggable:</span> <span class="hljs-attr">true</span>,
+            <span class="hljs-attr">className:</span> '<span class="hljs-attr">solid-toaster-container</span>',
+            <span class="hljs-attr">toastClassName:</span> '<span class="hljs-attr">solid-toaster</span>',
+            <span class="hljs-attr">bodyClassName:</span> '<span class="hljs-attr">solid-toaster-body</span>',
+            <span class="hljs-attr">transition:</span> <span class="hljs-attr">Slide</span>
+          }}
+        /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">Fragment</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ThemeProvider</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">Suspense</span>&gt;</span></span>
+);
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> App;
+
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

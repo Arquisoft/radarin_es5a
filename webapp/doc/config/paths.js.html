@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>paths.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../doc-style.css" />
+  <script src="../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../";
+    var thisFile = "config\\paths.js";
+    var defaultSidebar = true;
+  </script>
+  <script src="../doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>paths.js</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-comment">/* eslint-disable */</span>
+<span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>);
+<span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+<span class="hljs-keyword">const</span> url = <span class="hljs-built_in">require</span>(<span class="hljs-string">'url'</span>);
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-2" id="section-2"></a>
+</div>
+<p>Make sure any symlinks in the project folder are resolved:
+https://github.com/facebook/create-react-app/issues/637</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-keyword">const</span> appDirectory = fs.realpathSync(process.cwd());
+<span class="hljs-keyword">const</span> resolveApp = <span class="hljs-function"><span class="hljs-params">relativePath</span> =&gt;</span> path.resolve(appDirectory, relativePath);
+
+<span class="hljs-keyword">const</span> envPublicUrl = process.env.PUBLIC_URL;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ensureSlash</span>(<span class="hljs-params">inputPath, needsSlash</span>) </span>{
+  <span class="hljs-keyword">const</span> hasSlash = inputPath.endsWith(<span class="hljs-string">'/'</span>);
+  <span class="hljs-keyword">if</span> (hasSlash &amp;&amp; !needsSlash) {
+    <span class="hljs-keyword">return</span> inputPath.substr(<span class="hljs-number">0</span>, inputPath.length - <span class="hljs-number">1</span>);
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (!hasSlash &amp;&amp; needsSlash) {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${inputPath}</span>/`</span>;
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">return</span> inputPath;
+  }
+}
+
+<span class="hljs-keyword">const</span> getPublicUrl = <span class="hljs-function"><span class="hljs-params">appPackageJson</span> =&gt;</span> envPublicUrl || <span class="hljs-built_in">require</span>(appPackageJson).homepage;
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-3" id="section-3"></a>
+</div>
+<p>We use <code>PUBLIC_URL</code> environment variable or &quot;homepage&quot; field to infer
+&quot;public path&quot; at which the app is served.
+Webpack needs to know it to put the right <script> hrefs into HTML even in
+single-page apps that may serve index.html for nested URLs like /todos/42.
+We can't use a relative path in HTML because we don't want to load something
+like /todos/42/static/js/bundle.7289d.js. We have to know the root.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getServedPath</span>(<span class="hljs-params">appPackageJson</span>) </span>{
+  <span class="hljs-keyword">const</span> publicUrl = getPublicUrl(appPackageJson);
+  <span class="hljs-keyword">const</span> servedUrl = envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : <span class="hljs-string">'/'</span>);
+  <span class="hljs-keyword">return</span> ensureSlash(servedUrl, <span class="hljs-literal">true</span>);
+}
+
+<span class="hljs-keyword">const</span> moduleFileExtensions = [
+  <span class="hljs-string">'web.mjs'</span>,
+  <span class="hljs-string">'mjs'</span>,
+  <span class="hljs-string">'web.js'</span>,
+  <span class="hljs-string">'js'</span>,
+  <span class="hljs-string">'web.ts'</span>,
+  <span class="hljs-string">'ts'</span>,
+  <span class="hljs-string">'web.tsx'</span>,
+  <span class="hljs-string">'tsx'</span>,
+  <span class="hljs-string">'json'</span>,
+  <span class="hljs-string">'web.jsx'</span>,
+  <span class="hljs-string">'jsx'</span>
+];
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-4" id="section-4"></a>
+</div>
+<p>Resolve file paths in the same order as webpack</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-keyword">const</span> resolveModule = <span class="hljs-function">(<span class="hljs-params">resolveFn, filePath</span>) =&gt;</span> {
+  <span class="hljs-keyword">const</span> extension = moduleFileExtensions.find(<span class="hljs-function"><span class="hljs-params">extension</span> =&gt;</span>
+    fs.existsSync(resolveFn(<span class="hljs-string">`<span class="hljs-subst">${filePath}</span>.<span class="hljs-subst">${extension}</span>`</span>))
+  );
+
+  <span class="hljs-keyword">if</span> (extension) {
+    <span class="hljs-keyword">return</span> resolveFn(<span class="hljs-string">`<span class="hljs-subst">${filePath}</span>.<span class="hljs-subst">${extension}</span>`</span>);
+  }
+
+  <span class="hljs-keyword">return</span> resolveFn(<span class="hljs-string">`<span class="hljs-subst">${filePath}</span>.js`</span>);
+};
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-5" id="section-5"></a>
+</div>
+<p>config after eject: we're in ./config/</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">dotenv</span>: resolveApp(<span class="hljs-string">'.env'</span>),
+  <span class="hljs-attr">appPath</span>: resolveApp(<span class="hljs-string">'.'</span>),
+  <span class="hljs-attr">appBuild</span>: resolveApp(<span class="hljs-string">'build'</span>),
+  <span class="hljs-attr">appPublic</span>: resolveApp(<span class="hljs-string">'public'</span>),
+  <span class="hljs-attr">appHtml</span>: resolveApp(<span class="hljs-string">'public/index.html'</span>),
+  <span class="hljs-attr">appIndexJs</span>: resolveModule(resolveApp, <span class="hljs-string">'src/index'</span>),
+  <span class="hljs-attr">appPackageJson</span>: resolveApp(<span class="hljs-string">'package.json'</span>),
+  <span class="hljs-attr">appSrc</span>: resolveApp(<span class="hljs-string">'src'</span>),
+  <span class="hljs-attr">appTsConfig</span>: resolveApp(<span class="hljs-string">'tsconfig.json'</span>),
+  <span class="hljs-attr">yarnLockFile</span>: resolveApp(<span class="hljs-string">'yarn.lock'</span>),
+  <span class="hljs-attr">testsSetup</span>: resolveModule(resolveApp, <span class="hljs-string">'src/setupTests'</span>),
+  <span class="hljs-attr">proxySetup</span>: resolveApp(<span class="hljs-string">'src/setupProxy.js'</span>),
+  <span class="hljs-attr">appNodeModules</span>: resolveApp(<span class="hljs-string">'node_modules'</span>),
+  <span class="hljs-attr">publicUrl</span>: getPublicUrl(resolveApp(<span class="hljs-string">'package.json'</span>)),
+  <span class="hljs-attr">servedPath</span>: getServedPath(resolveApp(<span class="hljs-string">'package.json'</span>))
+};
+
+<span class="hljs-built_in">module</span>.exports.moduleFileExtensions = moduleFileExtensions;
+
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

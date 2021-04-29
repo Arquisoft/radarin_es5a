@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jest-cucumber.config.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="doc-style.css" />
+  <script src="doc-filelist.js"></script>
+  <script>
+    var relativeDir = "";
+    var thisFile = "jest-cucumber.config.js";
+    var defaultSidebar = true;
+  </script>
+  <script src="doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>jest-cucumber.config.js</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">projects</span>: [<span class="hljs-string">'radarin_es5a'</span>],
+  <span class="hljs-attr">verbose</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">resolver</span>: <span class="hljs-string">"jest-pnp-resolver"</span>,
+  <span class="hljs-attr">preset</span>: <span class="hljs-string">'jest-puppeteer'</span>,
+  <span class="hljs-attr">testRegex</span>: <span class="hljs-string">'(/feature/.*|(\\.|/)(feature))\\.[jt]sx?$'</span>,
+  <span class="hljs-attr">testTimeout</span>: <span class="hljs-number">30000</span>,
+  <span class="hljs-attr">setupFiles</span>: [
+    <span class="hljs-string">"react-app-polyfill/jsdom"</span>
+  ],
+  <span class="hljs-string">"transform"</span>: {
+    <span class="hljs-string">"^.+\\.(js|jsx|ts|tsx)$"</span>: <span class="hljs-string">"&lt;rootDir&gt;/node_modules/babel-jest"</span>,
+    <span class="hljs-string">"^(?!.*\\.(js|jsx|ts|tsx|json)$)"</span>: <span class="hljs-string">"&lt;rootDir&gt;/config/jest/fileTransform.js"</span>
+  },
+  <span class="hljs-string">"transformIgnorePatterns"</span>: [
+    <span class="hljs-string">"[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$"</span>,
+    <span class="hljs-string">"^.+\\.module\\.(css|sass|scss)$"</span>
+  ],
+  <span class="hljs-string">"moduleNameMapper"</span>: {
+    <span class="hljs-string">"^react-native$"</span>: <span class="hljs-string">"react-native-web"</span>,
+    <span class="hljs-string">"\\.(css|less|scss|sss|styl)$"</span>: <span class="hljs-string">"&lt;rootDir&gt;/webapp/node_modules/jest-css-modules"</span>,
+    <span class="hljs-string">"@inrupt/solid-style-guide"</span>: <span class="hljs-string">"&lt;rootDir&gt;/webapp/node_modules/jest-css-modules"</span>
+  }
+};
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>block-navigation.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../../doc-style.css" />
+  <script src="../../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../../";
+    var thisFile = "coverage\\lcov-report\\block-navigation.js";
+    var defaultSidebar = true;
+  </script>
+  <script src="../../doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>block-navigation.js</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-comment">/* eslint-disable */</span>
+<span class="hljs-keyword">var</span> jumpToCode = (<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">init</span>(<span class="hljs-params"></span>) </span>{
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-2" id="section-2"></a>
+</div>
+<p>Classes of code we would like to highlight in the file view</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">    <span class="hljs-keyword">var</span> missingCoverageClasses = [<span class="hljs-string">'.cbranch-no'</span>, <span class="hljs-string">'.cstat-no'</span>, <span class="hljs-string">'.fstat-no'</span>];
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-3" id="section-3"></a>
+</div>
+<p>Elements to highlight in the file listing view</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">    <span class="hljs-keyword">var</span> fileListingElements = [<span class="hljs-string">'td.pct.low'</span>];
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-4" id="section-4"></a>
+</div>
+<p>We don't want to select elements that are direct descendants of another match</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">    <span class="hljs-keyword">var</span> notSelector = <span class="hljs-string">':not('</span> + missingCoverageClasses.join(<span class="hljs-string">'):not('</span>) + <span class="hljs-string">') &gt; '</span>; <span class="hljs-comment">// becomes `:not(a):not(b) &gt; `</span>
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-5" id="section-5"></a>
+</div>
+<p>Selecter that finds elements on the page to which we can jump</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">    <span class="hljs-keyword">var</span> selector =
+        fileListingElements.join(<span class="hljs-string">', '</span>) +
+        <span class="hljs-string">', '</span> +
+        notSelector +
+        missingCoverageClasses.join(<span class="hljs-string">', '</span> + notSelector); <span class="hljs-comment">// becomes `:not(a):not(b) &gt; a, :not(a):not(b) &gt; b`</span>
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-6" id="section-6"></a>
+</div>
+<p>The NodeList of matching elements</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">    <span class="hljs-keyword">var</span> missingCoverageElements = <span class="hljs-built_in">document</span>.querySelectorAll(selector);
+
+    <span class="hljs-keyword">var</span> currentIndex;
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">toggleClass</span>(<span class="hljs-params">index</span>) </span>{
+        missingCoverageElements
+            .item(currentIndex)
+            .classList.remove(<span class="hljs-string">'highlighted'</span>);
+        missingCoverageElements.item(index).classList.add(<span class="hljs-string">'highlighted'</span>);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">makeCurrent</span>(<span class="hljs-params">index</span>) </span>{
+        toggleClass(index);
+        currentIndex = index;
+        missingCoverageElements.item(index).scrollIntoView({
+            <span class="hljs-attr">behavior</span>: <span class="hljs-string">'smooth'</span>,
+            <span class="hljs-attr">block</span>: <span class="hljs-string">'center'</span>,
+            <span class="hljs-attr">inline</span>: <span class="hljs-string">'center'</span>
+        });
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">goToPrevious</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> nextIndex = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> currentIndex !== <span class="hljs-string">'number'</span> || currentIndex === <span class="hljs-number">0</span>) {
+            nextIndex = missingCoverageElements.length - <span class="hljs-number">1</span>;
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (missingCoverageElements.length &gt; <span class="hljs-number">1</span>) {
+            nextIndex = currentIndex - <span class="hljs-number">1</span>;
+        }
+
+        makeCurrent(nextIndex);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">goToNext</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> nextIndex = <span class="hljs-number">0</span>;
+
+        <span class="hljs-keyword">if</span> (
+            <span class="hljs-keyword">typeof</span> currentIndex === <span class="hljs-string">'number'</span> &amp;&amp;
+            currentIndex &lt; missingCoverageElements.length - <span class="hljs-number">1</span>
+        ) {
+            nextIndex = currentIndex + <span class="hljs-number">1</span>;
+        }
+
+        makeCurrent(nextIndex);
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">jump</span>(<span class="hljs-params">event</span>) </span>{
+        <span class="hljs-keyword">switch</span> (event.which) {
+            <span class="hljs-keyword">case</span> <span class="hljs-number">78</span>: <span class="hljs-comment">// n</span>
+            <span class="hljs-keyword">case</span> <span class="hljs-number">74</span>: <span class="hljs-comment">// j</span>
+                goToNext();
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> <span class="hljs-number">66</span>: <span class="hljs-comment">// b</span>
+            <span class="hljs-keyword">case</span> <span class="hljs-number">75</span>: <span class="hljs-comment">// k</span>
+            <span class="hljs-keyword">case</span> <span class="hljs-number">80</span>: <span class="hljs-comment">// p</span>
+                goToPrevious();
+                <span class="hljs-keyword">break</span>;
+        }
+    };
+})();
+<span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">'keydown'</span>, jumpToCode);
+
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

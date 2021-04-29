@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>i18n.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../doc-style.css" />
+  <script src="../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../";
+    var thisFile = "src\\i18n.js";
+    var defaultSidebar = true;
+  </script>
+  <script src="../doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>i18n.js</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-keyword">import</span> i18n <span class="hljs-keyword">from</span> <span class="hljs-string">'i18next'</span>;
+<span class="hljs-keyword">import</span> { initReactI18next } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-i18next'</span>;
+<span class="hljs-keyword">import</span> Backend <span class="hljs-keyword">from</span> <span class="hljs-string">'i18next-xhr-backend'</span>;
+<span class="hljs-keyword">import</span> LanguageDetector <span class="hljs-keyword">from</span> <span class="hljs-string">'i18next-browser-languagedetector'</span>;
+
+i18n
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-2" id="section-2"></a>
+</div>
+<p>load translation using xhr -&gt; see /public/locales
+learn more: https://github.com/i18next/i18next-xhr-backend</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">  .use(Backend)
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-3" id="section-3"></a>
+</div>
+<p>detect user language
+learn more: https://github.com/i18next/i18next-browser-languageDetector</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">  .use(LanguageDetector)
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-4" id="section-4"></a>
+</div>
+<p>pass the i18n instance to the react-i18next components.
+Alternative use the I18nextProvider: https://react.i18next.com/components/i18nextprovider</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">  .use(initReactI18next)
+  .init({
+    <span class="hljs-attr">fallbackLng</span>: <span class="hljs-string">'en-US'</span>,
+    <span class="hljs-attr">debug</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">whitelist</span>: [<span class="hljs-string">'en-US'</span>, <span class="hljs-string">'en'</span>, <span class="hljs-string">'es'</span>],
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-5" id="section-5"></a>
+</div>
+<p>special options for react-i18next
+learn more: https://react.i18next.com/components/i18next-instance</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">    react: {
+      <span class="hljs-attr">wait</span>: <span class="hljs-literal">true</span>
+    }
+  });
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> i18n;
+
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

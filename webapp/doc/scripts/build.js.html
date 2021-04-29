@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>build.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../doc-style.css" />
+  <script src="../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../";
+    var thisFile = "scripts\\build.js";
+    var defaultSidebar = true;
+  </script>
+  <script src="../doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>build.js</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-comment">/* eslint-disable */</span>
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-2" id="section-2"></a>
+</div>
+<p>Do this as the first thing so that any code reading it knows the right env.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">process.env.BABEL_ENV = <span class="hljs-string">"production"</span>;
+process.env.NODE_ENV = <span class="hljs-string">"production"</span>;
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-3" id="section-3"></a>
+</div>
+<p>Makes the script crash on unhandled rejections instead of silently
+ignoring them. In the future, promise rejections that are not handled will
+terminate the Node.js process with a non-zero exit code.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">process.on(<span class="hljs-string">"unhandledRejection"</span>, (err) =&gt; {
+	<span class="hljs-keyword">throw</span> err;
+});
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-4" id="section-4"></a>
+</div>
+<p>Ensure environment variables are read.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">"../config/env"</span>);
+
+<span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">"path"</span>);
+<span class="hljs-keyword">const</span> chalk = <span class="hljs-built_in">require</span>(<span class="hljs-string">"chalk"</span>);
+<span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">"fs-extra"</span>);
+<span class="hljs-keyword">const</span> webpack = <span class="hljs-built_in">require</span>(<span class="hljs-string">"webpack"</span>);
+<span class="hljs-keyword">const</span> bfj = <span class="hljs-built_in">require</span>(<span class="hljs-string">"bfj"</span>);
+<span class="hljs-keyword">const</span> configFactory = <span class="hljs-built_in">require</span>(<span class="hljs-string">"../config/webpack.config"</span>);
+<span class="hljs-keyword">const</span> paths = <span class="hljs-built_in">require</span>(<span class="hljs-string">"../config/paths"</span>);
+<span class="hljs-keyword">const</span> checkRequiredFiles = <span class="hljs-built_in">require</span>(<span class="hljs-string">"react-dev-utils/checkRequiredFiles"</span>);
+<span class="hljs-keyword">const</span> formatWebpackMessages = <span class="hljs-built_in">require</span>(<span class="hljs-string">"react-dev-utils/formatWebpackMessages"</span>);
+<span class="hljs-keyword">const</span> printHostingInstructions = <span class="hljs-built_in">require</span>(<span class="hljs-string">"react-dev-utils/printHostingInstructions"</span>);
+<span class="hljs-keyword">const</span> FileSizeReporter = <span class="hljs-built_in">require</span>(<span class="hljs-string">"react-dev-utils/FileSizeReporter"</span>);
+<span class="hljs-keyword">const</span> printBuildError = <span class="hljs-built_in">require</span>(<span class="hljs-string">"react-dev-utils/printBuildError"</span>);
+
+<span class="hljs-keyword">const</span> measureFileSizesBeforeBuild = FileSizeReporter.measureFileSizesBeforeBuild;
+<span class="hljs-keyword">const</span> printFileSizesAfterBuild = FileSizeReporter.printFileSizesAfterBuild;
+<span class="hljs-keyword">const</span> useYarn = fs.existsSync(paths.yarnLockFile);
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-5" id="section-5"></a>
+</div>
+<p>These sizes are pretty large. We'll warn for bundles exceeding them.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-keyword">const</span> WARN_AFTER_BUNDLE_GZIP_SIZE = <span class="hljs-number">512</span> * <span class="hljs-number">1024</span>;
+<span class="hljs-keyword">const</span> WARN_AFTER_CHUNK_GZIP_SIZE = <span class="hljs-number">1024</span> * <span class="hljs-number">1024</span>;
+
+<span class="hljs-keyword">const</span> isInteractive = process.stdout.isTTY;
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-6" id="section-6"></a>
+</div>
+<p>Warn and crash if required files are missing</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-keyword">if</span> (!checkRequiredFiles([ paths.appHtml, paths.appIndexJs ])) {
+	process.exit(<span class="hljs-number">1</span>);
+}
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-7" id="section-7"></a>
+</div>
+<p>Process CLI arguments</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-keyword">const</span> argv = process.argv.slice(<span class="hljs-number">2</span>);
+<span class="hljs-keyword">const</span> writeStatsJson = argv.indexOf(<span class="hljs-string">"--stats"</span>) !== <span class="hljs-number">-1</span>;
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-8" id="section-8"></a>
+</div>
+<p>Generate configuration</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-keyword">const</span> config = configFactory(<span class="hljs-string">"production"</span>);
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-9" id="section-9"></a>
+</div>
+<p>We require that you explicitly set browsers and do not fall back to
+browserslist defaults.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-keyword">const</span> { checkBrowsers } = <span class="hljs-built_in">require</span>(<span class="hljs-string">"react-dev-utils/browsersHelper"</span>);
+checkBrowsers(paths.appPath, isInteractive)
+	.then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-10" id="section-10"></a>
+</div>
+<p>First, read the current file sizes in build directory.
+This lets us display how much they changed later.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">		<span class="hljs-keyword">return</span> measureFileSizesBeforeBuild(paths.appBuild);
+	})
+	.then(<span class="hljs-function">(<span class="hljs-params">previousFileSizes</span>) =&gt;</span> {
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-11" id="section-11"></a>
+</div>
+<p>Remove all content but keep the directory so that
+if you're in it, you don't end up in Trash</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">		fs.emptyDirSync(paths.appBuild);
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-12" id="section-12"></a>
+</div>
+<p>Merge with the public folder</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">		copyPublicFolder();
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-13" id="section-13"></a>
+</div>
+<p>Start the webpack build</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">		<span class="hljs-keyword">return</span> build(previousFileSizes);
+	})
+	.then(
+		<span class="hljs-function">(<span class="hljs-params">{ stats, previousFileSizes, warnings }</span>) =&gt;</span> {
+			<span class="hljs-keyword">if</span> (warnings.length) {
+				<span class="hljs-built_in">console</span>.log(chalk.yellow(<span class="hljs-string">"Compiled with warnings.\n"</span>));
+				<span class="hljs-built_in">console</span>.log(warnings.join(<span class="hljs-string">"\n\n"</span>));
+				<span class="hljs-built_in">console</span>.log(
+					<span class="hljs-string">"\nSearch for the "</span> +
+						chalk.underline(chalk.yellow(<span class="hljs-string">"keywords"</span>)) +
+						<span class="hljs-string">" to learn more about each warning."</span>
+				);
+				<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"To ignore, add "</span> + chalk.cyan(<span class="hljs-string">"// eslint-disable-next-line"</span>) + <span class="hljs-string">" to the line before.\n"</span>);
+			} <span class="hljs-keyword">else</span> {
+				<span class="hljs-built_in">console</span>.log(chalk.green(<span class="hljs-string">"Compiled successfully.\n"</span>));
+			}
+
+			<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"File sizes after gzip:\n"</span>);
+			printFileSizesAfterBuild(
+				stats,
+				previousFileSizes,
+				paths.appBuild,
+				WARN_AFTER_BUNDLE_GZIP_SIZE,
+				WARN_AFTER_CHUNK_GZIP_SIZE
+			);
+			<span class="hljs-built_in">console</span>.log();
+
+			<span class="hljs-keyword">const</span> appPackage = <span class="hljs-built_in">require</span>(paths.appPackageJson);
+			<span class="hljs-keyword">const</span> publicUrl = paths.publicUrl;
+			<span class="hljs-keyword">const</span> publicPath = config.output.publicPath;
+			<span class="hljs-keyword">const</span> buildFolder = path.relative(process.cwd(), paths.appBuild);
+			printHostingInstructions(appPackage, publicUrl, publicPath, buildFolder, useYarn);
+		},
+		(err) =&gt; {
+			<span class="hljs-built_in">console</span>.log(chalk.red(<span class="hljs-string">"Failed to compile.\n"</span>));
+			printBuildError(err);
+			process.exit(<span class="hljs-number">1</span>);
+		}
+	)
+	.catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+		<span class="hljs-keyword">if</span> (err &amp;&amp; err.message) {
+			<span class="hljs-built_in">console</span>.log(err.message);
+		}
+		process.exit(<span class="hljs-number">1</span>);
+	});
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-14" id="section-14"></a>
+</div>
+<p>Create the production build and print the deployment instructions.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">build</span>(<span class="hljs-params">previousFileSizes</span>) </span>{
+	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Creating an optimized production build..."</span>);
+
+	<span class="hljs-keyword">let</span> compiler = webpack(config);
+	<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+		compiler.run(<span class="hljs-function">(<span class="hljs-params">err, stats</span>) =&gt;</span> {
+			<span class="hljs-keyword">let</span> messages;
+			<span class="hljs-keyword">if</span> (err) {
+				<span class="hljs-keyword">if</span> (!err.message) {
+					<span class="hljs-keyword">return</span> reject(err);
+				}
+				messages = formatWebpackMessages({
+					<span class="hljs-attr">errors</span>: [ err.message ],
+					<span class="hljs-attr">warnings</span>: []
+				});
+			} <span class="hljs-keyword">else</span> {
+				messages = formatWebpackMessages(stats.toJson({ <span class="hljs-attr">all</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">warnings</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">errors</span>: <span class="hljs-literal">true</span> }));
+			}
+			<span class="hljs-keyword">if</span> (messages.errors.length) {
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-15" id="section-15"></a>
+</div>
+<p>Only keep the first error. Others are often indicative
+of the same problem, but confuse the reader with noise.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">				<span class="hljs-keyword">if</span> (messages.errors.length &gt; <span class="hljs-number">1</span>) {
+					messages.errors.length = <span class="hljs-number">1</span>;
+				}
+				<span class="hljs-keyword">return</span> reject(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(messages.errors.join(<span class="hljs-string">"\n\n"</span>)));
+			}
+			<span class="hljs-keyword">if</span> (
+				process.env.CI &amp;&amp;
+				(<span class="hljs-keyword">typeof</span> process.env.CI !== <span class="hljs-string">"string"</span> || process.env.CI.toLowerCase() !== <span class="hljs-string">"false"</span>) &amp;&amp;
+				messages.warnings.length
+			) {
+				<span class="hljs-built_in">console</span>.log(
+					chalk.yellow(
+						<span class="hljs-string">"\nTreating warnings as errors because process.env.CI = true.\n"</span> +
+							<span class="hljs-string">"Most CI servers set it automatically.\n"</span>
+					)
+				);
+				<span class="hljs-keyword">return</span> reject(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(messages.warnings.join(<span class="hljs-string">"\n\n"</span>)));
+			}
+
+			<span class="hljs-keyword">const</span> resolveArgs = {
+				stats,
+				previousFileSizes,
+				<span class="hljs-attr">warnings</span>: messages.warnings
+			};
+			<span class="hljs-keyword">if</span> (writeStatsJson) {
+				<span class="hljs-keyword">return</span> bfj
+					.write(paths.appBuild + <span class="hljs-string">"/bundle-stats.json"</span>, stats.toJson())
+					.then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> resolve(resolveArgs))
+					.catch(<span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> reject(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(error)));
+			}
+
+			<span class="hljs-keyword">return</span> resolve(resolveArgs);
+		});
+	});
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">copyPublicFolder</span>(<span class="hljs-params"></span>) </span>{
+	fs.copySync(paths.appPublic, paths.appBuild, {
+		<span class="hljs-attr">dereference</span>: <span class="hljs-literal">true</span>,
+		<span class="hljs-attr">filter</span>: <span class="hljs-function">(<span class="hljs-params">file</span>) =&gt;</span> file !== paths.appHtml
+	});
+}
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

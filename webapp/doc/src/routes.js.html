@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>routes.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../doc-style.css" />
+  <script src="../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../";
+    var thisFile = "src\\routes.js";
+    var defaultSidebar = true;
+  </script>
+  <script src="../doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>routes.js</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-keyword">import</span> React, { Fragment } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { PrivateLayout, PublicLayout, NotLoggedInLayout } <span class="hljs-keyword">from</span> <span class="hljs-string">'@layouts'</span>;
+<span class="hljs-keyword">import</span> { BrowserRouter <span class="hljs-keyword">as</span> Router, Switch, Redirect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-router-dom'</span>;
+
+<span class="hljs-keyword">import</span> { Login, Register, PageNotFound, Welcome, RegistrationSuccess, <span class="hljs-built_in">Map</span>, Chat, Options, Friends} <span class="hljs-keyword">from</span> <span class="hljs-string">'./containers'</span>;
+
+<span class="hljs-keyword">const</span> privateRoutes = [
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-string">'welcome'</span>,
+    <span class="hljs-attr">path</span>: <span class="hljs-string">'/welcome'</span>,
+    <span class="hljs-attr">component</span>: Welcome
+  },
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-string">'map'</span>,
+    <span class="hljs-attr">path</span>: <span class="hljs-string">'/map'</span>,
+    <span class="hljs-attr">component</span>: <span class="hljs-built_in">Map</span>
+  },
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-string">'chat'</span>,
+    <span class="hljs-attr">path</span>: <span class="hljs-string">'/chat'</span>,
+    <span class="hljs-attr">component</span>: Chat
+  },
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-string">'options'</span>,
+    <span class="hljs-attr">path</span>: <span class="hljs-string">'/options'</span>,
+    <span class="hljs-attr">component</span>: Options
+  },
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-string">'friends'</span>,
+    <span class="hljs-attr">path</span>: <span class="hljs-string">'/friends'</span>,
+    <span class="hljs-attr">component</span>: Friends
+  },
+  
+];
+
+<span class="hljs-keyword">const</span> Routes = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Router</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Fragment</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Switch</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">NotLoggedInLayout</span> <span class="hljs-attr">component</span>=<span class="hljs-string">{Login}</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"/login"</span> <span class="hljs-attr">exact</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">NotLoggedInLayout</span> <span class="hljs-attr">component</span>=<span class="hljs-string">{Register}</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"/register"</span> <span class="hljs-attr">exact</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">NotLoggedInLayout</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"/register/success"</span> <span class="hljs-attr">component</span>=<span class="hljs-string">{RegistrationSuccess}</span> <span class="hljs-attr">exact</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">PublicLayout</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"/404"</span> <span class="hljs-attr">component</span>=<span class="hljs-string">{PageNotFound}</span> <span class="hljs-attr">exact</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Redirect</span> <span class="hljs-attr">from</span>=<span class="hljs-string">"/"</span> <span class="hljs-attr">to</span>=<span class="hljs-string">"/welcome"</span> <span class="hljs-attr">exact</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">PrivateLayout</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"/"</span> <span class="hljs-attr">routes</span>=<span class="hljs-string">{privateRoutes}</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Redirect</span> <span class="hljs-attr">to</span>=<span class="hljs-string">"/404"</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">Switch</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Fragment</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">Router</span>&gt;</span></span>
+);
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Routes;
+
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

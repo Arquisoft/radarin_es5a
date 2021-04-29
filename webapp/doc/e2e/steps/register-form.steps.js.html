@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>register-form.steps.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../../doc-style.css" />
+  <script src="../../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../../";
+    var thisFile = "e2e\\steps\\register-form.steps.js";
+    var defaultSidebar = true;
+  </script>
+  <script src="../../doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>register-form.steps.js</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-keyword">const</span> {defineFeature, loadFeature}=<span class="hljs-built_in">require</span>(<span class="hljs-string">'jest-cucumber'</span>);
+<span class="hljs-keyword">const</span> feature = loadFeature(<span class="hljs-string">'./features/register-form.feature'</span>);
+
+defineFeature(feature, test =&gt; {
+  
+  beforeEach(<span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">await</span> global.page.goto(<span class="hljs-string">'http://localhost:3000'</span>)
+  })
+
+  test(<span class="hljs-string">'The user is not registered in the site'</span>, ({given,when,then}) =&gt; {
+    
+    <span class="hljs-keyword">let</span> email;
+    <span class="hljs-keyword">let</span> username;
+
+  
+    given(<span class="hljs-string">'An unregistered user'</span>, () =&gt; {
+      email = <span class="hljs-string">"newuser@test.com"</span>
+      username = <span class="hljs-string">"newuser"</span>
+    });
+
+    when(<span class="hljs-string">'I fill the data in the form and press submit'</span>, <span class="hljs-keyword">async</span> () =&gt; {
+      <span class="hljs-keyword">await</span> expect(page).toMatch(<span class="hljs-string">'Hi, ASW students'</span>)
+      <span class="hljs-keyword">await</span> expect(page).toFillForm(<span class="hljs-string">'form[name="register"]'</span>, {
+        <span class="hljs-attr">username</span>: username,
+        <span class="hljs-attr">email</span>: email,
+      })
+      <span class="hljs-keyword">await</span> expect(page).toClick(<span class="hljs-string">'button'</span>, { <span class="hljs-attr">text</span>: <span class="hljs-string">'Submit'</span> })
+      <span class="hljs-keyword">await</span> expect(page).toMatch(<span class="hljs-string">'Welcome to ASW'</span>)
+    });
+
+    then(<span class="hljs-string">'A welcome message should be shown in the screen'</span>, <span class="hljs-keyword">async</span> () =&gt; {
+    });
+  });
+
+  test(<span class="hljs-string">'The user is already registered in the site'</span>, ({ given, when, then }) =&gt; {
+    
+    given(<span class="hljs-string">'An already registered user'</span>, () =&gt; {
+    });
+
+    when(<span class="hljs-string">'I fill the data in the form and press submit'</span>, <span class="hljs-keyword">async</span> () =&gt; {
+      
+    });
+
+    then(<span class="hljs-string">'An error message should be shown in the screen'</span>, <span class="hljs-keyword">async</span> () =&gt; {
+    });
+    
+  });
+});
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>service-worker.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../doc-style.css" />
+  <script src="../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../";
+    var thisFile = "build\\service-worker.js";
+    var defaultSidebar = true;
+  </script>
+  <script src="../doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>service-worker.js</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+<div class="dox">
+<div class="summary">
+<p>Welcome to your Workbox-powered service worker!</p>
+</div>
+<div class="body">
+<p>You'll need to register this file in your web app and you should
+disable HTTP caching for this file too.
+See https://goo.gl/nhQhGp</p>
+<p>The rest of the code is auto-generated. Please don't update this file
+directly; instead, make changes to your Workbox build configuration
+and re-run your build process.
+See https://goo.gl/2aRDsh</p>
+</div>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">
+importScripts(<span class="hljs-string">"https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js"</span>);
+
+importScripts(
+  <span class="hljs-string">"/precache-manifest.a66b9096605308d9da2d21f50dff255f.js"</span>
+);
+
+workbox.clientsClaim();
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-2" id="section-2"></a>
+</div>
+<div class="dox">
+<div class="summary">
+<p>The workboxSW.precacheAndRoute() method efficiently caches and responds to
+requests for URLs in the manifest.
+See https://goo.gl/S9QRab</p>
+</div>
+<div class="body">
+</div>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">self.__precacheManifest = [].concat(self.__precacheManifest || []);
+workbox.precaching.suppressWarnings();
+workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+
+workbox.routing.registerNavigationRoute(<span class="hljs-string">"/index.html"</span>, {
+  
+  <span class="hljs-attr">blacklist</span>: [<span class="hljs-regexp">/^\/_/</span>,/\/[^<span class="hljs-regexp">/]+\.[^/]+$/</span>],
+});
+
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

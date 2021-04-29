@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>index.css</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../doc-style.css" />
+  <script src="../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../";
+    var thisFile = "src\\index.css";
+    var defaultSidebar = true;
+  </script>
+  <script src="../doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>index.css</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="css"><span class="hljs-selector-tag">html</span>,
+<span class="hljs-selector-tag">body</span>,
+<span class="hljs-selector-id">#root</span> {
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span> <span class="hljs-meta">!important</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+}
+
+* {
+  <span class="hljs-attribute">box-sizing</span>: border-box;
+}
+
+<span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#666</span>;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">62.5%</span>;
+}
+
+<span class="hljs-selector-tag">p</span>,
+<span class="hljs-selector-tag">a</span>,
+<span class="hljs-selector-tag">div</span> {
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;
+}
+
+<span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#666</span>;
+  <span class="hljs-attribute">text-decoration</span>: none;
+}
+
+<span class="hljs-selector-tag">a</span> <span class="hljs-selector-tag">svg-inline--fa</span> {
+  <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">5px</span>;
+}
+
+<span class="hljs-selector-tag">ul</span> {
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">list-style</span>: none;
+}
+
+<span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span> {
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type=<span class="hljs-string">'text'</span>]</span>,
+<span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type=<span class="hljs-string">'number'</span>]</span> {
+  <span class="hljs-attribute">box-sizing</span>: border-box;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-built_in">hsl</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0%</span>, <span class="hljs-number">80%</span>);
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">4px</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">7px</span> <span class="hljs-number">10px</span>;
+}
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-2" id="section-2"></a>
+</div>
+<ul>
+<li></li>
+</ul>
+<p>Temporary fix to overwrite and display the default style of the checkbox
+to prevent issues with the custom component and react/fontawesome missing icons
+The important tags are to override style coming from elsewhere</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="css"><span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type=<span class="hljs-string">'checkbox'</span>]</span> {
+  <span class="hljs-attribute">appearance</span>: checkbox <span class="hljs-meta">!important</span>;
+  <span class="hljs-attribute">-webkit-appearance</span>: checkbox <span class="hljs-meta">!important</span>;
+  <span class="hljs-attribute">-moz-appearance</span>: checkbox <span class="hljs-meta">!important</span>;
+  <span class="hljs-attribute">width</span>: auto <span class="hljs-meta">!important</span>;
+  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">4px</span> <span class="hljs-meta">!important</span>;
+}
+<span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type=<span class="hljs-string">'checkbox'</span>]</span><span class="hljs-selector-pseudo">::before</span> {
+  <span class="hljs-attribute">content</span>: none <span class="hljs-meta">!important</span>;
+}
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-3" id="section-3"></a>
+</div>
+<ul>
+<li></li>
+</ul>
+<p>Ends temporary react/fontawesome fix</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="css">
+<span class="hljs-selector-class">.link</span>,
+<span class="hljs-selector-class">.link-button</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#449df5</span>;
+  <span class="hljs-attribute">font-family</span>: Raleway;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">12px</span>;
+  <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">600</span>;
+  <span class="hljs-attribute">letter-spacing</span>: <span class="hljs-number">0.75px</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">14px</span>;
+  <span class="hljs-attribute">text-align</span>: center;
+  <span class="hljs-attribute">text-decoration</span>: none;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.link</span><span class="hljs-selector-pseudo">:active</span>,
+<span class="hljs-selector-class">.link-button</span><span class="hljs-selector-pseudo">:active</span>,
+<span class="hljs-selector-class">.link</span><span class="hljs-selector-pseudo">:hover</span>,
+<span class="hljs-selector-class">.link-button</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">text-decoration</span>: none;
+}
+
+* {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'Raleway'</span>, sans-serif;
+}
+
+<span class="hljs-selector-class">.form-group</span> {
+  <span class="hljs-attribute">text-align</span>: left;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">12px</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.form-group</span><span class="hljs-selector-pseudo">:first-child</span> {
+  <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.form-group</span> &gt; <span class="hljs-selector-tag">label</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#5361fd</span>;
+  <span class="hljs-attribute">font-family</span>: Raleway;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">11px</span>;
+  <span class="hljs-attribute">font-weight</span>: bold;
+  <span class="hljs-attribute">letter-spacing</span>: <span class="hljs-number">0.75px</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">14px</span>;
+  <span class="hljs-attribute">text-transform</span>: uppercase;
+  <span class="hljs-attribute">display</span>: block;
+}
+
+<span class="hljs-selector-class">.form-group</span> &gt; <span class="hljs-selector-tag">input</span> {
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">38px</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">4px</span>;
+  <span class="hljs-attribute">border</span>: solid <span class="hljs-number">1px</span> <span class="hljs-number">#ccc</span>;
+  <span class="hljs-attribute">box-sizing</span>: border-box;
+}
+
+<span class="hljs-selector-tag">form-group</span> <span class="hljs-selector-class">.select-role</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-comment">/* Overriding the center-align property from the styleguide */</span>
+<span class="hljs-selector-class">.solid-provider-select</span> {
+  <span class="hljs-attribute">text-align</span>: left <span class="hljs-meta">!important</span>;
+}
+
+<span class="hljs-selector-class">.solid-provider-select</span> <span class="hljs-selector-class">.option</span> {
+  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">10px</span> <span class="hljs-meta">!important</span>;
+}
+
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

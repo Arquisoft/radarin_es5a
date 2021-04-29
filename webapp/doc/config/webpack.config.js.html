@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>webpack.config.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../doc-style.css" />
+  <script src="../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../";
+    var thisFile = "config\\webpack.config.js";
+    var defaultSidebar = true;
+  </script>
+  <script src="../doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>webpack.config.js</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-comment">/* eslint-disable */</span>
+<span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+<span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>);
+<span class="hljs-keyword">const</span> webpack = <span class="hljs-built_in">require</span>(<span class="hljs-string">'webpack'</span>);
+<span class="hljs-keyword">const</span> resolve = <span class="hljs-built_in">require</span>(<span class="hljs-string">'resolve'</span>);
+<span class="hljs-keyword">const</span> PnpWebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'pnp-webpack-plugin'</span>);
+<span class="hljs-keyword">const</span> HtmlWebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'html-webpack-plugin'</span>);
+<span class="hljs-keyword">const</span> CaseSensitivePathsPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'case-sensitive-paths-webpack-plugin'</span>);
+<span class="hljs-keyword">const</span> InlineChunkHtmlPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'react-dev-utils/InlineChunkHtmlPlugin'</span>);
+<span class="hljs-keyword">const</span> TerserPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'terser-webpack-plugin'</span>);
+<span class="hljs-keyword">const</span> MiniCssExtractPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mini-css-extract-plugin'</span>);
+<span class="hljs-keyword">const</span> OptimizeCSSAssetsPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'optimize-css-assets-webpack-plugin'</span>);
+<span class="hljs-keyword">const</span> safePostCssParser = <span class="hljs-built_in">require</span>(<span class="hljs-string">'postcss-safe-parser'</span>);
+<span class="hljs-keyword">const</span> ManifestPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'webpack-manifest-plugin'</span>);
+<span class="hljs-keyword">const</span> InterpolateHtmlPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'react-dev-utils/InterpolateHtmlPlugin'</span>);
+<span class="hljs-keyword">const</span> WorkboxWebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'workbox-webpack-plugin'</span>);
+<span class="hljs-keyword">const</span> WatchMissingNodeModulesPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'react-dev-utils/WatchMissingNodeModulesPlugin'</span>);
+<span class="hljs-keyword">const</span> ModuleScopePlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'react-dev-utils/ModuleScopePlugin'</span>);
+<span class="hljs-keyword">const</span> getCSSModuleLocalIdent = <span class="hljs-built_in">require</span>(<span class="hljs-string">'react-dev-utils/getCSSModuleLocalIdent'</span>);
+<span class="hljs-keyword">const</span> paths = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./paths'</span>);
+<span class="hljs-keyword">const</span> getClientEnvironment = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./env'</span>);
+<span class="hljs-keyword">const</span> ModuleNotFoundPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'react-dev-utils/ModuleNotFoundPlugin'</span>);
+<span class="hljs-keyword">const</span> ForkTsCheckerWebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fork-ts-checker-webpack-plugin-alt'</span>);
+<span class="hljs-keyword">const</span> typescriptFormatter = <span class="hljs-built_in">require</span>(<span class="hljs-string">'react-dev-utils/typescriptFormatter'</span>);
+
+<span class="hljs-keyword">const</span> CopyWebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'copy-webpack-plugin'</span>);
+<span class="hljs-keyword">const</span> HtmlWebpackIncludeAssetsPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'html-webpack-include-assets-plugin'</span>);
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-2" id="section-2"></a>
+</div>
+<p>Source maps are resource heavy and can cause out of memory issue for large source files.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-keyword">const</span> shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== <span class="hljs-string">'false'</span>;
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-3" id="section-3"></a>
+</div>
+<p>Some apps do not need the benefits of saving a web request, so not inlining the chunk
+makes for a smoother build process.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-keyword">const</span> shouldInlineRuntimeChunk = process.env.INLINE_RUNTIME_CHUNK !== <span class="hljs-string">'false'</span>;
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-4" id="section-4"></a>
+</div>
+<p>Check if TypeScript is setup</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-keyword">const</span> useTypeScript = fs.existsSync(paths.appTsConfig);
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-5" id="section-5"></a>
+</div>
+<p>style files regexes</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-keyword">const</span> cssRegex = <span class="hljs-regexp">/\.css$/</span>;
+<span class="hljs-keyword">const</span> cssModuleRegex = <span class="hljs-regexp">/\.module\.css$/</span>;
+<span class="hljs-keyword">const</span> sassRegex = <span class="hljs-regexp">/\.(scss|sass)$/</span>;
+<span class="hljs-keyword">const</span> sassModuleRegex = <span class="hljs-regexp">/\.module\.(scss|sass)$/</span>;
+
+<span class="hljs-keyword">const</span> externalAssets = [
+  <span class="hljs-string">'solid-auth-client/dist-popup/popup.html'</span>,
+  <span class="hljs-string">'solid-auth-client/dist-lib/solid-auth-client.bundle.js'</span>,
+  <span class="hljs-string">'solid-auth-client/dist-lib/solid-auth-client.bundle.js.map'</span>,
+  <span class="hljs-string">'@solid/query-ldflex/dist/solid-query-ldflex.bundle.js'</span>,
+  <span class="hljs-string">'@solid/query-ldflex/dist/solid-query-ldflex.bundle.js.map'</span>
+];
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-6" id="section-6"></a>
+</div>
+<p>This is the production and development configuration.
+It is focused on developer experience, fast rebuilds, and a minimal bundle.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">webpackEnv</span>) </span>{
+  <span class="hljs-keyword">const</span> isEnvDevelopment = webpackEnv === <span class="hljs-string">'development'</span>;
+  <span class="hljs-keyword">const</span> isEnvProduction = webpackEnv === <span class="hljs-string">'production'</span>;
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-7" id="section-7"></a>
+</div>
+<p>Webpack uses <code>publicPath</code> to determine where the app is being served from.
+It requires a trailing slash, or the file assets will get an incorrect path.
+In development, we always serve from the root. This makes config easier.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">  <span class="hljs-keyword">const</span> publicPath = isEnvProduction ? paths.servedPath : isEnvDevelopment &amp;&amp; <span class="hljs-string">'/'</span>;
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-8" id="section-8"></a>
+</div>
+<p>Some apps do not use client-side routing with pushState.
+For these, &quot;homepage&quot; can be set to &quot;.&quot; to enable relative asset paths.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">  <span class="hljs-keyword">const</span> shouldUseRelativeAssetPaths = publicPath === <span class="hljs-string">'./'</span>;
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-9" id="section-9"></a>
+</div>
+<p><code>publicUrl</code> is just like <code>publicPath</code>, but we will provide it to our app
+as %PUBLIC_URL% in <code>index.html</code> and <code>process.env.PUBLIC_URL</code> in JavaScript.
+Omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">  <span class="hljs-keyword">const</span> publicUrl = isEnvProduction ? publicPath.slice(<span class="hljs-number">0</span>, <span class="hljs-number">-1</span>) : isEnvDevelopment &amp;&amp; <span class="hljs-string">''</span>;
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-10" id="section-10"></a>
+</div>
+<p>Get environment variables to inject into our app.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">  <span class="hljs-keyword">const</span> env = getClientEnvironment(publicUrl);
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-11" id="section-11"></a>
+</div>
+<p>common function to get style loaders</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">  <span class="hljs-keyword">const</span> getStyleLoaders = <span class="hljs-function">(<span class="hljs-params">cssOptions, preProcessor</span>) =&gt;</span> {
+    <span class="hljs-keyword">const</span> loaders = [
+      isEnvDevelopment &amp;&amp; <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">'style-loader'</span>),
+      isEnvProduction &amp;&amp; {
+        <span class="hljs-attr">loader</span>: MiniCssExtractPlugin.loader,
+        <span class="hljs-attr">options</span>: <span class="hljs-built_in">Object</span>.assign(
+          {},
+          shouldUseRelativeAssetPaths ? { <span class="hljs-attr">publicPath</span>: <span class="hljs-string">'../../'</span> } : <span class="hljs-literal">undefined</span>
+        )
+      },
+      {
+        <span class="hljs-attr">loader</span>: <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">'css-loader'</span>),
+        <span class="hljs-attr">options</span>: cssOptions
+      },
+      {
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-12" id="section-12"></a>
+</div>
+<p>Options for PostCSS as we reference these options twice
+Adds vendor prefixing based on your specified browser support in
+package.json</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">        loader: <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">'postcss-loader'</span>),
+        <span class="hljs-attr">options</span>: {
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-13" id="section-13"></a>
+</div>
+<p>Necessary for external CSS imports to work
+https://github.com/facebook/create-react-app/issues/2677</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">          ident: <span class="hljs-string">'postcss'</span>,
+          <span class="hljs-attr">plugins</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> [
+            <span class="hljs-built_in">require</span>(<span class="hljs-string">'postcss-flexbugs-fixes'</span>),
+            <span class="hljs-built_in">require</span>(<span class="hljs-string">'postcss-preset-env'</span>)({
+              <span class="hljs-attr">autoprefixer</span>: {
+                <span class="hljs-attr">flexbox</span>: <span class="hljs-string">'no-2009'</span>
+              },
+              <span class="hljs-attr">stage</span>: <span class="hljs-number">3</span>
+            })
+          ],
+          <span class="hljs-attr">sourceMap</span>: isEnvProduction &amp;&amp; shouldUseSourceMap
+        }
+      }
+    ].filter(<span class="hljs-built_in">Boolean</span>);
+    <span class="hljs-keyword">if</span> (preProcessor) {
+      loaders.push({
+        <span class="hljs-attr">loader</span>: <span class="hljs-built_in">require</span>.resolve(preProcessor),
+        <span class="hljs-attr">options</span>: {
+          <span class="hljs-attr">sourceMap</span>: isEnvProduction &amp;&amp; shouldUseSourceMap
+        }
+      });
+    }
+    <span class="hljs-keyword">return</span> loaders;
+  };
+
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">mode</span>: isEnvProduction ? <span class="hljs-string">'production'</span> : isEnvDevelopment &amp;&amp; <span class="hljs-string">'development'</span>,
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-14" id="section-14"></a>
+</div>
+<p>Stop compilation early in production</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">    bail: isEnvProduction,
+    <span class="hljs-attr">devtool</span>: isEnvProduction
+      ? shouldUseSourceMap
+        ? <span class="hljs-string">'source-map'</span>
+        : <span class="hljs-literal">false</span>
+      : isEnvDevelopment &amp;&amp; <span class="hljs-string">'cheap-module-source-map'</span>,
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-15" id="section-15"></a>
+</div>
+<p>These are the &quot;entry points&quot; to our application.
+This means they will be the &quot;root&quot; imports that are included in JS bundle.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">    entry: [
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-16" id="section-16"></a>
+</div>
+<p>Include an alternative client for WebpackDevServer. A client's job is to
+connect to WebpackDevServer by a socket and get notified about changes.
+When you save a file, the client will either apply hot updates (in case
+of CSS changes), or refresh the page (in case of JS changes). When you
+make a syntax error, this client will display a syntax error overlay.
+Note: instead of the default WebpackDevServer client, we use a custom one
+to bring better experience for Create React App users. You can replace
+the line below with these two lines if you prefer the stock client:
+require.resolve('webpack-dev-server/client') + '?/',
+require.resolve('webpack/hot/dev-server'),</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      isEnvDevelopment &amp;&amp; <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">'react-dev-utils/webpackHotDevClient'</span>),
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-17" id="section-17"></a>
+</div>
+<p>Finally, this is your app's code:</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      paths.appIndexJs
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-18" id="section-18"></a>
+</div>
+<p>We include the app code last so that if there is a runtime error during
+initialization, it doesn't blow up the WebpackDevServer client, and
+changing JS code would still trigger a refresh.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">    ].filter(<span class="hljs-built_in">Boolean</span>),
+    <span class="hljs-attr">output</span>: {
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-19" id="section-19"></a>
+</div>
+<p>The build folder.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      path: isEnvProduction ? paths.appBuild : <span class="hljs-literal">undefined</span>,
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-20" id="section-20"></a>
+</div>
+<p>Add /* filename */ comments to generated require()s in the output.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      pathinfo: isEnvDevelopment,
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-21" id="section-21"></a>
+</div>
+<p>There will be one main bundle, and one file per asynchronous chunk.
+In development, it does not produce real files.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      filename: isEnvProduction
+        ? <span class="hljs-string">'static/js/[name].[chunkhash:8].js'</span>
+        : isEnvDevelopment &amp;&amp; <span class="hljs-string">'static/js/bundle.js'</span>,
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-22" id="section-22"></a>
+</div>
+<p>There are also additional JS chunk files if you use code splitting.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      chunkFilename: isEnvProduction
+        ? <span class="hljs-string">'static/js/[name].[chunkhash:8].chunk.js'</span>
+        : isEnvDevelopment &amp;&amp; <span class="hljs-string">'static/js/[name].chunk.js'</span>,
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-23" id="section-23"></a>
+</div>
+<p>We inferred the &quot;public path&quot; (such as / or /my-project) from homepage.
+We use &quot;/&quot; in development.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      publicPath: publicPath,
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-24" id="section-24"></a>
+</div>
+<p>Point sourcemap entries to original disk location (format as URL on Windows)</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      devtoolModuleFilenameTemplate: isEnvProduction
+        ? <span class="hljs-function"><span class="hljs-params">info</span> =&gt;</span> path.relative(paths.appSrc, info.absoluteResourcePath).replace(<span class="hljs-regexp">/\\/g</span>, <span class="hljs-string">'/'</span>)
+        : isEnvDevelopment &amp;&amp; (<span class="hljs-function"><span class="hljs-params">info</span> =&gt;</span> path.resolve(info.absoluteResourcePath).replace(<span class="hljs-regexp">/\\/g</span>, <span class="hljs-string">'/'</span>))
+    },
+    <span class="hljs-attr">optimization</span>: {
+      <span class="hljs-attr">minimize</span>: isEnvProduction,
+      <span class="hljs-attr">minimizer</span>: [
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-25" id="section-25"></a>
+</div>
+<p>This is only used in production mode</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">        <span class="hljs-keyword">new</span> TerserPlugin({
+          <span class="hljs-attr">terserOptions</span>: {
+            <span class="hljs-attr">parse</span>: {
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-26" id="section-26"></a>
+</div>
+<p>we want terser to parse ecma 8 code. However, we don't want it
+to apply any minfication steps that turns valid ecma 5 code
+into invalid ecma 5 code. This is why the 'compress' and 'output'
+sections only apply transformations that are ecma 5 safe
+https://github.com/facebook/create-react-app/pull/4234</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">              ecma: <span class="hljs-number">8</span>
+            },
+            <span class="hljs-attr">compress</span>: {
+              <span class="hljs-attr">ecma</span>: <span class="hljs-number">5</span>,
+              <span class="hljs-attr">warnings</span>: <span class="hljs-literal">false</span>,
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-27" id="section-27"></a>
+</div>
+<p>Disabled because of an issue with Uglify breaking seemingly valid code:
+https://github.com/facebook/create-react-app/issues/2376
+Pending further investigation:
+https://github.com/mishoo/UglifyJS2/issues/2011</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">              comparisons: <span class="hljs-literal">false</span>,
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-28" id="section-28"></a>
+</div>
+<p>Disabled because of an issue with Terser breaking valid code:
+https://github.com/facebook/create-react-app/issues/5250
+Pending futher investigation:
+https://github.com/terser-js/terser/issues/120</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">              inline: <span class="hljs-number">2</span>
+            },
+            <span class="hljs-attr">mangle</span>: {
+              <span class="hljs-attr">safari10</span>: <span class="hljs-literal">true</span>
+            },
+            <span class="hljs-attr">output</span>: {
+              <span class="hljs-attr">ecma</span>: <span class="hljs-number">5</span>,
+              <span class="hljs-attr">comments</span>: <span class="hljs-literal">false</span>,
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-29" id="section-29"></a>
+</div>
+<p>Turned on because emoji and regex is not minified properly using default
+https://github.com/facebook/create-react-app/issues/2488</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">              ascii_only: <span class="hljs-literal">true</span>
+            }
+          },
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-30" id="section-30"></a>
+</div>
+<p>Use multi-process parallel running to improve the build speed
+Default number of concurrent runs: os.cpus().length - 1</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">          parallel: <span class="hljs-literal">true</span>,
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-31" id="section-31"></a>
+</div>
+<p>Enable file caching</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">          cache: <span class="hljs-literal">true</span>,
+          <span class="hljs-attr">sourceMap</span>: shouldUseSourceMap
+        }),
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-32" id="section-32"></a>
+</div>
+<p>This is only used in production mode</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">        <span class="hljs-keyword">new</span> OptimizeCSSAssetsPlugin({
+          <span class="hljs-attr">cssProcessorOptions</span>: {
+            <span class="hljs-attr">parser</span>: safePostCssParser,
+            <span class="hljs-attr">map</span>: shouldUseSourceMap
+              ? {
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-33" id="section-33"></a>
+</div>
+<p><code>inline: false</code> forces the sourcemap to be output into a
+separate file</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">                  inline: <span class="hljs-literal">false</span>,
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-34" id="section-34"></a>
+</div>
+<p><code>annotation: true</code> appends the sourceMappingURL to the end of
+the css file, helping the browser find the sourcemap</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">                  annotation: <span class="hljs-literal">true</span>
+                }
+              : <span class="hljs-literal">false</span>
+          }
+        })
+      ],
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-35" id="section-35"></a>
+</div>
+<p>Automatically split vendor and commons
+https://twitter.com/wSokra/status/969633336732905474
+https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      splitChunks: {
+        <span class="hljs-attr">chunks</span>: <span class="hljs-string">'all'</span>,
+        <span class="hljs-attr">name</span>: <span class="hljs-literal">false</span>
+      },
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-36" id="section-36"></a>
+</div>
+<p>Keep the runtime chunk separated to enable long term caching
+https://twitter.com/wSokra/status/969679223278505985</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      runtimeChunk: <span class="hljs-literal">true</span>
+    },
+    <span class="hljs-attr">resolve</span>: {
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-37" id="section-37"></a>
+</div>
+<p>This allows you to set a fallback for where Webpack should look for modules.
+We placed these paths second because we want <code>node_modules</code> to &quot;win&quot;
+if there are any conflicts. This matches Node resolution mechanism.
+https://github.com/facebook/create-react-app/issues/253</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      modules: [<span class="hljs-string">'node_modules'</span>].concat(
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-38" id="section-38"></a>
+</div>
+<p>It is guaranteed to exist because we tweak it in <code>env.js</code></p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">        process.env.NODE_PATH.split(path.delimiter).filter(<span class="hljs-built_in">Boolean</span>)
+      ),
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-39" id="section-39"></a>
+</div>
+<p>These are the reasonable defaults supported by the Node ecosystem.
+We also include JSX as a common component filename extension to support
+some tools, although we do not recommend using it, see:
+https://github.com/facebook/create-react-app/issues/290
+<code>web</code> extension prefixes have been added for better support
+for React Native Web.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      extensions: paths.moduleFileExtensions
+        .map(<span class="hljs-function"><span class="hljs-params">ext</span> =&gt;</span> <span class="hljs-string">`.<span class="hljs-subst">${ext}</span>`</span>)
+        .filter(<span class="hljs-function"><span class="hljs-params">ext</span> =&gt;</span> useTypeScript || !ext.includes(<span class="hljs-string">'ts'</span>)),
+      <span class="hljs-attr">alias</span>: {
+        <span class="hljs-attr">react</span>: <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">'react'</span>),
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-40" id="section-40"></a>
+</div>
+<p>Support React Native Web
+https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">        <span class="hljs-string">'react-native'</span>: <span class="hljs-string">'react-native-web'</span>
+      },
+      <span class="hljs-attr">plugins</span>: [
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-41" id="section-41"></a>
+</div>
+<p>Adds support for installing with Plug'n'Play, leading to faster installs and adding
+guards against forgotten dependencies and such.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">        PnpWebpackPlugin,
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-42" id="section-42"></a>
+</div>
+<p>Prevents users from importing files from outside of src/ (or node_modules/).
+This often causes confusion because we only process files within src/ with babel.
+To fix this, we prevent you from importing files out of src/ -- if you'd like to,
+please link the files into your node_modules/ and let module-resolution kick in.
+Make sure your source files are compiled, as they will not be processed in any way.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">        <span class="hljs-keyword">new</span> ModuleScopePlugin(paths.appSrc, [paths.appPackageJson])
+      ]
+    },
+    <span class="hljs-attr">resolveLoader</span>: {
+      <span class="hljs-attr">plugins</span>: [
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-43" id="section-43"></a>
+</div>
+<p>Also related to Plug'n'Play, but this time it tells Webpack to load its loaders
+from the current package.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">        PnpWebpackPlugin.moduleLoader(<span class="hljs-built_in">module</span>)
+      ]
+    },
+    <span class="hljs-attr">module</span>: {
+      <span class="hljs-attr">strictExportPresence</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">rules</span>: [
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-44" id="section-44"></a>
+</div>
+<p>Disable require.ensure as it's not a standard language feature.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">        { <span class="hljs-attr">parser</span>: { <span class="hljs-attr">requireEnsure</span>: <span class="hljs-literal">false</span> } },
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-45" id="section-45"></a>
+</div>
+<p>First, run the linter.
+It's important to do this before Babel processes the JS.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">        {
+          <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.(js|mjs|jsx)$/</span>,
+          <span class="hljs-attr">enforce</span>: <span class="hljs-string">'pre'</span>,
+          <span class="hljs-attr">use</span>: [
+            {
+              <span class="hljs-attr">options</span>: {
+                <span class="hljs-attr">formatter</span>: <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">'react-dev-utils/eslintFormatter'</span>),
+                <span class="hljs-attr">eslintPath</span>: <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">'eslint'</span>)
+              },
+              <span class="hljs-attr">loader</span>: <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">'eslint-loader'</span>)
+            }
+          ],
+          <span class="hljs-attr">include</span>: paths.appSrc
+        },
+        {
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-46" id="section-46"></a>
+</div>
+<p>&quot;oneOf&quot; will traverse all following loaders until one will
+match the requirements. When no loader matches it will fall
+back to the &quot;file&quot; loader at the end of the loader list.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">          oneOf: [
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-47" id="section-47"></a>
+</div>
+<p>&quot;url&quot; loader works like &quot;file&quot; loader except that it embeds assets
+smaller than specified limit in bytes as data URLs to avoid requests.
+A missing <code>test</code> is equivalent to a match.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">            {
+              <span class="hljs-attr">test</span>: [<span class="hljs-regexp">/\.bmp$/</span>, /\.gif$/, /\.jpe?g$/, /\.png$/],
+              <span class="hljs-attr">loader</span>: <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">'url-loader'</span>),
+              <span class="hljs-attr">options</span>: {
+                <span class="hljs-attr">limit</span>: <span class="hljs-number">10000</span>,
+                <span class="hljs-attr">name</span>: <span class="hljs-string">'static/media/[name].[hash:8].[ext]'</span>
+              }
+            },
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-48" id="section-48"></a>
+</div>
+<p>Process application JS with Babel.
+The preset includes JSX, Flow, TypeScript, and some ESnext features.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">            {
+              <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.(js|mjs|jsx|ts|tsx)$/</span>,
+              <span class="hljs-attr">include</span>: paths.appSrc,
+              <span class="hljs-attr">loader</span>: <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">'babel-loader'</span>),
+              <span class="hljs-attr">options</span>: {
+                <span class="hljs-attr">customize</span>: <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">'babel-preset-react-app/webpack-overrides'</span>),
+
+                <span class="hljs-attr">plugins</span>: [
+                  [
+                    <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">'babel-plugin-named-asset-import'</span>),
+                    {
+                      <span class="hljs-attr">loaderMap</span>: {
+                        <span class="hljs-attr">svg</span>: {
+                          <span class="hljs-attr">ReactComponent</span>: <span class="hljs-string">'@svgr/webpack?-prettier,-svgo![path]'</span>
+                        }
+                      }
+                    }
+                  ]
+                ],
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-49" id="section-49"></a>
+</div>
+<p>This is a feature of <code>babel-loader</code> for webpack (not Babel itself).
+It enables caching results in ./node_modules/.cache/babel-loader/
+directory for faster rebuilds.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">                cacheDirectory: <span class="hljs-literal">true</span>,
+                <span class="hljs-attr">cacheCompression</span>: isEnvProduction,
+                <span class="hljs-attr">compact</span>: isEnvProduction
+              }
+            },
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-50" id="section-50"></a>
+</div>
+<p>Process any JS outside of the app with Babel.
+Unlike the application JS, we only compile the standard ES features.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">            {
+              <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.(js|mjs)$/</span>,
+              <span class="hljs-attr">exclude</span>: <span class="hljs-regexp">/@babel(?:\/|\\{1,2})runtime/</span>,
+              <span class="hljs-attr">loader</span>: <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">'babel-loader'</span>),
+              <span class="hljs-attr">options</span>: {
+                <span class="hljs-attr">babelrc</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-attr">configFile</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-attr">compact</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-attr">presets</span>: [
+                  [<span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">'babel-preset-react-app/dependencies'</span>), { <span class="hljs-attr">helpers</span>: <span class="hljs-literal">true</span> }]
+                ],
+                <span class="hljs-attr">cacheDirectory</span>: <span class="hljs-literal">true</span>,
+                <span class="hljs-attr">cacheCompression</span>: isEnvProduction,
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-51" id="section-51"></a>
+</div>
+<p>If an error happens in a package, it's possible to be
+because it was compiled. Thus, we don't want the browser
+debugger to show the original code. Instead, the code
+being evaluated would be much more helpful.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">                sourceMaps: <span class="hljs-literal">false</span>
+              }
+            },
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-52" id="section-52"></a>
+</div>
+<p>&quot;postcss&quot; loader applies autoprefixer to our CSS.
+&quot;css&quot; loader resolves paths in CSS and adds assets as dependencies.
+&quot;style&quot; loader turns CSS into JS modules that inject <style> tags.
+In production, we use MiniCSSExtractPlugin to extract that CSS
+to a file, but in development &quot;style&quot; loader enables hot editing
+of CSS.
+By default we support CSS Modules with the extension .module.css</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">            {
+              <span class="hljs-attr">test</span>: cssRegex,
+              <span class="hljs-attr">exclude</span>: cssModuleRegex,
+              <span class="hljs-attr">use</span>: getStyleLoaders({
+                <span class="hljs-attr">importLoaders</span>: <span class="hljs-number">1</span>,
+                <span class="hljs-attr">sourceMap</span>: isEnvProduction &amp;&amp; shouldUseSourceMap
+              }),
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-53" id="section-53"></a>
+</div>
+<p>Don't consider CSS imports dead code even if the
+containing package claims to have no side effects.
+Remove this when webpack adds a warning or an error for this.
+See https://github.com/webpack/webpack/issues/6571</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">              sideEffects: <span class="hljs-literal">true</span>
+            },
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-54" id="section-54"></a>
+</div>
+<p>Adds support for CSS Modules (https://github.com/css-modules/css-modules)
+using the extension .module.css</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">            {
+              <span class="hljs-attr">test</span>: cssModuleRegex,
+              <span class="hljs-attr">use</span>: getStyleLoaders({
+                <span class="hljs-attr">importLoaders</span>: <span class="hljs-number">1</span>,
+                <span class="hljs-attr">sourceMap</span>: isEnvProduction &amp;&amp; shouldUseSourceMap,
+                <span class="hljs-attr">modules</span>: <span class="hljs-literal">true</span>,
+                <span class="hljs-attr">getLocalIdent</span>: getCSSModuleLocalIdent
+              })
+            },
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-55" id="section-55"></a>
+</div>
+<p>Opt-in support for SASS (using .scss or .sass extensions).
+By default we support SASS Modules with the
+extensions .module.scss or .module.sass</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">            {
+              <span class="hljs-attr">test</span>: sassRegex,
+              <span class="hljs-attr">exclude</span>: sassModuleRegex,
+              <span class="hljs-attr">use</span>: getStyleLoaders(
+                {
+                  <span class="hljs-attr">importLoaders</span>: <span class="hljs-number">2</span>,
+                  <span class="hljs-attr">sourceMap</span>: isEnvProduction &amp;&amp; shouldUseSourceMap
+                },
+                <span class="hljs-string">'sass-loader'</span>
+              ),
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-56" id="section-56"></a>
+</div>
+<p>Don't consider CSS imports dead code even if the
+containing package claims to have no side effects.
+Remove this when webpack adds a warning or an error for this.
+See https://github.com/webpack/webpack/issues/6571</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">              sideEffects: <span class="hljs-literal">true</span>
+            },
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-57" id="section-57"></a>
+</div>
+<p>Adds support for CSS Modules, but using SASS
+using the extension .module.scss or .module.sass</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">            {
+              <span class="hljs-attr">test</span>: sassModuleRegex,
+              <span class="hljs-attr">use</span>: getStyleLoaders(
+                {
+                  <span class="hljs-attr">importLoaders</span>: <span class="hljs-number">2</span>,
+                  <span class="hljs-attr">sourceMap</span>: isEnvProduction &amp;&amp; shouldUseSourceMap,
+                  <span class="hljs-attr">modules</span>: <span class="hljs-literal">true</span>,
+                  <span class="hljs-attr">getLocalIdent</span>: getCSSModuleLocalIdent
+                },
+                <span class="hljs-string">'sass-loader'</span>
+              )
+            },
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-58" id="section-58"></a>
+</div>
+<p>&quot;file&quot; loader makes sure those assets get served by WebpackDevServer.
+When you <code>import</code> an asset, you get its (virtual) filename.
+In production, they would get copied to the <code>build</code> folder.
+This loader doesn't use a &quot;test&quot; so it will catch all modules
+that fall through the other loaders.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">            {
+              <span class="hljs-attr">loader</span>: <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">'file-loader'</span>),
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-59" id="section-59"></a>
+</div>
+<p>Exclude <code>js</code> files to keep &quot;css&quot; loader working as it injects
+its runtime that would otherwise be processed through &quot;file&quot; loader.
+Also exclude <code>html</code> and <code>json</code> extensions so they get processed
+by webpacks internal loaders.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">              exclude: [<span class="hljs-regexp">/\.(js|mjs|jsx|ts|tsx)$/</span>, /\.html$/, /\.json$/],
+              <span class="hljs-attr">options</span>: {
+                <span class="hljs-attr">name</span>: <span class="hljs-string">'static/media/[name].[hash:8].[ext]'</span>
+              }
+            }
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-60" id="section-60"></a>
+</div>
+<p>** STOP ** Are you adding a new loader?
+Make sure to add the new loader(s) before the &quot;file&quot; loader.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">          ]
+        }
+      ]
+    },
+    <span class="hljs-attr">plugins</span>: [
+      <span class="hljs-keyword">new</span> CopyWebpackPlugin(externalAssets.map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> <span class="hljs-built_in">require</span>.resolve(a))),
+
+      <span class="hljs-keyword">new</span> HtmlWebpackIncludeAssetsPlugin({
+        <span class="hljs-attr">assets</span>: [...externalAssets.map(<span class="hljs-function"><span class="hljs-params">f</span> =&gt;</span> f.replace(<span class="hljs-regexp">/.*\//</span>, <span class="hljs-string">''</span>))].filter(<span class="hljs-function"><span class="hljs-params">f</span> =&gt;</span>
+          <span class="hljs-regexp">/\.(js|css)$/</span>.test(f)
+        ),
+        <span class="hljs-attr">append</span>: <span class="hljs-literal">false</span>
+      }),
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-61" id="section-61"></a>
+</div>
+<p>Generates an <code>index.html</code> file with the <script> injected.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      <span class="hljs-keyword">new</span> HtmlWebpackPlugin(
+        <span class="hljs-built_in">Object</span>.assign(
+          {},
+          {
+            <span class="hljs-attr">inject</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">template</span>: paths.appHtml
+          },
+          isEnvProduction
+            ? {
+                <span class="hljs-attr">minify</span>: {
+                  <span class="hljs-attr">removeComments</span>: <span class="hljs-literal">true</span>,
+                  <span class="hljs-attr">collapseWhitespace</span>: <span class="hljs-literal">true</span>,
+                  <span class="hljs-attr">removeRedundantAttributes</span>: <span class="hljs-literal">true</span>,
+                  <span class="hljs-attr">useShortDoctype</span>: <span class="hljs-literal">true</span>,
+                  <span class="hljs-attr">removeEmptyAttributes</span>: <span class="hljs-literal">true</span>,
+                  <span class="hljs-attr">removeStyleLinkTypeAttributes</span>: <span class="hljs-literal">true</span>,
+                  <span class="hljs-attr">keepClosingSlash</span>: <span class="hljs-literal">true</span>,
+                  <span class="hljs-attr">minifyJS</span>: <span class="hljs-literal">true</span>,
+                  <span class="hljs-attr">minifyCSS</span>: <span class="hljs-literal">true</span>,
+                  <span class="hljs-attr">minifyURLs</span>: <span class="hljs-literal">true</span>
+                }
+              }
+            : <span class="hljs-literal">undefined</span>
+        )
+      ),
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-62" id="section-62"></a>
+</div>
+<p>Inlines the webpack runtime script. This script is too small to warrant
+a network request.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      isEnvProduction &amp;&amp;
+        shouldInlineRuntimeChunk &amp;&amp;
+        <span class="hljs-keyword">new</span> InlineChunkHtmlPlugin(HtmlWebpackPlugin, [<span class="hljs-regexp">/runtime~.+[.]js/</span>]),
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-63" id="section-63"></a>
+</div>
+<p>Makes some environment variables available in index.html.
+The public URL is available as %PUBLIC_URL% in index.html, e.g.:</p>
+<link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+In production, it will be an empty string unless you specify "homepage"
+in `package.json`, in which case it will be the pathname of that URL.
+In development, this will be an empty string.
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      <span class="hljs-keyword">new</span> InterpolateHtmlPlugin(HtmlWebpackPlugin, env.raw),
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-64" id="section-64"></a>
+</div>
+<p>This gives some necessary context to module not found errors, such as
+the requesting resource.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      <span class="hljs-keyword">new</span> ModuleNotFoundPlugin(paths.appPath),
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-65" id="section-65"></a>
+</div>
+<p>Makes some environment variables available to the JS code, for example:
+if (process.env.NODE_ENV === 'production') { ... }. See <code>./env.js</code>.
+It is absolutely essential that NODE_ENV is set to production
+during a production build.
+Otherwise React will be compiled in the very slow development mode.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      <span class="hljs-keyword">new</span> webpack.DefinePlugin(env.stringified),
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-66" id="section-66"></a>
+</div>
+<p>This is necessary to emit hot updates (currently CSS only):</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      isEnvDevelopment &amp;&amp; <span class="hljs-keyword">new</span> webpack.HotModuleReplacementPlugin(),
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-67" id="section-67"></a>
+</div>
+<p>Watcher doesn't work well if you mistype casing in a path so we use
+a plugin that prints an error when you attempt to do this.
+See https://github.com/facebook/create-react-app/issues/240</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      isEnvDevelopment &amp;&amp; <span class="hljs-keyword">new</span> CaseSensitivePathsPlugin(),
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-68" id="section-68"></a>
+</div>
+<p>If you require a missing module and then <code>npm install</code> it, you still have
+to restart the development server for Webpack to discover it. This plugin
+makes the discovery automatic so you don't have to restart.
+See https://github.com/facebook/create-react-app/issues/186</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      isEnvDevelopment &amp;&amp; <span class="hljs-keyword">new</span> WatchMissingNodeModulesPlugin(paths.appNodeModules),
+      isEnvProduction &amp;&amp;
+        <span class="hljs-keyword">new</span> MiniCssExtractPlugin({
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-69" id="section-69"></a>
+</div>
+<p>Options similar to the same options in webpackOptions.output
+both options are optional</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">          filename: <span class="hljs-string">'static/css/[name].[contenthash:8].css'</span>,
+          <span class="hljs-attr">chunkFilename</span>: <span class="hljs-string">'static/css/[name].[contenthash:8].chunk.css'</span>
+        }),
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-70" id="section-70"></a>
+</div>
+<p>Generate a manifest file which contains a mapping of all asset filenames
+to their corresponding output file so that tools can pick it up without
+having to parse <code>index.html</code>.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      <span class="hljs-keyword">new</span> ManifestPlugin({
+        <span class="hljs-attr">fileName</span>: <span class="hljs-string">'asset-manifest.json'</span>,
+        <span class="hljs-attr">publicPath</span>: publicPath
+      }),
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-71" id="section-71"></a>
+</div>
+<p>Moment.js is an extremely popular library that bundles large locale files
+by default due to how Webpack interprets its code. This is a practical
+solution that requires the user to opt into importing specific locales.
+https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
+You can remove this if you don't use Moment.js:</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      <span class="hljs-keyword">new</span> webpack.IgnorePlugin(<span class="hljs-regexp">/^\.\/locale$/</span>, /moment$/),
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-72" id="section-72"></a>
+</div>
+<p>Generate a service worker script that will precache, and keep up to date,
+the HTML &amp; assets that are part of the Webpack build.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      isEnvProduction &amp;&amp;
+        <span class="hljs-keyword">new</span> WorkboxWebpackPlugin.GenerateSW({
+          <span class="hljs-attr">clientsClaim</span>: <span class="hljs-literal">true</span>,
+          <span class="hljs-attr">exclude</span>: [<span class="hljs-regexp">/\.map$/</span>, /asset-manifest\.json$/],
+          <span class="hljs-attr">importWorkboxFrom</span>: <span class="hljs-string">'cdn'</span>,
+          <span class="hljs-attr">navigateFallback</span>: publicUrl + <span class="hljs-string">'/index.html'</span>,
+          <span class="hljs-attr">navigateFallbackBlacklist</span>: [
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-73" id="section-73"></a>
+</div>
+<p>Exclude URLs starting with /_, as they're likely an API call</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">            <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">'^/_'</span>),
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-74" id="section-74"></a>
+</div>
+<p>Exclude URLs containing a dot, as they're likely a resource in
+public/ and not a SPA route</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">            <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">'/[^/]+\\.[^/]+$'</span>)
+          ]
+        }),
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-75" id="section-75"></a>
+</div>
+<p>TypeScript type checking</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      useTypeScript &amp;&amp;
+        <span class="hljs-keyword">new</span> ForkTsCheckerWebpackPlugin({
+          <span class="hljs-attr">typescript</span>: resolve.sync(<span class="hljs-string">'typescript'</span>, {
+            <span class="hljs-attr">basedir</span>: paths.appNodeModules
+          }),
+          <span class="hljs-attr">async</span>: <span class="hljs-literal">false</span>,
+          <span class="hljs-attr">checkSyntacticErrors</span>: <span class="hljs-literal">true</span>,
+          <span class="hljs-attr">tsconfig</span>: paths.appTsConfig,
+          <span class="hljs-attr">compilerOptions</span>: {
+            <span class="hljs-attr">module</span>: <span class="hljs-string">'esnext'</span>,
+            <span class="hljs-attr">moduleResolution</span>: <span class="hljs-string">'node'</span>,
+            <span class="hljs-attr">resolveJsonModule</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">isolatedModules</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">noEmit</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">jsx</span>: <span class="hljs-string">'preserve'</span>
+          },
+          <span class="hljs-attr">reportFiles</span>: [
+            <span class="hljs-string">'**'</span>,
+            <span class="hljs-string">'!**/*.json'</span>,
+            <span class="hljs-string">'!**/__tests__/**'</span>,
+            <span class="hljs-string">'!**/?(*.)(spec|test).*'</span>,
+            <span class="hljs-string">'!**/src/setupProxy.*'</span>,
+            <span class="hljs-string">'!**/src/setupTests.*'</span>
+          ],
+          <span class="hljs-attr">watch</span>: paths.appSrc,
+          <span class="hljs-attr">silent</span>: <span class="hljs-literal">true</span>,
+          <span class="hljs-attr">formatter</span>: typescriptFormatter
+        })
+    ].filter(<span class="hljs-built_in">Boolean</span>),
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-76" id="section-76"></a>
+</div>
+<p>CRL: add externals block since it's a library
+no need to ship React since it's shipped with the main app</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">    externals: {
+      <span class="hljs-string">'solid-auth-client'</span>: [<span class="hljs-string">'solid'</span>, <span class="hljs-string">'auth'</span>],
+      <span class="hljs-string">'@solid/query-ldflex'</span>: [<span class="hljs-string">'solid'</span>, <span class="hljs-string">'data'</span>],
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-77" id="section-77"></a>
+</div>
+<p>Disable shims for supported browser features</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      <span class="hljs-string">'web-streams-polyfill'</span>: <span class="hljs-string">'window'</span>,
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-78" id="section-78"></a>
+</div>
+<p>Exclude the following unneeded modules</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      <span class="hljs-string">'@comunica/actor-rdf-serialize-jsonld'</span>: <span class="hljs-string">'null'</span>,
+      <span class="hljs-string">'graphql'</span>: <span class="hljs-string">'null'</span>,
+      <span class="hljs-string">'graphql-to-sparql'</span>: <span class="hljs-string">'null'</span>,
+    },
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-79" id="section-79"></a>
+</div>
+<p>Some libraries import Node modules but don't use them in the browser.
+Tell Webpack to provide empty mocks for them so importing them works.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">    node: {
+      <span class="hljs-attr">dgram</span>: <span class="hljs-string">'empty'</span>,
+      <span class="hljs-attr">fs</span>: <span class="hljs-string">'empty'</span>,
+      <span class="hljs-attr">net</span>: <span class="hljs-string">'empty'</span>,
+      <span class="hljs-attr">tls</span>: <span class="hljs-string">'empty'</span>,
+      <span class="hljs-attr">child_process</span>: <span class="hljs-string">'empty'</span>
+    },
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-80" id="section-80"></a>
+</div>
+<p>Turn off performance processing because we utilize
+our own hints via the FileSizeReporter</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">    performance: <span class="hljs-literal">false</span>
+  };
+};
+
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

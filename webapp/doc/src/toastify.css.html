@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>toastify.css</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../doc-style.css" />
+  <script src="../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../";
+    var thisFile = "src\\toastify.css";
+    var defaultSidebar = true;
+  </script>
+  <script src="../doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>toastify.css</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="css"><span class="hljs-selector-class">.Toastify__toast-container</span> {
+    <span class="hljs-attribute">z-index</span>: <span class="hljs-number">9999</span>;
+    <span class="hljs-attribute">-webkit-transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">9999px</span>);
+    <span class="hljs-attribute">position</span>: fixed;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">4px</span>;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">320px</span>;
+    <span class="hljs-attribute">box-sizing</span>: border-box;
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+  }
+  <span class="hljs-selector-class">.Toastify__toast-container--top-left</span> {
+    <span class="hljs-attribute">top</span>: <span class="hljs-number">1em</span>;
+    <span class="hljs-attribute">left</span>: <span class="hljs-number">1em</span>;
+  }
+  <span class="hljs-selector-class">.Toastify__toast-container--top-center</span> {
+    <span class="hljs-attribute">top</span>: <span class="hljs-number">1em</span>;
+    <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateX</span>(-<span class="hljs-number">50%</span>);
+  }
+  <span class="hljs-selector-class">.Toastify__toast-container--top-right</span> {
+    <span class="hljs-attribute">top</span>: <span class="hljs-number">1em</span>;
+    <span class="hljs-attribute">right</span>: <span class="hljs-number">1em</span>;
+  }
+  <span class="hljs-selector-class">.Toastify__toast-container--bottom-left</span> {
+    <span class="hljs-attribute">bottom</span>: <span class="hljs-number">1em</span>;
+    <span class="hljs-attribute">left</span>: <span class="hljs-number">1em</span>;
+  }
+  <span class="hljs-selector-class">.Toastify__toast-container--bottom-center</span> {
+    <span class="hljs-attribute">bottom</span>: <span class="hljs-number">1em</span>;
+    <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateX</span>(-<span class="hljs-number">50%</span>);
+  }
+  <span class="hljs-selector-class">.Toastify__toast-container--bottom-right</span> {
+    <span class="hljs-attribute">bottom</span>: <span class="hljs-number">1em</span>;
+    <span class="hljs-attribute">right</span>: <span class="hljs-number">1em</span>;
+  }
+  
+  <span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (max-width : <span class="hljs-number">480px</span>) {
+    <span class="hljs-selector-class">.Toastify__toast-container</span> {
+      <span class="hljs-attribute">width</span>: <span class="hljs-number">100vw</span>;
+      <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+    }
+    <span class="hljs-selector-class">.Toastify__toast-container--top-left</span>, <span class="hljs-selector-class">.Toastify__toast-container--top-center</span>, <span class="hljs-selector-class">.Toastify__toast-container--top-right</span> {
+      <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateX</span>(<span class="hljs-number">0</span>);
+    }
+    <span class="hljs-selector-class">.Toastify__toast-container--bottom-left</span>, <span class="hljs-selector-class">.Toastify__toast-container--bottom-center</span>, <span class="hljs-selector-class">.Toastify__toast-container--bottom-right</span> {
+      <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateX</span>(<span class="hljs-number">0</span>);
+    }
+    <span class="hljs-selector-class">.Toastify__toast-container--rtl</span> {
+      <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">left</span>: initial;
+    }
+  }
+  <span class="hljs-selector-class">.Toastify__toast</span> {
+    <span class="hljs-attribute">position</span>: relative;
+    <span class="hljs-attribute">min-height</span>: <span class="hljs-number">64px</span>;
+    <span class="hljs-attribute">box-sizing</span>: border-box;
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">1rem</span>;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span>;
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">4px</span>;
+    <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">10px</span> <span class="hljs-number">0</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.1</span>), <span class="hljs-number">0</span> <span class="hljs-number">2px</span> <span class="hljs-number">15px</span> <span class="hljs-number">0</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.05</span>);
+    <span class="hljs-attribute">display</span>: -ms-flexbox;
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">-ms-flex-pack</span>: justify;
+        <span class="hljs-attribute">justify-content</span>: space-between;
+    <span class="hljs-attribute">max-height</span>: <span class="hljs-number">800px</span>;
+    <span class="hljs-attribute">overflow</span>: hidden;
+    <span class="hljs-attribute">font-family</span>: sans-serif;
+    <span class="hljs-attribute">cursor</span>: pointer;
+    <span class="hljs-attribute">direction</span>: ltr;
+  }
+  <span class="hljs-selector-class">.Toastify__toast--rtl</span> {
+    <span class="hljs-attribute">direction</span>: rtl;
+  }
+  <span class="hljs-selector-class">.Toastify__toast--dark</span> {
+    <span class="hljs-attribute">background</span>: <span class="hljs-number">#121212</span>;
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+  }
+  <span class="hljs-selector-class">.Toastify__toast--default</span> {
+    <span class="hljs-attribute">background</span>: <span class="hljs-number">#fff</span>;
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#aaa</span>;
+  }
+  <span class="hljs-selector-class">.Toastify__toast--info</span> {
+    <span class="hljs-attribute">background</span>: <span class="hljs-number">#3498db</span>;
+  }
+  <span class="hljs-selector-class">.Toastify__toast--success</span> {
+    <span class="hljs-attribute">background</span>: <span class="hljs-number">#07bc0c</span>;
+  }
+  <span class="hljs-selector-class">.Toastify__toast--warning</span> {
+    <span class="hljs-attribute">background</span>: <span class="hljs-number">#f1c40f</span>;
+  }
+  <span class="hljs-selector-class">.Toastify__toast--error</span> {
+    <span class="hljs-attribute">background</span>: <span class="hljs-number">#e74c3c</span>;
+  }
+  <span class="hljs-selector-class">.Toastify__toast-body</span> {
+    <span class="hljs-attribute">margin</span>: auto <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">6px</span>;
+  }
+  
+  <span class="hljs-selector-class">.Toastify--animate</span> {
+    <span class="hljs-attribute">animation-fill-mode</span>: both;
+    <span class="hljs-attribute">animation-duration</span>: <span class="hljs-number">0.7s</span>;
+  }
+  
+  <span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (max-width : <span class="hljs-number">480px</span>) {
+    <span class="hljs-selector-class">.Toastify__toast</span> {
+      <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+    }
+  }
+  <span class="hljs-selector-class">.Toastify__close-button</span> {
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+    <span class="hljs-attribute">background</span>: transparent;
+    <span class="hljs-attribute">outline</span>: none;
+    <span class="hljs-attribute">border</span>: none;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">cursor</span>: pointer;
+    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.7</span>;
+    <span class="hljs-attribute">transition</span>: <span class="hljs-number">0.3s</span> ease;
+    <span class="hljs-attribute">-ms-flex-item-align</span>: start;
+        <span class="hljs-attribute">align-self</span>: flex-start;
+  }
+  <span class="hljs-selector-class">.Toastify__close-button--default</span> {
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#000</span>;
+    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.3</span>;
+  }
+  <span class="hljs-selector-class">.Toastify__close-button</span> &gt; <span class="hljs-selector-tag">svg</span> {
+    <span class="hljs-attribute">fill</span>: currentColor;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">16px</span>;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">14px</span>;
+  }
+  <span class="hljs-selector-class">.Toastify__close-button</span><span class="hljs-selector-pseudo">:hover</span>, <span class="hljs-selector-class">.Toastify__close-button</span><span class="hljs-selector-pseudo">:focus</span> {
+    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+  }
+  
+  <span class="hljs-keyword">@keyframes</span> Toastify__trackProgress {
+    0% {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scaleX</span>(<span class="hljs-number">1</span>);
+    }
+    100% {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scaleX</span>(<span class="hljs-number">0</span>);
+    }
+  }
+  <span class="hljs-selector-class">.Toastify__progress-bar</span> {
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">5px</span>;
+    <span class="hljs-attribute">z-index</span>: <span class="hljs-number">9999</span>;
+    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.7</span>;
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0.7</span>);
+    <span class="hljs-attribute">transform-origin</span>: left;
+  }
+  <span class="hljs-selector-class">.Toastify__progress-bar--animated</span> {
+    <span class="hljs-attribute">animation</span>: Toastify__trackProgress linear <span class="hljs-number">1</span> forwards;
+  }
+  <span class="hljs-selector-class">.Toastify__progress-bar--controlled</span> {
+    <span class="hljs-attribute">transition</span>: transform <span class="hljs-number">0.2s</span>;
+  }
+  <span class="hljs-selector-class">.Toastify__progress-bar--rtl</span> {
+    <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">left</span>: initial;
+    <span class="hljs-attribute">transform-origin</span>: right;
+  }
+  <span class="hljs-selector-class">.Toastify__progress-bar--default</span> {
+    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(to right, #<span class="hljs-number">4</span>cd964, #<span class="hljs-number">5</span>ac8fa, #<span class="hljs-number">007</span>aff, #<span class="hljs-number">34</span>aadc, #<span class="hljs-number">5856</span>d6, #ff2d55);
+  }
+  <span class="hljs-selector-class">.Toastify__progress-bar--dark</span> {
+    <span class="hljs-attribute">background</span>: <span class="hljs-number">#bb86fc</span>;
+  }
+  <span class="hljs-keyword">@keyframes</span> Toastify__bounceInRight {
+    <span class="hljs-selector-tag">from</span>, 60%, 75%, 90%, <span class="hljs-selector-tag">to</span> {
+      <span class="hljs-attribute">animation-timing-function</span>: <span class="hljs-built_in">cubic-bezier</span>(<span class="hljs-number">0.215</span>, <span class="hljs-number">0.61</span>, <span class="hljs-number">0.355</span>, <span class="hljs-number">1</span>);
+    }
+    <span class="hljs-selector-tag">from</span> {
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">3000px</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    }
+    60% {
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(-<span class="hljs-number">25px</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    }
+    75% {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">10px</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    }
+    90% {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(-<span class="hljs-number">5px</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    }
+    <span class="hljs-selector-tag">to</span> {
+      <span class="hljs-attribute">transform</span>: none;
+    }
+  }
+  <span class="hljs-keyword">@keyframes</span> Toastify__bounceOutRight {
+    20% {
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(-<span class="hljs-number">20px</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    }
+    <span class="hljs-selector-tag">to</span> {
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">2000px</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    }
+  }
+  <span class="hljs-keyword">@keyframes</span> Toastify__bounceInLeft {
+    <span class="hljs-selector-tag">from</span>, 60%, 75%, 90%, <span class="hljs-selector-tag">to</span> {
+      <span class="hljs-attribute">animation-timing-function</span>: <span class="hljs-built_in">cubic-bezier</span>(<span class="hljs-number">0.215</span>, <span class="hljs-number">0.61</span>, <span class="hljs-number">0.355</span>, <span class="hljs-number">1</span>);
+    }
+    0% {
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(-<span class="hljs-number">3000px</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    }
+    60% {
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">25px</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    }
+    75% {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(-<span class="hljs-number">10px</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    }
+    90% {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">5px</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    }
+    <span class="hljs-selector-tag">to</span> {
+      <span class="hljs-attribute">transform</span>: none;
+    }
+  }
+  <span class="hljs-keyword">@keyframes</span> Toastify__bounceOutLeft {
+    20% {
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">20px</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    }
+    <span class="hljs-selector-tag">to</span> {
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(-<span class="hljs-number">2000px</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    }
+  }
+  <span class="hljs-keyword">@keyframes</span> Toastify__bounceInUp {
+    <span class="hljs-selector-tag">from</span>, 60%, 75%, 90%, <span class="hljs-selector-tag">to</span> {
+      <span class="hljs-attribute">animation-timing-function</span>: <span class="hljs-built_in">cubic-bezier</span>(<span class="hljs-number">0.215</span>, <span class="hljs-number">0.61</span>, <span class="hljs-number">0.355</span>, <span class="hljs-number">1</span>);
+    }
+    <span class="hljs-selector-tag">from</span> {
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, <span class="hljs-number">3000px</span>, <span class="hljs-number">0</span>);
+    }
+    60% {
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, -<span class="hljs-number">20px</span>, <span class="hljs-number">0</span>);
+    }
+    75% {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, <span class="hljs-number">10px</span>, <span class="hljs-number">0</span>);
+    }
+    90% {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, -<span class="hljs-number">5px</span>, <span class="hljs-number">0</span>);
+    }
+    <span class="hljs-selector-tag">to</span> {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    }
+  }
+  <span class="hljs-keyword">@keyframes</span> Toastify__bounceOutUp {
+    20% {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, -<span class="hljs-number">10px</span>, <span class="hljs-number">0</span>);
+    }
+    40%, 45% {
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, <span class="hljs-number">20px</span>, <span class="hljs-number">0</span>);
+    }
+    <span class="hljs-selector-tag">to</span> {
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, -<span class="hljs-number">2000px</span>, <span class="hljs-number">0</span>);
+    }
+  }
+  <span class="hljs-keyword">@keyframes</span> Toastify__bounceInDown {
+    <span class="hljs-selector-tag">from</span>, 60%, 75%, 90%, <span class="hljs-selector-tag">to</span> {
+      <span class="hljs-attribute">animation-timing-function</span>: <span class="hljs-built_in">cubic-bezier</span>(<span class="hljs-number">0.215</span>, <span class="hljs-number">0.61</span>, <span class="hljs-number">0.355</span>, <span class="hljs-number">1</span>);
+    }
+    0% {
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, -<span class="hljs-number">3000px</span>, <span class="hljs-number">0</span>);
+    }
+    60% {
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, <span class="hljs-number">25px</span>, <span class="hljs-number">0</span>);
+    }
+    75% {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, -<span class="hljs-number">10px</span>, <span class="hljs-number">0</span>);
+    }
+    90% {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, <span class="hljs-number">5px</span>, <span class="hljs-number">0</span>);
+    }
+    <span class="hljs-selector-tag">to</span> {
+      <span class="hljs-attribute">transform</span>: none;
+    }
+  }
+  <span class="hljs-keyword">@keyframes</span> Toastify__bounceOutDown {
+    20% {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, <span class="hljs-number">10px</span>, <span class="hljs-number">0</span>);
+    }
+    40%, 45% {
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, -<span class="hljs-number">20px</span>, <span class="hljs-number">0</span>);
+    }
+    <span class="hljs-selector-tag">to</span> {
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, <span class="hljs-number">2000px</span>, <span class="hljs-number">0</span>);
+    }
+  }
+  <span class="hljs-selector-class">.Toastify__bounce-enter--top-left</span>, <span class="hljs-selector-class">.Toastify__bounce-enter--bottom-left</span> {
+    <span class="hljs-attribute">animation-name</span>: Toastify__bounceInLeft;
+  }
+  <span class="hljs-selector-class">.Toastify__bounce-enter--top-right</span>, <span class="hljs-selector-class">.Toastify__bounce-enter--bottom-right</span> {
+    <span class="hljs-attribute">animation-name</span>: Toastify__bounceInRight;
+  }
+  <span class="hljs-selector-class">.Toastify__bounce-enter--top-center</span> {
+    <span class="hljs-attribute">animation-name</span>: Toastify__bounceInDown;
+  }
+  <span class="hljs-selector-class">.Toastify__bounce-enter--bottom-center</span> {
+    <span class="hljs-attribute">animation-name</span>: Toastify__bounceInUp;
+  }
+  
+  <span class="hljs-selector-class">.Toastify__bounce-exit--top-left</span>, <span class="hljs-selector-class">.Toastify__bounce-exit--bottom-left</span> {
+    <span class="hljs-attribute">animation-name</span>: Toastify__bounceOutLeft;
+  }
+  <span class="hljs-selector-class">.Toastify__bounce-exit--top-right</span>, <span class="hljs-selector-class">.Toastify__bounce-exit--bottom-right</span> {
+    <span class="hljs-attribute">animation-name</span>: Toastify__bounceOutRight;
+  }
+  <span class="hljs-selector-class">.Toastify__bounce-exit--top-center</span> {
+    <span class="hljs-attribute">animation-name</span>: Toastify__bounceOutUp;
+  }
+  <span class="hljs-selector-class">.Toastify__bounce-exit--bottom-center</span> {
+    <span class="hljs-attribute">animation-name</span>: Toastify__bounceOutDown;
+  }
+  
+  <span class="hljs-keyword">@keyframes</span> Toastify__zoomIn {
+    <span class="hljs-selector-tag">from</span> {
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scale3d</span>(<span class="hljs-number">0.3</span>, <span class="hljs-number">0.3</span>, <span class="hljs-number">0.3</span>);
+    }
+    50% {
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+    }
+  }
+  <span class="hljs-keyword">@keyframes</span> Toastify__zoomOut {
+    <span class="hljs-selector-tag">from</span> {
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+    }
+    50% {
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scale3d</span>(<span class="hljs-number">0.3</span>, <span class="hljs-number">0.3</span>, <span class="hljs-number">0.3</span>);
+    }
+    <span class="hljs-selector-tag">to</span> {
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+    }
+  }
+  <span class="hljs-selector-class">.Toastify__zoom-enter</span> {
+    <span class="hljs-attribute">animation-name</span>: Toastify__zoomIn;
+  }
+  
+  <span class="hljs-selector-class">.Toastify__zoom-exit</span> {
+    <span class="hljs-attribute">animation-name</span>: Toastify__zoomOut;
+  }
+  
+  <span class="hljs-keyword">@keyframes</span> Toastify__flipIn {
+    <span class="hljs-selector-tag">from</span> {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">perspective</span>(<span class="hljs-number">400px</span>) <span class="hljs-built_in">rotate3d</span>(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">90deg</span>);
+      <span class="hljs-attribute">animation-timing-function</span>: ease-in;
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+    }
+    40% {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">perspective</span>(<span class="hljs-number">400px</span>) <span class="hljs-built_in">rotate3d</span>(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, -<span class="hljs-number">20deg</span>);
+      <span class="hljs-attribute">animation-timing-function</span>: ease-in;
+    }
+    60% {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">perspective</span>(<span class="hljs-number">400px</span>) <span class="hljs-built_in">rotate3d</span>(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">10deg</span>);
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+    }
+    80% {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">perspective</span>(<span class="hljs-number">400px</span>) <span class="hljs-built_in">rotate3d</span>(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, -<span class="hljs-number">5deg</span>);
+    }
+    <span class="hljs-selector-tag">to</span> {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">perspective</span>(<span class="hljs-number">400px</span>);
+    }
+  }
+  <span class="hljs-keyword">@keyframes</span> Toastify__flipOut {
+    <span class="hljs-selector-tag">from</span> {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">perspective</span>(<span class="hljs-number">400px</span>);
+    }
+    30% {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">perspective</span>(<span class="hljs-number">400px</span>) <span class="hljs-built_in">rotate3d</span>(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, -<span class="hljs-number">20deg</span>);
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+    }
+    <span class="hljs-selector-tag">to</span> {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">perspective</span>(<span class="hljs-number">400px</span>) <span class="hljs-built_in">rotate3d</span>(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">90deg</span>);
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+    }
+  }
+  <span class="hljs-selector-class">.Toastify__flip-enter</span> {
+    <span class="hljs-attribute">animation-name</span>: Toastify__flipIn;
+  }
+  
+  <span class="hljs-selector-class">.Toastify__flip-exit</span> {
+    <span class="hljs-attribute">animation-name</span>: Toastify__flipOut;
+  }
+  
+  <span class="hljs-keyword">@keyframes</span> Toastify__slideInRight {
+    <span class="hljs-selector-tag">from</span> {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">110%</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+      <span class="hljs-attribute">visibility</span>: visible;
+    }
+    <span class="hljs-selector-tag">to</span> {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    }
+  }
+  <span class="hljs-keyword">@keyframes</span> Toastify__slideInLeft {
+    <span class="hljs-selector-tag">from</span> {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(-<span class="hljs-number">110%</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+      <span class="hljs-attribute">visibility</span>: visible;
+    }
+    <span class="hljs-selector-tag">to</span> {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    }
+  }
+  <span class="hljs-keyword">@keyframes</span> Toastify__slideInUp {
+    <span class="hljs-selector-tag">from</span> {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, <span class="hljs-number">110%</span>, <span class="hljs-number">0</span>);
+      <span class="hljs-attribute">visibility</span>: visible;
+    }
+    <span class="hljs-selector-tag">to</span> {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    }
+  }
+  <span class="hljs-keyword">@keyframes</span> Toastify__slideInDown {
+    <span class="hljs-selector-tag">from</span> {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, -<span class="hljs-number">110%</span>, <span class="hljs-number">0</span>);
+      <span class="hljs-attribute">visibility</span>: visible;
+    }
+    <span class="hljs-selector-tag">to</span> {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    }
+  }
+  <span class="hljs-keyword">@keyframes</span> Toastify__slideOutRight {
+    <span class="hljs-selector-tag">from</span> {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    }
+    <span class="hljs-selector-tag">to</span> {
+      <span class="hljs-attribute">visibility</span>: hidden;
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">110%</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    }
+  }
+  <span class="hljs-keyword">@keyframes</span> Toastify__slideOutLeft {
+    <span class="hljs-selector-tag">from</span> {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    }
+    <span class="hljs-selector-tag">to</span> {
+      <span class="hljs-attribute">visibility</span>: hidden;
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(-<span class="hljs-number">110%</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    }
+  }
+  <span class="hljs-keyword">@keyframes</span> Toastify__slideOutDown {
+    <span class="hljs-selector-tag">from</span> {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    }
+    <span class="hljs-selector-tag">to</span> {
+      <span class="hljs-attribute">visibility</span>: hidden;
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, <span class="hljs-number">500px</span>, <span class="hljs-number">0</span>);
+    }
+  }
+  <span class="hljs-keyword">@keyframes</span> Toastify__slideOutUp {
+    <span class="hljs-selector-tag">from</span> {
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    }
+    <span class="hljs-selector-tag">to</span> {
+      <span class="hljs-attribute">visibility</span>: hidden;
+      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(<span class="hljs-number">0</span>, -<span class="hljs-number">500px</span>, <span class="hljs-number">0</span>);
+    }
+  }
+  <span class="hljs-selector-class">.Toastify__slide-enter--top-left</span>, <span class="hljs-selector-class">.Toastify__slide-enter--bottom-left</span> {
+    <span class="hljs-attribute">animation-name</span>: Toastify__slideInLeft;
+  }
+  <span class="hljs-selector-class">.Toastify__slide-enter--top-right</span>, <span class="hljs-selector-class">.Toastify__slide-enter--bottom-right</span> {
+    <span class="hljs-attribute">animation-name</span>: Toastify__slideInRight;
+  }
+  <span class="hljs-selector-class">.Toastify__slide-enter--top-center</span> {
+    <span class="hljs-attribute">animation-name</span>: Toastify__slideInDown;
+  }
+  <span class="hljs-selector-class">.Toastify__slide-enter--bottom-center</span> {
+    <span class="hljs-attribute">animation-name</span>: Toastify__slideInUp;
+  }
+  
+  <span class="hljs-selector-class">.Toastify__slide-exit--top-left</span>, <span class="hljs-selector-class">.Toastify__slide-exit--bottom-left</span> {
+    <span class="hljs-attribute">animation-name</span>: Toastify__slideOutLeft;
+  }
+  <span class="hljs-selector-class">.Toastify__slide-exit--top-right</span>, <span class="hljs-selector-class">.Toastify__slide-exit--bottom-right</span> {
+    <span class="hljs-attribute">animation-name</span>: Toastify__slideOutRight;
+  }
+  <span class="hljs-selector-class">.Toastify__slide-exit--top-center</span> {
+    <span class="hljs-attribute">animation-name</span>: Toastify__slideOutUp;
+  }
+  <span class="hljs-selector-class">.Toastify__slide-exit--bottom-center</span> {
+    <span class="hljs-attribute">animation-name</span>: Toastify__slideOutDown;
+  }
+  
+  <span class="hljs-comment">/*# sourceMappingURL=ReactToastify.css.map */</span>
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>
