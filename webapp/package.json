@@ -12,7 +12,6 @@
     "@rdfjs/data-model": "^1.1.1",
     "@react-firebase/database": "^0.3.11",
     "@shexjs/core": "^1.0.0-alpha.9",
-    "@solid/query-ldflex": "^2.6.0",
     "@svgr/webpack": "2.4.1",
     "axios": "^0.21.1",
     "bfj": "6.1.1",

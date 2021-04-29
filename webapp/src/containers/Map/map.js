@@ -9,7 +9,7 @@ import {
   InfoWindow
 } from "react-google-maps";
 import { usePosition } from 'use-position';
-import { getDistance } from 'geolib';
+//import { getDistance } from 'geolib';
 import { getUsers } from "../../api/api";
 
 function Map(props) {
