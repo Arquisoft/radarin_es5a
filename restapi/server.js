@@ -18,7 +18,6 @@ var firebaseConfig = {
   };
   
 firebase.initializeApp(firebaseConfig);
-console.log(firebase.database());
 var database = firebase.database();
 
 
