@@ -1,5 +1,5 @@
 module.exports = {
-  projects: ['radarin_es5a/webapp'],
+  projects: ['radarin_es5a'],
   verbose: true,
   resolver: "jest-pnp-resolver",
   preset: 'jest-puppeteer',
@@ -18,7 +18,7 @@ module.exports = {
   ],
   "moduleNameMapper": {
     "^react-native$": "react-native-web",
-    "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules",
-    "@inrupt/solid-style-guide": "<rootDir>/node_modules/jest-css-modules"
+    "\\.(css|less|scss|sss|styl)$": "<rootDir>/webapp/node_modules/jest-css-modules",
+    "@inrupt/solid-style-guide": "<rootDir>/webapp/node_modules/jest-css-modules"
   }
 };
