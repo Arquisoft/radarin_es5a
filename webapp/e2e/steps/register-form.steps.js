@@ -12,7 +12,7 @@ defineFeature(feature, test => {
     let email;
     let username;
 
-    
+  
     given('An unregistered user', () => {
       email = "newuser@test.com"
       username = "newuser"
