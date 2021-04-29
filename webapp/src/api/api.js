@@ -14,5 +14,10 @@ export async function getUsers(){
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000'
     console.log(apiEndPoint)
     let response = await fetch(apiEndPoint+'/users/getByIdp2')
-    return await response.json()
+    var promise1 = Promise.resolve(await response.json());
+    var userList = [];
+    promise1.then((usuarios) => {
+      userList.push(usuarios);
+    });
+    return userList;
 }
