@@ -42,7 +42,7 @@ jobs:
         node-version: 12.14.1
     - run: npm --prefix webapp install
     - run: npm --prefix restapi install
-    #- run: npm --prefix webapp run test:e2e
+    ##- run: npm --prefix webapp run test:e2e
   deploy-webapp:
     needs: [e2e-tests]
     runs-on: ubuntu-latest
