@@ -9,7 +9,7 @@ module.exports = {
 
     if (filename.match(/\.svg$/)) {
       return `module.exports = {
-        __esModule: false,
+        __esModule: true,
         default: ${assetFilename},
         ReactComponent: (props) => ({
           $$typeof: Symbol.for('react.element'),
