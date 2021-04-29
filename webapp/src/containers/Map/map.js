@@ -14,8 +14,6 @@ import { getDistance } from 'geolib';
 function Map( props ) {
   var { latitude, longitude } = usePosition( false );
 //  const users = getUsers();
-var lat1 = 43.5306455;
-var long1 = -5.6563222;
   var users = [
     {"name":"marcos", "ubicacion":{"lat": latitude + 0.004, "lng": longitude}}, 
     {"name":"german", "ubicacion":{"lat": latitude + 0.001, "lng": longitude + 0.004 }}, 
@@ -33,6 +31,7 @@ function actualizar(){
       isOpen: "",
       refreshingProperty: true,
     }), {
+      // eslint-disable-next-line
       onToggleOpen: ({  }) => key => ({
         isOpen: key,
       })
