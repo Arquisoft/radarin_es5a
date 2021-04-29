@@ -1,17 +1,56 @@
 [[section-technical-risks]]
 == Risks and Technical Debts
-
-
-[role="arc42help"]
-****
 .Contents
-A list of identified technical risks or technical debts, ordered by priority
-
-.Motivation
-“Risk management is project management for grown-ups” (Tim Lister, Atlantic Systems Guild.) 
-
-This should be your motto for systematic detection and evaluation of risks and technical debts in the architecture, which will be needed by management stakeholders (e.g. project managers, product owners) as part of the overall risk analysis and measurement planning.
+In this section of the documentation we will explain some of the problems we encountered during the development of the project. A lot of them are related with the fact that we are totally new to these technologies and there is an importart resource work behind.
 
 .Form
-List of risks and/or technical debts, probably including suggested measures to minimize, mitigate or avoid risks or reduce technical debts.
-****
+This table tells the problem we encountered, the reason of why we had this problem and the solution we did or we tried to do.
+
+
+[cols=3*,options="header"]
+|===
+|Problem
+|Reason
+|Solutions
+
+|Developers didnt use JavaScript that much.
+|Its not very used in the degree, and we are more used to other languajes.
+|Refresh our knowledge of JavaScript and adapt as fast as possible.
+
+|Most of the developers never used Node, Express, BootStrap, and other technologies that we used.
+|The only subject that uses some if this technologies is in ye same year but it starts 2 months after we did. 
+|Developers must auto-learn this technologies and practise to be able to do the project.
+
+|Developers couldn´t connect Solid Pod´s with Node + Express.
+|Solid is quite new and there is not that much of documentation, and there are unsolved bugs, seems to be very hard or maybe impossible to connect this two technologies.
+|We had to regret the decision of non using React, and integrate the React + Node template.
+
+|Never used React.
+|The developers have never used React.
+|Developers should learn the syntax and development methodology that React uses, and practise it to use it in the project.
+
+|The React template its too big.
+|The developers had to adapt to the enormous template that was inserted to the project.
+|Developers should learn how the template works and wich parts we need and which we dont.
+
+|Never used Solid.
+|Solid is a totally new for us, we dont have any experience with it and there is not so much documentation because its quite new.
+|Developers should look for information on how to work with SOLID and how it works.
+
+|No knowledge about LDFlex.
+|No knowledge.
+|Search for detailed information about how to use it and how to work with it. Search for examples to understand its use.
+
+|Problems with Github
+|The use of Github + GitKraken produced many errors in some developers that cost time to fix.
+|Developers should exercise caution when making changes to the develop and master branches
+
+|Teamwork
+|Problems comunicating with some of the team members
+|The developers will have to talk and coordinate better.
+
+|No experience developing a project this big.
+|No experience with many libraries and work tools that could be useful to us.
+|Search for information about the tools necessary to develop the project and which could help us.
+
+|===
