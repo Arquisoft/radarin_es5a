@@ -58,7 +58,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/pruebas.js"
+    "test": "node scripts/pruebas.js",
+    "test:e2e": "jest -c jest-cucumber.config.js"
   },
   "husky": {
     "hooks": {
@@ -88,7 +89,7 @@
         "module-resolver",
         {
           "root": [
-            "<rootDir>"
+            "./src"
           ],
           "alias": {
             "@components": "./src/components",
