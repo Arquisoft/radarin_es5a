@@ -11,6 +11,7 @@ import {
 import { usePosition } from 'use-position';
 //import { getDistance } from 'geolib';
 import { getUsers } from "../../api/api";
+import { updateUbicacion } from "../../api/api";
 
 function Map(props) {
   var { latitude, longitude } = usePosition(false);
@@ -25,11 +26,17 @@ function Map(props) {
       users = [];
       Object.entries(usuarios[0]).forEach(([key, value]) => {
         var user = { "name": key, "ubicacion": { "lat": value.lat, "lng": value.lng } }
-        users.push(user);
+        if ("uo258472_solidcommunity_net" !== key) {
+          users.push(user);
+        } else {
+          updateUbicacion(key,latitude,longitude);
+        }
+
       })
       console.log(users);
 
     });
+
 
   }
 

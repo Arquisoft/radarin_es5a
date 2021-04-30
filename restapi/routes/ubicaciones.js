@@ -9,6 +9,28 @@ module.exports = function (app, firebase) {
     res.send("hola")
   })
 
+  //Añade a la base de datos 
+  app.post("/users/add", function (req, res) {
+    const name = req.body.name;
+    const lat = req.body.lat;
+    const lng = req.body.lng;
+    firebase.database().ref('users/' + name).get().then(function (snapshot) {
+      if (snapshot.exists()) {
+        firebase.database().ref('users/' + name).update({
+          lat: lat,
+          lng: lng
+        });
+      }
+      else {
+        firebase.database().ref('users/' + name).set({
+          lat: lat,
+          lng: lng
+        });
+      }
+    });
+    res.send("ok")
+  });
+
   // Anadir usuarios test
   app.post("/test/update", function (req, res) {
     firebase.database().ref('test/' + req.body.name).set({

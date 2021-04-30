@@ -3,7 +3,6 @@ const promBundle = require("express-prom-bundle");
 const cors = require('cors');
 
 const app = express()
-
 //Firebase
 var firebase = require("firebase");
 
