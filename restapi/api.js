@@ -6,7 +6,6 @@ const User = require("./models/users");
 const SolidNodeClient = require('solid-node-client').SolidNodeClient;
 const client = new SolidNodeClient();
 
-
 // Refresh ubication
 router.post("/users/update", async (req, res) => {
     firebase.database().ref('users/' + req.body.name).set({
