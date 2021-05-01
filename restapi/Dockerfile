@@ -12,8 +12,8 @@ RUN npm install --production
 
 #By default this is the address of the mongo container. If we are deploying to heroku we will get
 #a mongo_uri here direct from github secrets (check .github/worflow/radarin.yml)
-ARG MONGO_URI="mongodb://mongoserver:27017/api"
-ENV MONGO_URI=$MONGO_URI
+ARG FIREBASE_URI="radarines5a-3b110.appspot.com"
+ENV FIREBASE_URI="AIzaSyAq2HShQb--f_SyBYJ6k8RzbKEaJtCvRqM"
 
 # Bundle app source
 COPY server.js api.js ./
