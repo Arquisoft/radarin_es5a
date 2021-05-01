@@ -28,6 +28,7 @@
     "geolib": "^3.3.1",
     "google-map-react": "^2.1.9",
     "google-maps-react": "^2.0.6",
+    "heroku": "^7.53.0",
     "i18next": "^15.0.4",
     "i18next-browser-languagedetector": "^3.0.1",
     "i18next-xhr-backend": "^2.0.1",
