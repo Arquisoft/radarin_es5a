@@ -74,6 +74,5 @@ jobs:
           docker_build_args: |
             FIREBASE_URI
         env:
-          FIREBASE_URI: |
-            FIREBASE_URI
+          FIREBASE_URI: ${{secrets.FIREBASE_URI}}
 
