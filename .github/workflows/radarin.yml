@@ -54,6 +54,7 @@ jobs:
           heroku_app_name: "radarines5awebapp" #Must be unique in Heroku
           heroku_email: "radarines5a@gmail.com"
           usedocker: true
+          dontuseforce: true
           appdir: "webapp"
           docker_build_args: |
             API_URI
@@ -70,6 +71,7 @@ jobs:
           heroku_app_name: "radarines5arestapi" #Must be unique in Heroku
           heroku_email: "radarines5a@gmail.com"
           usedocker: true
+          dontuseforce: true
           appdir: "restapi"
           docker_build_args: |
             FIREBASE_URI
