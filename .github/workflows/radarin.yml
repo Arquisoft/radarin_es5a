@@ -72,7 +72,8 @@ jobs:
           usedocker: true
           appdir: "restapi"
           docker_build_args: |
-            MONGO_URI
+            FIREBASE_URI
         env:
-          MONGO_URI: ${{secrets.MONGO_URI}}
+          FIREBASE_URI: |
+            FIREBASE_URI
 
