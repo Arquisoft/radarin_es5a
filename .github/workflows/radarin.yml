@@ -73,8 +73,4 @@ jobs:
           usedocker: true
           dontuseforce: true
           appdir: "restapi"
-          docker_build_args: |
-            FIREBASE_URI
-        env:
-          FIREBASE_URI: ${{secrets.FIREBASE_URI}}
 

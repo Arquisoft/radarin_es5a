@@ -12,8 +12,8 @@ RUN npm install --production
 
 #By default this is the address of the mongo container. If we are deploying to heroku we will get
 #a mongo_uri here direct from github secrets (check .github/worflow/radarin.yml)
-ARG FIREBASE_URI="https://radarines5a-3b110-default-rtdb.europe-west1.firebasedatabase.app/"
-ENV FIREBASE_URI=$FIREBASE_URI
+#ARG FIREBASE_URI="https://radarines5a-3b110-default-rtdb.europe-west1.firebasedatabase.app/"
+#ENV FIREBASE_URI=$FIREBASE_URI
 
 # Bundle app source
 COPY server.js api.js ./
