@@ -17,6 +17,6 @@ ENV FIREBASE_URI=$FIREBASE_URI
 
 # Bundle app source
 COPY server.js api.js ./
-ADD models ./models
+#ADD models ./models
 
 CMD [ "node", "server.js" ]
