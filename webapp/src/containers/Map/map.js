@@ -12,11 +12,16 @@ import { usePosition } from 'use-position';
 //import { getDistance } from 'geolib';
 import { getUsers } from "../../api/api";
 import { updateUbicacion } from "../../api/api";
+import { useWebId } from '@inrupt/solid-react-components';
 
 function Map(props) {
   var { latitude, longitude } = usePosition(false);
   //  const users = getUsers();
   var users = [];
+  var webId = useWebId();
+  var strWebId = String(webId);
+  //var webId2 = webId.replace('https://', '');
+  //var res = webId.replace('https://', "red");
   //  const radius = getRadius();
   const myAreaRadius = 500;
 
@@ -26,7 +31,14 @@ function Map(props) {
       users = [];
       Object.entries(usuarios[0]).forEach(([key, value]) => {
         var user = { "name": key, "ubicacion": { "lat": value.lat, "lng": value.lng } }
-        if ("uo258472_solidcommunity_net" !== key) {
+        var weid = strWebId.replace('https://', '');
+        var weid2 = weid.replace('.', '_');
+        var weid3 = weid2.replace('.', '_');
+        var weid4 = weid3.split('/')[0];
+
+
+        console.log("webId: " + weid4);
+        if ("uo258472_inrupt_net" !== key) {
           users.push(user);
         } else {
           updateUbicacion(key,latitude,longitude);
