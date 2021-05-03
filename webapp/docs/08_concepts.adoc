@@ -5,23 +5,25 @@
 [role="arc42help"]
 
 image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscutting concepts"]
-****
 
 
-=== Domain model
+=== Domain cocepts
 
-image:UmlDiagram.png["Example UML Diagram"]
-Our domain diagram has -- elements:
-* User: the users of the app, that stores their information and their friends.
-* Location: this has the latitude and longitude of the user.
+For saving the information of users outside of pods we use an json with the following structure:
+
+  * name a local name made of the webId but parsed
+       ** lat: latitud
+       ** lng: longitud
+       ** webid: the webID of the user for administrate and identify
 
 
 === User interface
 
-We use Bootstap for the design of most of our app. The general style is based on the default style provided by React. On the top you have a navigation bar to get around, and the rest of the page is for de funcionality of the app: the map of users, the personal chat, and other options, eachg designed with Bootstrap components.
+We use Bootstap for the design of most of our app. The general style is based on the default style provided by React. On the top you have a navigation bar to get around, and the rest of the page is for de funcionality of the app: the map of users, the personal chat, and other options, each designed with Bootstrap components.
+Also we use javascript and a meticolous hand for the Android interface. Having the same functionality as the web.
 
-...
 
 === Security
 
-Developing secure applications is one of the most important things, so we design our application with the SOLID architecture. (Mas)
+Developing secure applications is one of the most important things, so we designed our application with the SOLID architecture. Saving only the essencial information, the coordinates witch are not really valuable.
+
