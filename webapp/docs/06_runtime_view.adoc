@@ -3,58 +3,29 @@
 
 
 [role="arc42help"]
-****
-.Contents
-The runtime view describes concrete behavior and interactions of the system’s building blocks in form of scenarios from the following areas:
 
-* important use cases or features: how do building blocks execute them?
-* interactions at critical external interfaces: how do building blocks cooperate with users and neighboring systems?
-* operation and administration: launch, start-up, stop
-* error and exception scenarios
+Here we will se all the use cases present on the app by runtime execution.
 
-Remark: The main criterion for the choice of possible scenarios (sequences, workflows) is their *architectural relevance*. It is *not* important to describe a large number of scenarios. You should rather document a representative selection.
-
-.Motivation
-You should understand how (instances of) building blocks of your system perform their job and communicate at runtime.
-You will mainly capture scenarios in your documentation to communicate your architecture to stakeholders that are less willing or able to read and understand the static models (building block view, deployment view).
-
-.Form
-There are many notations for describing scenarios, e.g.
-
-* numbered list of steps (in natural language)
-* activity diagrams or flow charts
-* sequence diagrams
-* BPMN or EPCs (event process chains)
-* state machines
-* ...
-
-****
 
 === Log in
 
-* Pequeña descripcion
-* Diagrama de secuencia
+Its necesary to communicate with the provider to do the login.
 
-=== See Friends map
+image: 06-login.png["Login Diagram"]
 
-* Pequeña descripcion
-* Diagrama de secuencia
-* Capturas de muestra
+=== See Friends on the map
+
+Its not necesary to autenticate to do this operation, only the friends that already has been registered on the app will apear on the map but the will on the friends tab.
+
+image: 06-getFriends.png["Friends Diagram"]
 
 === Add Friend
+A simple operation, it is necesary to be log on the pod
 
-* Pequeña descripcion
-* Diagrama de secuencia
-* Capturas de muestra
+image: 06-addFriends.png["Friends Diagram"]
 
-=== Read a message
+=== Update ubication
 
-* Pequeña descripcion
-* Diagrama de secuencia
-* Capturas de muestra
+Its not necesary to communicate with the pod because the coordinates are saved on the database
 
-=== Send a message
-
-* Pequeña descripcion
-* Diagrama de secuencia
-* Capturas de muestra
+image: 06-Ubication.png["Friends Diagram"]
