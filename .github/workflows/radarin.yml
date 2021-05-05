@@ -74,6 +74,7 @@ jobs:
           procfile: "web: npm start"
           usedocker: true
           dontuseforce: true
+          appdir: "restapi"
           docker_build_args: |
             FIREBASE_URI
         env:
