@@ -12,11 +12,11 @@ Tests and code coverage.
 
 image:https://github.com/Arquisoft/radarin_es5a/blob/master/webapp/docs/images/13-Test1.png[Uml]
 
-image:https://github.com/Arquisoft/radarin_es5a/blob/master/webapp/docs/images/13-Test2.png[Uml]
+image:https://github.com/Arquisoft/radarin_es5a/blob/master/webapp/docs/images/13-Test3.png[Uml]
 
 CI unable to run the tests correctly
 
-image:https://github.com/Arquisoft/radarin_es5a/blob/master/webapp/docs/images/13-Test3.png[Uml]
+image:https://github.com/Arquisoft/radarin_es5a/blob/master/webapp/docs/images/13-Test2.png[Uml]
 
 image:https://github.com/Arquisoft/radarin_es5a/blob/master/webapp/docs/images/13-Test4.png[Uml]
 ****
