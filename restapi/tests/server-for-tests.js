@@ -31,7 +31,7 @@ module.exports.startserver = async () => {
     app.options('*', cors());
     app.use(express.json())
 
-    require("./../routes/ubicaciones.js")(app, firebase);
+    require("./../ubicaciones.js")(app, firebase);
 
     server = await app.listen(5001)
     console.log("Server has started!")
