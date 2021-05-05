@@ -12,7 +12,7 @@ Some of the information goes to a firebase database like the locations because i
 The motivation is prety simple. Is having a clean implementation and a fast recovery of data because if an app isn't responsive enough users may don't like it.
 
 .Uml
-image:https://github.com/Arquisoft/radarin_es5a/blob/master/webapp/docs/images/03_Uml.png[Uml]
+image:03_Uml.png[Uml]
 ****
 
 

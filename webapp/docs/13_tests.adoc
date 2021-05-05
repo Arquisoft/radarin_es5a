@@ -10,15 +10,15 @@ However, due to what we think it is a bug, we can not include these tests in mas
 
 Tests and code coverage.
 
-image:https://github.com/Arquisoft/radarin_es5a/blob/master/webapp/docs/images/13-Test1.png[Uml]
+image:13-Test1.png[test1]
 
-image:https://github.com/Arquisoft/radarin_es5a/blob/master/webapp/docs/images/13-Test3.png[Uml]
+image:13-Test3.png[test2]
 
 CI unable to run the tests correctly
 
-image:https://github.com/Arquisoft/radarin_es5a/blob/master/webapp/docs/images/13-Test2.png[Uml]
+image:13-Test2.png[test3]
 
-image:https://github.com/Arquisoft/radarin_es5a/blob/master/webapp/docs/images/13-Test4.png[Uml]
+image:13-Test4.png[test4]
 ****
 [role="arc42help"]
 ****
