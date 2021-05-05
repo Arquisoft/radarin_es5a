@@ -1,6 +1,5 @@
 const express = require("express")
 const router = express.Router()
-
 const $rdf = require('rdflib');
 const User = require("./models/users");
 const SolidNodeClient = require('solid-node-client').SolidNodeClient;
@@ -53,7 +52,6 @@ router.post("/users/login", async (req, res) => {
         res.send(err);
     }
 });
-
 
 
 

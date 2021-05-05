@@ -1,0 +1,14 @@
+[[section-glossary]]
+== Testing
+
+.Aceptance Tests
+(Explicacion Joaquin)
+
+.Load Tests
+(Explicacion Joaquin)
+
+.Monitoring Tests
+(Explicacion Joaquin)
+[role="arc42help"]
+
+

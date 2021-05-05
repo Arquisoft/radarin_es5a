@@ -28,13 +28,12 @@ Solid-Node-Client:: Used on the restApi, tried to do the login.
 React-Native:: with other libraries we tried to do the login on android.
 Express:: Tried to build the webApp.
 
-****
 
 === Organizational decisions
-****
+
 We use a traditional asigment of work on every meeting, using the github project, issues system. We also use Teams for the online meetings.
-****
+
 === Solution-approaches and Goals
-****
+
 * finish the proyect
-****
+

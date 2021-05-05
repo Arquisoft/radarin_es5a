@@ -3,73 +3,56 @@
 
 [role="arc42help"]
 ****
-Describes the relevant requirements and the driving forces that software architects and development team must consider. These include
-
-* underlying business goals, essential features and functional requirements for the system
-* quality goals for the architecture
-* relevant stakeholders and their expectations
+Radarin is a communication app, with an interactive map and decentraliced information storage with the aid of Solid Pods. This app provides a web and an android app with a map to find your friends near you, the posibility of adding friends and chat with them.
 ****
 
 === Requirements Overview
 
 [role="arc42help"]
 ****
-.Contents
-Short description of the functional requirements, driving forces, extract (or abstract)
-of requirements. Link to (hopefully existing) requirements documents
-(with version number and information where to find it).
+.Mandatory Requirements
+* A mobile app with the same functionality as the webApp.
+* Get Friends from Solid Pods.
+* Have a map to show you and your friends.
+* The user can add friends. 
+* There will be an Admin to controll all the users.
+* Notification will apear when a friend is near you in the webApp.
 
-.Motivation
-From the point of view of the end users a system is created or modified to
-improve support of a business activity and/or improve the quality.
+.Optional Requirements
+* Have a functional chat between users.
+* The history of ubications could be seen by the user.
+* The app may be internationalizated.
+* Notification will apear when a friend is near you in the android app.
 
-.Form
-Short textual description, probably in tabular use-case format.
-If requirements documents exist this overview should refer to these documents.
-
-Keep these excerpts as short as possible. Balance readability of this document with potential redundancy w.r.t to requirements documents.
 ****
 
 === Quality Goals
 
 [role="arc42help"]
-****
-.Contents
-The top three (max five) quality goals for the architecture whose fulfillment is of highest importance to the major stakeholders. We really mean quality goals for the architecture. Don't confuse them with project goals. They are not necessarily identical.
+.Goals
+|===
+|Quality Goal | Description
+| Privacity | The privacity is our first priority, only the user can access his own data. 
+| Funcionality | The user must fell that the app is usefull and be responsive to the user.
+| Accesibility | The  app can be used by everyone.
+|===
 
-.Motivation
-You should know the quality goals of your most important stakeholders, since they will influence fundamental architectural decisions. Make sure to be very concrete about these qualities, avoid buzzwords.
-If you as an architect do not know how the quality of your work will be judged …
-
-.Form
-A table with quality goals and concrete scenarios, ordered by priorities
-****
 
 === Stakeholders
 
 [role="arc42help"]
-****
-.Contents
-Explicit overview of stakeholders of the system, i.e. all person, roles or organizations that
 
-* should know the architecture
-* have to be convinced of the architecture
-* have to work with the architecture or with code
-* need the documentation of the architecture for their work
-* have to come up with decisions about the system or its development
+.Stakeholders
+|===
+|Role/Name|Expectations
+| Developers | The team must bring a good product, have the minimun requirements and registry all the develop process.
+| Teachers| The survey the development, evaluate all the charateristics of the app and give a mark in regard of the work realiced.
+| SolidProject| Been the developers of the principal tecnology, they are expecting feedback of bugs, ideas and the develop of our apps.
+| Novice Users| They expect a usefull app with or without knowing Solid.
+| Normal Users| Knowing Solid and the app, they expect having secure information and a reliable app.
+|===
 
-.Motivation
-You should know all parties involved in development of the system or affected by the system.
-Otherwise, you may get nasty surprises later in the development process.
-These stakeholders determine the extent and the level of detail of your work and its results.
-
-.Form
-Table with role names, person names, and their expectations with respect to the architecture and its documentation.
-****
 
 [options="header",cols="1,2,2"]
-|===
-|Role/Name|Contact|Expectations
-| _<Role-1>_ | _<Contact-1>_ | _<Expectation-1>_
-| _<Role-2>_ | _<Contact-2>_ | _<Expectation-2>_
-|===
+
+

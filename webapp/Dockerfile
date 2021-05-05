@@ -8,11 +8,11 @@ RUN npm install
 ARG API_URI="http://localhost:5000/api"
 ENV REACT_APP_API_URI=$API_URI
 #Create an optimized version of the webapp
-RUN npm run build
+#RUN npm run build
 #Install software neccesary for generating the doc
 RUN apt-get update && apt-get -y install ruby openjdk-8-jre
 RUN gem install asciidoctor asciidoctor-diagram
 RUN npm install shx --save-dev
 #Generate the doc
 #RUN npm run docs
-CMD [ "node", "server.js" ]
+CMD [ "npm", "start" ]
