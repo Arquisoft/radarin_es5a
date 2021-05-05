@@ -3,6 +3,10 @@ import Friend from "./friend";
 //import FriendsObjet from "./friends.styled.js";
 import ldflex from "@solid/query-ldflex";
 //import data from "@solid/query-ldflex";
+import {
+  FriendsObjet,
+  Friendss,
+} from './friends.styled';
 
 import { List } from "@solid/react";
 type Props = {webId: String};
@@ -81,6 +85,8 @@ class Friends extends React.Component{
 
     render(){
         return (
+          <FriendsObjet data-testid="welcome-wrapper">
+            <Friendss className="card">
           <form onSubmit={this.handleSubmit}>
             <h1>Amigos:</h1>
             <p>Introduce el webID del amigo que quieres tener en tu lista de amigos:</p>
@@ -88,6 +94,8 @@ class Friends extends React.Component{
           <h2>Lista de amigos:</h2>
          {this.getFriends()}
         </form>
+        </Friendss>
+        </FriendsObjet>
         );
      }
 }
