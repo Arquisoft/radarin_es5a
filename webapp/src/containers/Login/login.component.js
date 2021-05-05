@@ -32,7 +32,7 @@ const LoginComponent = () => {
             <ProviderLogin
               selectPlaceholder={t('login.selectPlaceholder')}
               inputPlaholder={t('login.inputPlaholder')}
-              formButtonText={t('login.formButtonText')}
+              formButtonText={'Login'}
               btnTxtWebId={t('login.btnTxtWebId')}
               btnTxtProvider={t('login.btnTxtProvider')}
               className="provider-login-component"

@@ -60,7 +60,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/pruebas.js",
-    "test:e2e": "jest -c jest-cucumber.config.js"
+    "test:e2e": "cd e2e && jest"
   },
   "husky": {
     "hooks": {
