@@ -1,14 +1,34 @@
 [[section-glossary]]
 == Testing
 
+[role="arc42help"]
+****
 .Aceptance Tests
-(Explicacion Joaquin)
+For testing the application we have used Jest, a JavaScript testing framework that is compatible with React and focused on simplicity, and the library react-testing-library. We aimed to achieve at least 50% of code coverage. We managed to have 47% of code coverage, with tests checking that the components of our application work correctly.
 
+However, due to what we think it is a bug, we can not include these tests in master, since the CI is not able to run them correctly. We have created a branch tests which includes the tests developed.
+
+Tests and code coverage.
+
+image:https://github.com/Arquisoft/radarin_es5a/blob/master/webapp/docs/images/13-Test1.png[Uml]
+
+image:https://github.com/Arquisoft/radarin_es5a/blob/master/webapp/docs/images/13-Test2.png[Uml]
+
+CI unable to run the tests correctly
+
+image:https://github.com/Arquisoft/radarin_es5a/blob/master/webapp/docs/images/13-Test3.png[Uml]
+
+image:https://github.com/Arquisoft/radarin_es5a/blob/master/webapp/docs/images/13-Test4.png[Uml]
+****
+[role="arc42help"]
+****
 .Load Tests
 (Explicacion Joaquin)
-
+****
+[role="arc42help"]
+****
 .Monitoring Tests
 (Explicacion Joaquin)
-[role="arc42help"]
+****
 
 
