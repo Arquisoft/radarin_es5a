@@ -28,7 +28,7 @@ This shows the static decomposition of the system into building blocks and depen
 [role="arc42help"]
 ****
 Level 1::
-image: 05-UML1.png["Uml1"]
+image:05-UML1.png["Uml1"]
 
 .Componentes
 [Attributes]
@@ -44,7 +44,7 @@ image: 05-UML1.png["Uml1"]
 Level 2::
 The principal methots of the restApi.
 
-image: 05-UML2.png["Uml2"]
+image:05-UML2.png["Uml2"]
 
 .In deph restApi
 [Attributes]
@@ -56,7 +56,7 @@ Level 3::
 Rigth now we use a solid library capable of comunicate with the solid pods, on the WebApp ,not on the restApi, but the principal idea is to be capable of using some kind of library like the two displayed bellow.
 
 .Libraries
-image: 05-Uml-comunication.png["Uml3"]
+image:05-Uml-comunication.png["Uml3"]
 
 
 ****
