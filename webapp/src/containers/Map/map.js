@@ -38,7 +38,7 @@ function Map(props) {
 
 
         console.log("webId: " + weid4);
-        if ("uo258472_inrupt_net" !== key) {
+        if (weid4 !== key) {
           users.push(user);
         } else {
           updateUbicacion(key,latitude,longitude);
@@ -95,7 +95,7 @@ function Map(props) {
             position={{ lat: user.ubicacion.lat, lng: user.ubicacion.lng }}
             onClick={() => props.onToggleOpen(user.name)}
           >
-            {props.isOpen === user.name && <InfoWindow onCloseClick={props.onToggleOpen}><div><h5>{user.name}</h5><a href="/chat">Chat</a></div></InfoWindow>}
+            {props.isOpen === user.name && <InfoWindow onCloseClick={props.onToggleOpen}><div><h5>{user.name}</h5></div></InfoWindow>}
           </Marker>
         ))}
 

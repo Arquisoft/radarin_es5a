@@ -71,9 +71,9 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "radarines5arestapi" #Must be unique in Heroku
           heroku_email: "radarines5a@gmail.com"
+          procfile: "web: npm start"
           usedocker: true
           dontuseforce: true
-          appdir: "restapi"
           docker_build_args: |
             FIREBASE_URI
         env:

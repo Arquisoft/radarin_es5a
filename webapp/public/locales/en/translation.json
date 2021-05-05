@@ -48,8 +48,6 @@
   "navBar": {
     "home": "Home",
     "map":"Map",
-    "chat":"Chat",
-    "options":"Options",
     "friends":"Friends",
     "formModel": "Form Model",
     "logOut": "Log out",

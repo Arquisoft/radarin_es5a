@@ -28,7 +28,7 @@ app.use(cors());
 app.options('*', cors());
 app.use(express.json())
 
-require("./routes/ubicaciones.js")(app, firebase);
+require("./ubicaciones.js")(app, firebase);
 
 
 app.listen(process.env.PORT || 5000, () => {
