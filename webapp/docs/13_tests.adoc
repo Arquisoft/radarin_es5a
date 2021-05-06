@@ -19,16 +19,8 @@ CI unable to run the tests correctly
 image:13-Test2.png[test3]
 
 image:13-Test4.png[test4]
-****
-[role="arc42help"]
-****
-.Load Tests
-(Explicacion Joaquin)
-****
-[role="arc42help"]
-****
-.Monitoring Tests
-(Explicacion Joaquin)
+
+We have also develop BDD tests, with the structure of user stories, with the tool Cucumber.
 ****
 
 
